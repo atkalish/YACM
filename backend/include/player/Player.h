@@ -8,7 +8,8 @@
 #include "Race.h"
 #include "Background.h"
 #include "Item.h"
-#include "Ability.h"
+#include "abilities/Ability.h"
+#include "abilities/Feature.h"
 #include "spellcasting/Spellcasting.h"
 
 using namespace std;
@@ -237,7 +238,7 @@ private:
     Money money;
 
     vector<Item> items;
-    //vector<Feature> features;
+    vector<Feature> features;
     vector<Spellcasting> spellcasting;
 
 public:
