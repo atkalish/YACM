@@ -44,9 +44,11 @@ private:
 		this->proficiencies = builder->_proficiencies;
 		this->abilities = builder->_abilities;
 	}
-	~Race();
 
 public:
+	Race() = default;
+	~Race();
+
 	const string& getName() const {return this->name;}
 	const string& getDescription() const {return this->description;}
 	const int getSpeed() const {return this->speed; }
