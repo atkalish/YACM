@@ -8,4 +8,7 @@ class TraitModification {
 private:
 	string targetID;
 	Formula formula;
+public:
+	TraitModification() = default;
+	~TraitModification();
 };

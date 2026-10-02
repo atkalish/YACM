@@ -42,6 +42,7 @@ public:
 	};
 
 private:
+	Selector() = default;
 	Selector<T>(Builder* builder) {
 		this->currentList = builder->_currentList;
 		this->newList = builder->_newList;
