@@ -4,6 +4,8 @@
 #include <string>
 #include "../spellcasting/Spellcasting.h"
 #include "PlayerClassBlueprint.h"
+#include "playerclasses/PlayerSubclass.h"
+#include "features/TraitModification.h"
 
 using namespace std;
 
@@ -13,6 +15,13 @@ private:
 
     int level;
     int currentHitDice;
+    Selector<PlayerSubclass> subclass;
+    Selector<TraitModification> _armorProficiencies;
+    Selector<TraitModification> _weaponProficiencies;
+    Selector<TraitModification> _toolProficiencies;
+    Selector<TraitModification> _savingThrowProficiencies;
+    Selector<TraitModification> _skillProficiencies;
+    vector<Item> _equipmentProficiencies;
 
     Spellcasting spellcasting;
 
@@ -25,4 +34,5 @@ public:
     int getLevel() const {return this->level;}
     int getCurrentHitDie() const {return this->currentHitDice;}
     const Spellcasting& getSpellcasting() const {return this->spellcasting;}
+    const Selector<PlayerSubclass>& getPlayerSubclass() const {return this->subclass;}
 };

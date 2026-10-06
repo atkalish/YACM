@@ -5,8 +5,10 @@
 #include "../features/Ability.h"
 #include "../features/TraitModification.h"
 #include "../features/Selector.h"
+#include "../features/Feature.h"
 #include "../Item.h"
 #include "../spellcasting/SpellcastingBlueprint.h"
+#include "PlayerSubclass.h"
 
 
 typedef string Formula;
@@ -18,18 +20,29 @@ private:
     string name;
     string description;
     string multiClassPrereqs;
-    vector<vector<Ability*>> abilityTable;
+    vector<vector<Feature>> featureTable;
     int hitDie;
     Formula firstLevelHitPoints;
     Formula higherLevelHitPoints;
 
+    vector<PlayerSubclass> subclasses;
+    int subclassLevel;
+
     // proficiencies
-    Selector<TraitModification> armor;
-    Selector<TraitModification> weapons;
-    Selector<TraitModification> tools;
-    Selector<TraitModification> savingThrows;
-    Selector<TraitModification> skills;
-    Selector<Item> equipment;
+    vector<string> armorProficiencies;
+    vector<string> weaponProficiencies;
+    vector<string> toolProficiencies;
+    vector<string> savingThrowProficiencies;
+    vector<string> skillProficiencies;
+    vector<Item> equipmentProficiencies;
+
+    // how many you can choose from the list
+    int armorProficiencyCount;
+    int weaponProficiencyCount;
+    int toolProficiencyCount;
+    int savingThrowProficiencyCount;
+    int skillProficiencyCount;
+    int equipmentProficiencyCount;
 
     SpellcastingBlueprint spellCastingBlueprint;
 
@@ -39,17 +52,28 @@ public:
         string _name;
         string _description;
         string _multiClassPrereqs;
-        vector<vector<Ability*>> _abilityTable;
+        vector<vector<Feature>> _featureTable;
         int _hitDie;
         Formula _firstLevelHitPoints;
         Formula _higherLevelHitPoints;
-        Selector<TraitModification> _armor;
-        Selector<TraitModification> _weapons;
-        Selector<TraitModification> _tools;
-        Selector<TraitModification> _savingThrows;
-        Selector<TraitModification> _skills;
-        Selector<Item> _equipment;
+
+        vector<PlayerSubclass> _subclasses;
+        int _subclassLevel;
+
+        vector<string> _armorProficiencies;
+        vector<string> _weaponProficiencies;
+        vector<string> _toolProficiencies;
+        vector<string> _savingThrowProficiencies;
+        vector<string> _skillProficiencies;
+        vector<Item> _equipmentProficiencies;
         SpellcastingBlueprint _spellCastingBlueprint;
+
+        int _armorProficiencyCount;
+        int _weaponProficiencyCount;
+        int _toolProficiencyCount;
+        int _savingThrowProficiencyCount;
+        int _skillProficiencyCount;
+        int _equipmentProficiencyCount;
 
     public:
         Builder() = default;
@@ -57,17 +81,25 @@ public:
         Builder& name(const string& name){this->_name = name; return *this;}
         Builder& descripiton(const string& description){this->_description = description; return *this;}
         Builder& multiClassPrereqs(const string& multiClassPrereqs){this->_multiClassPrereqs = multiClassPrereqs; return *this;}
-        Builder& abilityTable(vector<vector<Ability*>> abilityTable){this->_abilityTable = abilityTable; return *this;}
+        Builder& featureTable(vector<vector<Feature>> featureTable){this->_featureTable = featureTable; return *this;}
         Builder& hitDie(int hitDie){this->_hitDie = hitDie; return *this;}
         Builder& firstLevelHitPoints(const Formula& firstLevelHitPoints){this->_firstLevelHitPoints = firstLevelHitPoints; return *this;}
         Builder& higherlevelHitPoints(const Formula& higherlevelHitPoints){this->_higherLevelHitPoints = higherlevelHitPoints; return *this;}
-        Builder& armor(const Selector<TraitModification>& armor){this->_armor = armor; return *this;}
-        Builder& weapons(const Selector<TraitModification>& weapons){this->_weapons = weapons; return *this;}
-        Builder& tools(const Selector<TraitModification>& tools){this->_tools = tools; return *this;}
-        Builder& savingThrows(const Selector<TraitModification>& savingThrows){this->_savingThrows = savingThrows; return *this;}
-        Builder& skills(const Selector<TraitModification>& skills){this->_skills = skills; return *this;}
-        Builder& equipment(const Selector<Item>& equipment){this->_equipment = equipment; return *this;}
+        Builder& armorProficiencies(const vector<string>& armorProficiencies){this->_armorProficiencies = armorProficiencies; return *this;}
+        Builder& weaponProficiencies(const vector<string>& weaponProficiencies){this->_weaponProficiencies = weaponProficiencies; return *this;}
+        Builder& toolProficiencies(const vector<string>& toolProficiencies){this->_toolProficiencies = toolProficiencies; return *this;}
+        Builder& savingThrowProficiencies(const vector<string>& savingThrowProficiencies){this->_savingThrowProficiencies = savingThrowProficiencies; return *this;}
+        Builder& skillProficiencies(const vector<string>& skillProficiencies){this->_skillProficiencies = skillProficiencies; return *this;}
+        Builder& equipmentProficiencies(const vector<Item>& equipmentProficiencies){this->_equipmentProficiencies = equipmentProficiencies; return *this;}
         Builder& spellcastingBlueprint(const SpellcastingBlueprint& spellcastingBlueprint){this->_spellCastingBlueprint = spellcastingBlueprint; return *this;}
+        Builder& subclasses(const vector<PlayerSubclass>& subclasses){this->_subclasses = subclasses; return *this;}
+        Builder& subclassLevel(int subclassLevel){this->_subclassLevel = subclassLevel; return *this;}
+        Builder& armorProficiencyCount(int armorProficiencyCount){this->_armorProficiencyCount = armorProficiencyCount; return *this;}
+        Builder& weaponProficiencyCount(int weaponProficiencyCount){this->_weaponProficiencyCount = weaponProficiencyCount; return *this;}
+        Builder& toolProficiencyCount(int toolProficiencyCount){this->_toolProficiencyCount = toolProficiencyCount; return *this;}
+        Builder& savingThrowProficiencyCount(int savingThrowProficiencyCount){this->_savingThrowProficiencyCount = savingThrowProficiencyCount; return *this;}
+        Builder& skillProficiencyCount(int skillProficiencyCount){this->_skillProficiencyCount = skillProficiencyCount; return *this;}
+        Builder& equipmentProficiencyCount(int equipmentProficiencyCount){this->_equipmentProficiencyCount = equipmentProficiencyCount; return *this;}
         PlayerClassBlueprint build(){return PlayerClassBlueprint(this);}
         friend class PlayerClassBlueprint;
     };
@@ -77,17 +109,25 @@ private:
         this->name = builder->_name;
         this->description = builder->_description;
         this->multiClassPrereqs = builder->_multiClassPrereqs;
-        this->abilityTable = builder->_abilityTable;
+        this->featureTable = builder->_featureTable;
         this->hitDie = builder->_hitDie;
         this->firstLevelHitPoints = builder->_firstLevelHitPoints;
         this->higherLevelHitPoints = builder->_higherLevelHitPoints;
-        this->armor = builder->_armor;
-        this->weapons = builder->_weapons;
-        this->tools = builder->_tools;
-        this->savingThrows = builder->_savingThrows;
-        this->skills = builder->_skills;
-        this->equipment = builder->_equipment;
+        this->armorProficiencies = builder->_armorProficiencies;
+        this->weaponProficiencies = builder->_weaponProficiencies;
+        this->toolProficiencies = builder->_toolProficiencies;
+        this->savingThrowProficiencies = builder->_savingThrowProficiencies;
+        this->skillProficiencies = builder->_skillProficiencies;
+        this->equipmentProficiencies = builder->_equipmentProficiencies;
         this->spellCastingBlueprint = builder->_spellCastingBlueprint;
+        this->subclasses = builder->_subclasses;
+        this->subclassLevel = builder->_subclassLevel;
+        this->armorProficiencyCount = builder->_armorProficiencyCount;
+        this->weaponProficiencyCount = builder->_weaponProficiencyCount;
+        this->toolProficiencyCount = builder->_toolProficiencyCount;
+        this->savingThrowProficiencyCount = builder->_savingThrowProficiencyCount;
+        this->skillProficiencyCount = builder->_skillProficiencyCount;
+        this->equipmentProficiencyCount = builder->_equipmentProficiencyCount;
     }
 
 public:
@@ -97,15 +137,23 @@ public:
     const string& getName(){return this->name;}
     const string& getDescription(){return this->description;}
     const string& getMultiClassPrereqs(){return this->multiClassPrereqs;}
-    const vector<vector<Ability*>>& getAbilityTable(){return this->abilityTable;}
+    const vector<vector<Feature>>& getAbilityTable(){return this->featureTable;}
     int getHitDie(){return this->hitDie;}
     const Formula& getFirstLevelHitPoints(){return this->firstLevelHitPoints;}
     const Formula& getHigherLevelHitPoints(){return this->higherLevelHitPoints;}
-    const Selector<TraitModification>& getArmor(){return this->armor;}
-    const Selector<TraitModification>& getWeapons(){return this->weapons;}
-    const Selector<TraitModification>& getTools(){return this->tools;}
-    const Selector<TraitModification>& getSavingThrows(){return this->savingThrows;}
-    const Selector<TraitModification>& getSkills(){return this->skills;}
-    const Selector<Item>& getEquipment(){return this->equipment;}
+    const vector<string>& getArmorProficiencies(){return this->armorProficiencies;}
+    const vector<string>& getWeaponProficiencies(){return this->weaponProficiencies;}
+    const vector<string>& getToolProficiency(){return this->toolProficiencies;}
+    const vector<string>& getSavingThrowProficiencies(){return this->savingThrowProficiencies;}
+    const vector<string>& getSkillProficiencies(){return this->skillProficiencies;}
+    const vector<Item>& getEquipmentProficiencies(){return this->equipmentProficiencies;}
     const SpellcastingBlueprint getSpellCastingBlueprint(){return this->spellCastingBlueprint;}
+    const vector<PlayerSubclass>& getPlayerSubclasses(){return this->subclasses;}
+    int getPlayerSubclassLevel(){return this->subclassLevel;}
+    int getArmorProficiencyCount(){return this->armorProficiencyCount;}
+    int getweaponProficiencyCount(){return this->weaponProficiencyCount;}
+    int getToolProficiencyCount(){return this->toolProficiencyCount;}
+    int getSavingThrowsProficiencyCount(){return this->savingThrowProficiencyCount;}
+    int getSkillProficiencyCount(){return this->skillProficiencyCount;}
+    int getEquipmentProficiencyCount(){return this->equipmentProficiencyCount;}
 };
