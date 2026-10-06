@@ -75,4 +75,7 @@ public:
 	const vector<string>& getTags() const {return this->tags;}
 	const string& getPrereq() const {return this->prereq;}
 	bool getOptional() const {return this->optional;}
+
+	Feature() = default;
+	~Feature();
 };
