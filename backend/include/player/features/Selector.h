@@ -42,7 +42,7 @@ public:
 	};
 
 private:
-	Selector<T>(Builder* builder) {
+	Selector(Builder* builder) {
 		this->currentList = builder->_currentList;
 		this->newList = builder->_newList;
 		this->hookIDs = builder->_hookIDs;

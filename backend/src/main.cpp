@@ -1,16 +1,6 @@
-#include <string>
-#include "Ability.h"
+#include "../include/player/features/Feature.h"
 #include <iostream>
-
-using namespace std;
-
 int main(){
-    Ability abilities = Ability::Builder()
-        .name("Aidan")
-        .text("this is text")
-        .build();
-    cout << abilities.getText() << endl;
-
-
-    return 0;
+	Feature f = Feature::Builder().name("Featurename!").build();
+	std::cout << "Feature with name: " << f.getName() << std::endl;
 }
