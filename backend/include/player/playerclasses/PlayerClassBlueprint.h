@@ -3,7 +3,9 @@
 #include <string>
 #include <vector>
 #include "abilities/Ability.h"
-#include "abilities/ModificationAbility.h"
+#include "abilities/TraitModification.h"
+#include "abilities/Selector.h"
+#include <Item.h>
 #include "spellcasting/SpellcastingBlueprint.h"
 
 
@@ -22,12 +24,12 @@ private:
     Formula higherLevelHitPoints;
 
     // proficiencies
-    ModificationAbility armor;
-    ModificationAbility weapons;
-    ModificationAbility tools;
-    ModificationAbility savingThrows;
-    ModificationAbility skills;
-    ModificationAbility equipment;
+    Selector<TraitModification> armor;
+    Selector<TraitModification> weapons;
+    Selector<TraitModification> tools;
+    Selector<TraitModification> savingThrows;
+    Selector<TraitModification> skills;
+    Selector<Item> equipment;
 
     SpellcastingBlueprint spellCastingBlueprint;
 
@@ -41,12 +43,12 @@ public:
         int _hitDie;
         Formula _firstLevelHitPoints;
         Formula _higherLevelHitPoints;
-        ModificationAbility _armor;
-        ModificationAbility _weapons;
-        ModificationAbility _tools;
-        ModificationAbility _savingThrows;
-        ModificationAbility _skills;
-        ModificationAbility _equipment;
+        Selector<TraitModification> _armor;
+        Selector<TraitModification> _weapons;
+        Selector<TraitModification> _tools;
+        Selector<TraitModification> _savingThrows;
+        Selector<TraitModification> _skills;
+        Selector<Item> _equipment;
         SpellcastingBlueprint _spellCastingBlueprint;
 
     public:
@@ -59,12 +61,12 @@ public:
         Builder& hitDie(int hitDie){this->_hitDie = hitDie; return *this;}
         Builder& firstLevelHitPoints(const Formula& firstLevelHitPoints){this->_firstLevelHitPoints = firstLevelHitPoints; return *this;}
         Builder& higherlevelHitPoints(const Formula& higherlevelHitPoints){this->_higherLevelHitPoints = higherlevelHitPoints; return *this;}
-        Builder& armor(const ModificationAbility& armor){this->_armor = armor; return *this;}
-        Builder& weapons(const ModificationAbility& weapons){this->_weapons = weapons; return *this;}
-        Builder& tools(const ModificationAbility& tools){this->_tools = tools; return *this;}
-        Builder& savingThrows(const ModificationAbility& savingThrows){this->_savingThrows = savingThrows; return *this;}
-        Builder& skills(const ModificationAbility& skills){this->_skills = skills; return *this;}
-        Builder& equipment(const ModificationAbility& equipment){this->_equipment = equipment; return *this;}
+        Builder& armor(const Selector<TraitModification>& armor){this->_armor = armor; return *this;}
+        Builder& weapons(const Selector<TraitModification>& weapons){this->_weapons = weapons; return *this;}
+        Builder& tools(const Selector<TraitModification>& tools){this->_tools = tools; return *this;}
+        Builder& savingThrows(const Selector<TraitModification>& savingThrows){this->_savingThrows = savingThrows; return *this;}
+        Builder& skills(const Selector<TraitModification>& skills){this->_skills = skills; return *this;}
+        Builder& equipment(const Selector<Item>& equipment){this->_equipment = equipment; return *this;}
         Builder& spellcastingBlueprint(const SpellcastingBlueprint& spellcastingBlueprint){this->_spellCastingBlueprint = spellcastingBlueprint; return *this;}
         PlayerClassBlueprint build(){return PlayerClassBlueprint(this);}
         friend class PlayerClassBlueprint;
@@ -99,11 +101,11 @@ public:
     int getHitDie(){return this->hitDie;}
     const Formula& getFirstLevelHitPoints(){return this->firstLevelHitPoints;}
     const Formula& getHigherLevelHitPoints(){return this->higherLevelHitPoints;}
-    const ModificationAbility& getArmor(){return this->armor;}
-    const ModificationAbility& getWeapons(){return this->weapons;}
-    const ModificationAbility& getTools(){return this->tools;}
-    const ModificationAbility& getSavingThrows(){return this->savingThrows;}
-    const ModificationAbility& getSkills(){return this->skills;}
-    const ModificationAbility& getEquipment(){return this->equipment;}
+    const Selector<TraitModification>& getArmor(){return this->armor;}
+    const Selector<TraitModification>& getWeapons(){return this->weapons;}
+    const Selector<TraitModification>& getTools(){return this->tools;}
+    const Selector<TraitModification>& getSavingThrows(){return this->savingThrows;}
+    const Selector<TraitModification>& getSkills(){return this->skills;}
+    const Selector<Item>& getEquipment(){return this->equipment;}
     const SpellcastingBlueprint getSpellCastingBlueprint(){return this->spellCastingBlueprint;}
 };
