@@ -10,7 +10,7 @@ class Feature {
 	//  2. <T>Selectors --> ones that do change across hooks or levels or whatever. For example: Eldritch Invocations
 
 private:
-	vector<Ability> _baseAbilities;
+	vector<Ability> baseAbilities;
 	vector<TraitModification> baseTraitMods;
 
 	bool exclusiveSelect;
@@ -51,5 +51,6 @@ public:
 		Builder& optional(bool optional) {this->_optional = optional; return *this;}
 		
 		Feature build() {return Feature(this);}
+		friend class Feature;
 	};
 };
