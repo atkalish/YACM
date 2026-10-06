@@ -2,11 +2,11 @@
 
 #include <string>
 #include <vector>
-#include "abilities/Ability.h"
-#include "abilities/TraitModification.h"
-#include "abilities/Selector.h"
-#include <Item.h>
-#include "spellcasting/SpellcastingBlueprint.h"
+#include "../features/Ability.h"
+#include "../features/TraitModification.h"
+#include "../features/Selector.h"
+#include "../Item.h"
+#include "../spellcasting/SpellcastingBlueprint.h"
 
 
 typedef string Formula;

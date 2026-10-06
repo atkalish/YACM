@@ -1,5 +1,5 @@
 #pragma once
-#include "abilities/Ability.h"
+#include "features/Ability.h"
 
 using namespace std;
 

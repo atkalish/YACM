@@ -60,5 +60,6 @@ public:
 	void Add();
 	void Replace();
 
+	Selector() = default;
 	~Selector();
 };

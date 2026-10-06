@@ -8,8 +8,8 @@
 #include "Race.h"
 #include "Background.h"
 #include "Item.h"
-#include "abilities/Ability.h"
-#include "abilities/Feature.h"
+#include "features/Ability.h"
+#include "features/Feature.h"
 #include "spellcasting/Spellcasting.h"
 
 using namespace std;

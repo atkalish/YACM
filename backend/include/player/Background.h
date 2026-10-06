@@ -2,8 +2,9 @@
 
 #include <string>
 #include <vector>
-#include "abilities/TraitModification.h"
-#include "abilities/Selector.h"
+#include "features/TraitModification.h"
+#include "features/Selector.h"
+#include "features/Ability.h"
 #include "Item.h"
 
 using namespace std;
