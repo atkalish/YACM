@@ -320,7 +320,7 @@ public:
     void setHp(const HitPoints& hp){this->hp = hp;}
     void succeedDeathSave(){this->deathsaves.setSuccesses(this->getDeathSaves().getSuccesses()+1);}
     void failDeathDave(){this->deathsaves.setFailures(this->getDeathSaves().getFailures()+1);}
-    void incrementProficiencyBonus(){this->getProficiencies().getProficiencyBonus()+1;}
+    void incrementProficiencyBonus(){++this->proficiencies.proficiencyBonus;}
     void addItem(const Item& item){this->items.push_back(item);}
     //void addFeature(const Feature& feature){this->features.push_back(feature);}
 
