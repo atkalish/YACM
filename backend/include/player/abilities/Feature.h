@@ -53,4 +53,26 @@ public:
 		Feature build() {return Feature(this);}
 		friend class Feature;
 	};
+private:
+	Feature(const Builder* builder) {
+		this->baseAbilities = builder->_baseAbilities;
+		this->baseTraitMods = builder->_baseTraitMods;
+		this->exclusiveSelect = builder->_exclusiveSelect;
+		this->abilitySelectors = builder->_abilitySelectors;
+		this->traitModSelectors = builder->_traitModSelectors;
+		this->name = builder->_name;
+		this->tags = builder->_tags;
+		this->prereq = builder->_prereq;
+		this->optional = builder->_optional;
+	}
+public:
+	const vector<Ability>& getBaseAbilities() const {return this->baseAbilities;}
+	const vector<TraitModification>& getBaseTraitMods() const {return this->baseTraitMods;}
+	bool getExclusiveSelect() const {return this->exclusiveSelect;}
+	const vector<Selector<Ability>>& getAbilitySelectors() const {return this->abilitySelectors;}
+	const vector<Selector<TraitModification>>& getTraitModSelectors() const {return this->traitModSelectors;}
+	const string& getName() const {return this->name;}
+	const vector<string>& getTags() const {return this->tags;}
+	const string& getPrereq() const {return this->prereq;}
+	bool getOptional() const {return this->optional;}
 };
