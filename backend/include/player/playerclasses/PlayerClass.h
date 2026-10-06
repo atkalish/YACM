@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <string>
-#include "spellcasting/Spellcasting.h"
+#include "../spellcasting/Spellcasting.h"
 #include "PlayerClassBlueprint.h"
 
 using namespace std;
