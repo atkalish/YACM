@@ -1,6 +1,9 @@
-#include "../include/player/features/Feature.h"
+#include "../include/logger/Logger.h"
 #include <iostream>
 int main(){
-	Feature f = Feature::Builder().name("Featurename!").build();
-	std::cout << "Feature with name: " << f.getName() << std::endl;
+	Logger* logger = Logger::getInstance();
+	logger->config(false, true, false, false);
+
+	logger->log("Initializing Logger");
+	logger->debug("This is a debug message");
 }
