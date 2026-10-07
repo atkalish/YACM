@@ -5,6 +5,8 @@ Logger* Logger::logger = nullptr;
 Logger* Logger::getInstance(){
     if(logger == nullptr){
         logger = new Logger();
+        error_code ec;
+        filesystem::create_directories(LOG_FILE_DIR, ec);
         std::chrono::_V2::system_clock::time_point now = std::chrono::system_clock::now();
         ostringstream stream;
         stream << std::chrono::current_zone()->to_local(now);
