@@ -13,7 +13,7 @@ using namespace std;
 class Logger{
 private:
     static Logger* logger;
-    inline static const string LOG_FILE = "logfile.txt";
+    inline static const string LOG_FILE_DIR = "logs/";
     ofstream outfile;
     bool _debug;
     bool _info;

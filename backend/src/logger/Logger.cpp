@@ -5,7 +5,12 @@ Logger* Logger::logger = nullptr;
 Logger* Logger::getInstance(){
     if(logger == nullptr){
         logger = new Logger();
-        logger->outfile.open(LOG_FILE);
+        std::chrono::_V2::system_clock::time_point now = std::chrono::system_clock::now();
+        ostringstream stream;
+        stream << std::chrono::current_zone()->to_local(now);
+        string filename = LOG_FILE_DIR + stream.str() + ".txt";
+        filename[filename.find(' ')] = '_';
+        logger->outfile.open(filename);
     }
     return logger;
 }
@@ -49,6 +54,12 @@ string Logger::getLogString(const string &severity, const string &message, sourc
     ostringstream stream;
     std::chrono::_V2::system_clock::time_point now = std::chrono::system_clock::now();
     stream << "[" << severity << "] ";
+
+    if(severity == "INFO") stream << "   ";
+    if(severity == "DEBUG") stream << "  ";
+    if(severity == "WARNING") stream << "";
+    if(severity == "ERROR") stream << "  ";
+
     stream << std::chrono::current_zone()->to_local(now) << " ";
     stream << "[" << location.file_name() << ":" << location.line() << "] ";
     stream << message;
@@ -57,7 +68,7 @@ string Logger::getLogString(const string &severity, const string &message, sourc
 
 // all logging is enabled by default
 Logger::Logger(){
-    this->config( true, true, true, true);
+    this->config(true, true, true, true);
 }
 
 Logger::~Logger(){
