@@ -4,16 +4,14 @@ Any dnd item ranging from magical items and weapons to a surprisingly long amoun
 ## Item JSON Structure
 ```json
 {
-    "json_type": "ITEM",
     "name": "item_name",
     "description": "item_description",
     "features": [
-        "*/features/*/feature.json"
+        "*/feature.json"
     ]
 }
 ```
 ## Item Fields
-- `json_type` this field must be "ITEM".
 - `name` the name of the item.
 - `description` the description of the item includes any non functional information about the item.
 - `features` this is a list of relative paths to all features associated with this item. 
