@@ -10,24 +10,26 @@ public:
     class Scaler{
     private:
         string name;
-        vector<string> scaling;
+        vector<Formula> scaling;
     public:
         Scaler() = default;
-        Scaler(const string& name, const vector<string>& scaling){
+        Scaler(const string& name, const vector<Formula>& scaling){
             this->name = name;
             this->scaling = scaling;
         }
     };
     class ChargeType{
     private:
-        int count;
-        vector<string> rechargeType;
-        string rechargeVal;
+				string name;
+        Formula count;
+        vector<string> rechargeHooks;
+        Formula rechargeVal;
     public:
         ChargeType() = default;
-        ChargeType(int count, const vector<string>& rechargeType, const string& rechargeVal){
+        ChargeType(const string& name, int count, const vector<string>& rechargeHooks, const string& rechargeVal){
+						this->name = name;
             this->count = count;
-            this->rechargeType = rechargeType;
+            this->rechargeHooks = rechargeHooks;
             this->rechargeVal = rechargeVal;
         }
     };
