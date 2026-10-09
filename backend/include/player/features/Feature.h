@@ -2,6 +2,7 @@
 #include "Ability.h"
 #include "TraitModification.h"
 #include "Selector.h"
+#include "../spellcasting/Spellcasting.h"
 
 //Feature is *just* a wrapper for these.
 class Feature {
@@ -12,6 +13,8 @@ class Feature {
 private:
 	vector<Ability> baseAbilities;
 	vector<TraitModification> baseTraitMods;
+
+	vector<Selector<Spellcasting>> spellcastings;
 
 	bool exclusiveSelect;
 	vector<Selector<Ability>> abilitySelectors; //problem: feat known as "resiliant". Current solution: let the restriction be cosmetic, i.e. we say pretty plz
@@ -28,6 +31,8 @@ public:
 		vector<Ability> _baseAbilities;
 		vector<TraitModification> _baseTraitMods;
 
+		vector<Selector<Spellcasting>> _spellcastings;
+
 		bool _exclusiveSelect;
 		vector<Selector<Ability>> _abilitySelectors; //problem: feat known as "resiliant". Current solution: let the restriction be cosmetic, i.e. we say pretty plz
 		vector<Selector<TraitModification>> _traitModSelectors;
@@ -40,6 +45,7 @@ public:
 		Builder() = default;
 		Builder& baseAbilities(const vector<Ability>& baseAbilities) {this->_baseAbilities = baseAbilities; return *this;}
 		Builder& baseTraitModifications(const vector<TraitModification>& baseTraitMods) {this->_baseTraitMods = baseTraitMods; return *this;}
+		Builder& spellcasting(const vector<Selector<Spellcasting>>& spellcastings) {this->_spellcastings= spellcastings; return *this;}
 		Builder& exclusiveSelect(bool exclusiveSelect) {this->_exclusiveSelect = exclusiveSelect; return *this;}
 		Builder& abilitySelectors(const vector<Selector<Ability>>& abilitySelectors) {this->_abilitySelectors = abilitySelectors; return *this;}
 		Builder& traitModSelectors(const vector<Selector<TraitModification>>& traitModSelectors) {this->_traitModSelectors = traitModSelectors; return *this;}
@@ -55,6 +61,7 @@ private:
 	Feature(const Builder* builder) {
 		this->baseAbilities = builder->_baseAbilities;
 		this->baseTraitMods = builder->_baseTraitMods;
+		this->spellcastings = builder->_spellcastings;
 		this->exclusiveSelect = builder->_exclusiveSelect;
 		this->abilitySelectors = builder->_abilitySelectors;
 		this->traitModSelectors = builder->_traitModSelectors;
@@ -72,6 +79,7 @@ public:
 	const string& getName() const {return this->name;}
 	const vector<string>& getTags() const {return this->tags;}
 	const string& getPrereq() const {return this->prereq;}
+	const vector<Spellcasting>& getSpellCastings() const;
 	bool getOptional() const {return this->optional;}
 
 	Feature() = default;
