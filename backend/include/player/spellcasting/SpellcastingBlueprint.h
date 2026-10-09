@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "Spell.h"
+#include "SpellSelector.h"
 
 using namespace std;
 typedef string Formula;
@@ -10,6 +11,7 @@ class SpellcastingBlueprint{
 private:
     string focus;
     vector<Spell> spellList;
+    vector<SpellSelector> spellSelectors;
     bool ritual;
     string spellAbilityInfo;
     Formula spellSaveFormula;
@@ -25,6 +27,7 @@ public:
     private:
         string _focus;
         vector<Spell> _spellList;
+        vector<SpellSelector> _spellSelectors;
         bool _ritual;
         string _spellAbilityInfo;
         Formula _spellAttackFormula;
@@ -36,6 +39,7 @@ public:
 
         Builder& focus(const string& focus){this->_focus = focus; return *this;}
         Builder& spellList(const vector<Spell> spellList){this->_spellList = spellList; return *this;}
+        Builder& spellSelector(const vector<SpellSelector> spellSelectors){this->_spellSelectors= spellSelectors; return *this;}
         Builder& ritual(bool ritual){this->_ritual = ritual; return *this;}
         Builder& spellcastingAbilty(const string& spellAbiltyInfo){this->_spellAbilityInfo = spellAbiltyInfo; return *this;}
         Builder& spellAttackFormula(const Formula& spellAttackFormula){this->_spellAttackFormula = spellAttackFormula; return *this;}

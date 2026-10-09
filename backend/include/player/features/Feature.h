@@ -16,7 +16,6 @@ private:
 	bool exclusiveSelect;
 	vector<Selector<Ability>> abilitySelectors; //problem: feat known as "resiliant". Current solution: let the restriction be cosmetic, i.e. we say pretty plz
 	vector<Selector<TraitModification>> traitModSelectors;
-	//SpellSelector; <-- this is WIP for later. consider examples where you pull from multiple classes' lists, and that you need a live reference to a list
 
 	string name;
 	vector<string> tags; //DOES NOT INCLUDE HOOKS. HOOKS ARE IN SELECTORS
