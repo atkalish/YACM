@@ -168,14 +168,17 @@ public:
         int proficiencyBonus;
         unordered_set<string> savingThrows;
         unordered_set<string> skills; // passive perception goes in here
+        unordered_set<string> misc;
         Proficiencies() = default;
     public:
         int getProficiencyBonus() const {return this->proficiencyBonus;}    
         const unordered_set<string>& getSavingThrows() const {return this->savingThrows;}
         const unordered_set<string>& getSkills() const {return this->skills;}
+        const unordered_set<string>& getMiscProficiencies() const {return this->misc;}
 
         void addSavingThrowProficiency(string proficiency){this->savingThrows.insert(proficiency);}
         void addSkillProficiency(string proficiency){this->skills.insert(proficiency);}
+        void addMiscProficiency(string proficiency){this->misc.insert(proficiency);}
         
         friend class Player;
     };
