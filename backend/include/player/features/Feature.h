@@ -32,6 +32,8 @@ public:
 		vector<TraitModification> _baseTraitMods;
 		Spellcasting* _spellcasting = nullptr;
 
+		vector<Selector<Spellcasting>> _spellcastings;
+
 		bool _exclusiveSelect;
 		vector<Selector<Ability>> _abilitySelectors; //problem: feat known as "resiliant". Current solution: let the restriction be cosmetic, i.e. we say pretty plz
 		vector<Selector<TraitModification>> _traitModSelectors;
@@ -78,6 +80,7 @@ public:
 	const string& getName() const {return this->name;}
 	const vector<string>& getTags() const {return this->tags;}
 	const string& getPrereq() const {return this->prereq;}
+	const vector<Spellcasting>& getSpellCastings() const;
 	bool getOptional() const {return this->optional;}
 
 	Feature() = default;
