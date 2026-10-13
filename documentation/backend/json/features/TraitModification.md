@@ -14,13 +14,11 @@ zero before being acted upon. Please see below for proficiencies.
 ```
 
 ## Trait Modification Fields
-- `target_id`: target id is the name of the trait that you are trying to modify
-- `formula`: a mathematical formula for what you're modifying by
+- `target_id`: target id is the name of the trait that you are trying to modify. See ReservedKeywords.
+- `formula`: a mathematical formula for what you're modifying by. Leave as an empty string id not applicable.
 
 ## Related Links
 - [Feature](Feature.md)
 - [Ability](Ability.md)
-
-## Proficiencies
-if aidan hasn't filled this out by the time that you
-read this, find aidan and make aidan do that
+- [Formula](../../Formula.md)
+- [Reserved Keywords](../../ReservedKeywords.md)

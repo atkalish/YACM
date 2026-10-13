@@ -14,7 +14,6 @@ and anything that gives spellcasting ability (from feats to subclasses to classe
 ## Ability JSON Structure
 ```json
 {
-    "name": "ability name",
     "description": "ability text",
     "hidden": false,
     "scaler": {
@@ -31,8 +30,6 @@ and anything that gives spellcasting ability (from feats to subclasses to classe
 ```
 
 ## Ability Fields
-- `json_type`: this field must be "ABILITY"
-- `name`: the name of the ability
 - `description`: the description/flavor text of the ability
 - `hidden`: whether or not the frontend will show this by default
 - `scaler`: a scaling portion of the ability. For example, Monk's martial arts die.
@@ -45,5 +42,5 @@ and anything that gives spellcasting ability (from feats to subclasses to classe
     - `recharge_val`: a mathematical formula for how much the player recharges on hooks
 
 ## Related Links
-- [Feature](features/Feature.md)
-- [Trait](features/TraitModification.md)
+- [Feature](Feature.md)
+- [Trait](TraitModification.md)

@@ -15,11 +15,12 @@ data/
 │   │   └── playersubclasses/
 │   ├── spellcasting/
 │   │   ├── spells/
+│   │   ├── spellcasting/
 │   │   ├── spelllists/
 │   │   └── spellselectors/
 │   ├── backgrounds/
 │   ├── items/
-│   └── race/
+│   └── races/
 ├── saves
 │   └── players
 

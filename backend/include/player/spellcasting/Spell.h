@@ -7,6 +7,7 @@ using namespace std;
 class Spell{
 private:
     string name;
+    int level;
     string source;
     string school;
     bool ritual;
@@ -22,6 +23,7 @@ public:
     class Builder{
     private:
         string _name;
+        int _level;
         string _source;
         string _school;
         bool _ritual;
@@ -37,6 +39,7 @@ public:
 		Builder() = default;
 
 		Builder& name(const string& name){this->_name = name; return *this;}
+        Builder& level(int level){this->_level = level; return *this;}
 		Builder& source(const string& source){this->_source = source; return *this;}
 		Builder& school(const string& school){this->_school = school; return *this;}
 		Builder& ritual(bool ritual){this->_ritual = ritual; return *this;}
@@ -55,6 +58,7 @@ public:
 private:
     Spell(Spell::Builder* builder){
         this->name = builder->_name;
+        this->level = level;
         this->source = builder->_source;
         this->school = builder->_school;
         this->ritual = builder->_ritual;
@@ -71,6 +75,7 @@ public:
     Spell() = default;
 
 	const string& getName(){return this->name;}
+    int getLevel(){return this->level;}
 	const string& getSource(){return this->source;}
 	const string& getSchool(){return this->school;}
 	bool isRitual(){return this->ritual;}
