@@ -1,0 +1,12 @@
+{
+    "name": "Dual Personalities",
+    "description": "Most of your fellow adventurers and the world know you as your persona. Those who seek to learn more about you—your weakness, your origins, your purpose—find themselves stymied by your disguise. Upon donning a disguise and behaving as your persona, you are unidentifiable as your true self. By removing your disguise and revealing your true face, you are no longer identifiable as your persona. This allows you to change appearances between your two personalities as often as you wish, using one to hide the other or serve as convenient camouflage. However, should someone realize the connection between your persona and your true self, your deception might lose its effectiveness.",
+    "prereq": "Faceless Background",
+    "tags": [],
+    "optional": false,
+    "spellcasting": "",
+    "base_abilites": [],
+    "base_trait_modifications": [],
+    "ability_selectors": [],
+    "trait_modification_selectors": []
+}

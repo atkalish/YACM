@@ -48,15 +48,15 @@ A class for the player character
     "tool_proficiencies": [
         "tool"
     ],
-    "saving_throw_proficiencies": 1,
+    "saving_throw_proficiencies_count": 1,
     "saving_throw_proficiencies": [
         "saving_throw"
     ],
-    "skill_proficiencies": 1,
+    "skill_proficiencies_count": 1,
     "skill_proficiencies": [
         "skill"
     ],
-    "equipment_proficiencies": 1,
+    "equipment_proficiencies_count": 1,
     "equipment_proficiencies": [
         "equipment"
     ],

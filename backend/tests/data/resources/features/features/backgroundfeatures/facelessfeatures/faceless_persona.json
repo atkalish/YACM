@@ -1,0 +1,12 @@
+{
+    "name": "Faceless Persona",
+    "description": "A faceless character adventures behind a mask of a public persona. This persona is as natural to them as their hidden, true face, but it disguises their identity. Roll on the Faceless Persona table to determine your persona, or work with the DM to create a persona that's unique to your character and suits the tone of your game.",
+    "prereq": "Faceless Background",
+    "tags": [],
+    "optional": false,
+    "spellcasting": "",
+    "base_abilites": [],
+    "base_trait_modifications": [],
+    "ability_selectors": [],
+    "trait_modification_selectors": []
+}
