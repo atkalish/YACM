@@ -11,7 +11,7 @@ a list of spells
 ```
 
 ## Spell List Fields
-`spells` this is a list of spells or directories that contain spells
+- `spells` this is a list of spells or directories that contain spells
 
 
 ## Related Links
