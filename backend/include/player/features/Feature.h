@@ -14,7 +14,7 @@ private:
 	vector<Ability> baseAbilities;
 	vector<TraitModification> baseTraitMods;
 
-	vector<Selector<Spellcasting>> spellcastings;
+	Spellcasting* spellcasting;
 
 	bool exclusiveSelect;
 	vector<Selector<Ability>> abilitySelectors; //problem: feat known as "resiliant". Current solution: let the restriction be cosmetic, i.e. we say pretty plz
@@ -30,6 +30,7 @@ public:
 	private:
 		vector<Ability> _baseAbilities;
 		vector<TraitModification> _baseTraitMods;
+		Spellcasting* _spellcasting = nullptr;
 
 		vector<Selector<Spellcasting>> _spellcastings;
 
@@ -45,7 +46,7 @@ public:
 		Builder() = default;
 		Builder& baseAbilities(const vector<Ability>& baseAbilities) {this->_baseAbilities = baseAbilities; return *this;}
 		Builder& baseTraitModifications(const vector<TraitModification>& baseTraitMods) {this->_baseTraitMods = baseTraitMods; return *this;}
-		Builder& spellcasting(const vector<Selector<Spellcasting>>& spellcastings) {this->_spellcastings= spellcastings; return *this;}
+		Builder& spellcasting(Spellcasting* spellcasting) {this->_spellcasting = spellcasting; return *this;}
 		Builder& exclusiveSelect(bool exclusiveSelect) {this->_exclusiveSelect = exclusiveSelect; return *this;}
 		Builder& abilitySelectors(const vector<Selector<Ability>>& abilitySelectors) {this->_abilitySelectors = abilitySelectors; return *this;}
 		Builder& traitModSelectors(const vector<Selector<TraitModification>>& traitModSelectors) {this->_traitModSelectors = traitModSelectors; return *this;}
@@ -61,7 +62,7 @@ private:
 	Feature(const Builder* builder) {
 		this->baseAbilities = builder->_baseAbilities;
 		this->baseTraitMods = builder->_baseTraitMods;
-		this->spellcastings = builder->_spellcastings;
+		this->spellcasting = builder->_spellcasting;
 		this->exclusiveSelect = builder->_exclusiveSelect;
 		this->abilitySelectors = builder->_abilitySelectors;
 		this->traitModSelectors = builder->_traitModSelectors;

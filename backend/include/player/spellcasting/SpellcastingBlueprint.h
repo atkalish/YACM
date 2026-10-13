@@ -20,7 +20,7 @@ private:
 
     // may only be applicable for class spellcasting
     string spellsKnown;
-    int spellSlots[20][10]; // 20 levels, 10 spell level (including cantrips)
+    vector<vector<int>> spellSlots; // 20 levels, 10 spell level (including cantrips)
 
 public:
     class Builder {
@@ -33,6 +33,8 @@ public:
         Formula _spellAttackFormula;
         Formula _spellSaveFormula;
         string _spellPreparation;
+        string _spellsKnown;
+        vector<vector<int>> _spellSlots;
 
     public:
         Builder() = default;
@@ -45,6 +47,8 @@ public:
         Builder& spellAttackFormula(const Formula& spellAttackFormula){this->_spellAttackFormula = spellAttackFormula; return *this;}
         Builder& spellSaveFormula(const Formula& spellSaveFormula){this->_spellSaveFormula = spellSaveFormula; return *this;}
         Builder& spellPreparation(const string& spellPreparation){this->_spellPreparation = spellPreparation; return *this;}
+        Builder& spellsKnown(const string& spellsKnown){this->_spellsKnown = spellsKnown; return *this;}
+        Builder& spellSlots(const vector<vector<int>>& spellSlots){this->_spellSlots = spellSlots; return *this;}
         SpellcastingBlueprint build(){return SpellcastingBlueprint(this);}
         friend class SpellcastingBlueprint;
     };
@@ -58,6 +62,8 @@ private:
         this->spellAttackFormula = builder->_spellAttackFormula;
         this->spellSaveFormula = builder->_spellAttackFormula;
         this->spellPreparation = builder->_spellPreparation;
+        this->spellsKnown = builder->_spellsKnown;
+        this->spellSlots = builder->_spellSlots;
     }
 
 public:
@@ -68,4 +74,6 @@ public:
     bool isRitual(){return this->ritual;}
     const string& getSpellAbility(){return this->spellAbilityInfo;}
     const string& getSpellPreparation(){return this->spellPreparation;}
+    const string& getSpellsKnown(){return this->spellsKnown;}
+    const vector<vector<int>>& getSpellSlots(){return this->spellSlots;}
 };

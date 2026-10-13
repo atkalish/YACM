@@ -1,5 +1,5 @@
 #pragma once
-#include "features/Ability.h"
+#include "features/Feature.h"
 
 using namespace std;
 
@@ -7,18 +7,18 @@ class Item{
 private:
 	string name;
 	string description;
-	vector<Ability*> abilities;
+	vector<Feature> features;
 public:
 	class Builder {
 	private:
 		string _name;
 		string _description;
-		vector<Ability*> _abilities;
+		vector<Feature> _features;
 	public:
 		Builder() = default;
 		Builder& name(const string& name){this->_name = name; return *this;}
 		Builder& description(const string& description){this->_description = description; return *this;}
-		Builder& abilities(const vector<Ability*>& abilities) {this->_abilities = abilities; return *this;}
+		Builder& abilities(const vector<Feature>& features) {this->_features = features; return *this;}
 		Item build() {return Item(this);}
 
 		friend class Item;
@@ -27,11 +27,11 @@ public:
 	Item(Builder* builder) {
 		this->name = builder->_name;
 		this->description = builder->_description;
-		this->abilities = builder->_abilities;
+		this->features = builder->_features;
 	}
 
 	~Item();
 	const string& getName() const {return this->name;}
 	const string& getDescription() const {return this->description;}
-	const vector<Ability*>& getAbilities() const {return this->abilities;}
+	const vector<Feature>& getFeatures() const {return this->features;}
 };
