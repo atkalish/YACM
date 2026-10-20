@@ -43,8 +43,6 @@ A class for the player character
         ["*/item_option1.json", "*/item_option2.json"],
         ["*/itemoptions"]
     ]
-    "spell_list": "*/spell_list",
-    "spellcasting": "*/spellcasting.json"
 }
 ```
 
@@ -60,8 +58,6 @@ A class for the player character
 - `subclass_level` the level subclasses are unlocked for this player class.
 - `class_proficiencies` a list of features that are intended to modify the proficiencies that the player has
 - `starting_equipment` a list of a list of equipment options for this class. Each sublist is intended as a choice.
-- `spell_list` path to the list of spells for this spellcasting. Empty string if not applicable
-- `spellcasting` path to spellcasting json. Empty string if not applicable.
 
 ## Related Links
 - [Feature](../features/Feature.md)

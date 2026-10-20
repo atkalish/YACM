@@ -1,0 +1,24 @@
+{
+    "name": "wizard proficiencies",
+    "description": "list of wizard proficiences",
+    "prereq": "have the wizard class",
+    "tags": [],
+    "optional": false,
+    "spellcasting": "",
+    "exclusive_selection": false,
+    "base_abilities": [],
+    "base_trait_modifications": [
+        "genericproficiencies/weapons/simple/daggers.json",
+        "genericproficiencies/weapons/simple/darts.json",
+        "genericproficiencies/weapons/simple/slings.json",
+        "genericproficiencies/weapons/simple/quarterstaffs.json",
+        "genericproficiencies/weapons/simple/light_crossbows.json",
+
+        "genericproficiencies/saves/intelligence.json",
+        "genericproficiencies/saves/wisdom.json"
+    ],
+    "ability_selectors": [],
+    "trait_modification_selectors": [
+        "skills/wizard_skills.json"
+    ]
+}

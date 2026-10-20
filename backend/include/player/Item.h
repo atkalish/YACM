@@ -7,7 +7,6 @@ class Item{
 private:
 	string name;
 	string description;
-	vector<Feature> features;
 public:
 	class Builder {
 	private:

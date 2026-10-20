@@ -1,0 +1,14 @@
+{
+    "type": "trait_modification",
+    "super_list": [
+        "genericproficiencies/skills/arcana.json",
+        "genericproficiencies/skills/history.json",
+        "genericproficiencies/skills/insight.json",
+        "genericproficiencies/skills/investigation.json",
+        "genericproficiencies/skills/medcine.json",
+        "genericproficiencies/skills/religion.json"
+    ],
+    "hooks": [],
+    "minimum_count": 2,
+    "maximum_count": 2
+}

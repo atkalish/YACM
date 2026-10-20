@@ -28,43 +28,14 @@
     "first_level_hit_points": "6+[CON]",
     "higher_level_hit_points": "1d6+[CON]",
     "subclasses": [],
-    "subclass_level": 3,
-    "armor_proficiency_count": 0,
-    "armor_proficiencies": [],
-    "weapon_proficiency_count": 6,
-    "weapon_proficiencies": [
-        "Daggers",
-        "Darts",
-        "Slings",
-        "Quarterstaffs",
-        "light crossbows"
+    "subclass_level": 2,
+    "class_proficiencies": [
+        "classproficiencies/wizard_proficiencies.json"
     ],
-    "tool_proficiency_count": 0,
-    "tool_proficiencies": [],
-    "saving_throw_proficiencies_count": 2,
-    "saving_throw_proficiencies": [
-        "[INT_SAVE]",
-        "[WIS_SAVE]"
-    ],
-    "skill_proficiencies_count": 2,
-    "skill_proficiencies": [
-        "[ARCANA]",
-        "[HISTORY]",
-        "[INSIGHT]",
-        "[INVESTIGATION]",
-        "[MEDICINE]",
-        "[RELIGION]"
-    ],
-    "equipment_proficiencies_count": 4,
-    "equipment_proficiencies": [
-        "Quarterstaff",
-        "Dagger",
-        "Component Pouch",
-        "Arcane Focus",
-        "Scholar's Pack",
-        "Explorer's Pack",
-        "Spellbook"
-    ],
-    "spell_list": "classspelllists/wizard_spell_list.json",
-    "spellcasting": "*/spellcasting.json"
+    "starting_equipment": [
+        ["weapons/simple/quarterstaff.json", "weapons/simple/dagger.json"],
+        ["component_pouch.json", "arcane_focus.json"],
+        ["scholars_puch.json", "explorers_pouch.json"],
+        ["spellbook.json"]
+    ]
 }

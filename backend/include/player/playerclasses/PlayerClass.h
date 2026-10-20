@@ -17,9 +17,6 @@ private:
     int currentHitDice;
     Selector<PlayerSubclass> subclass;
     vector<Feature> features;
-
-    Spellcasting spellcasting;
-
     vector<Selector<Item>> startingEquipment;
 
 public:
@@ -30,7 +27,6 @@ public:
     const PlayerClassBlueprint& getBlueprint() const {return this->blueprint;}
     int getLevel() const {return this->level;}
     int getCurrentHitDie() const {return this->currentHitDice;}
-    const Spellcasting& getSpellcasting() const {return this->spellcasting;}
     const Selector<PlayerSubclass>& getPlayerSubclass() const {return this->subclass;}
     const vector<Feature>& getFeatures() const {return this->features;}
     const vector<Selector<Item>>& getSartingEquipment() const {return this->startingEquipment;}
