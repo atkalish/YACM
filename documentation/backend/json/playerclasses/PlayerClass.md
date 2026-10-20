@@ -36,30 +36,13 @@ A class for the player character
         "*/subclass.json"
     ],
     "subclass_level": 3,
-    "armor_proficiency_count": 1,
-    "armor_proficiencies": [
-        "armor"
+    "class_proficiencies": [
+        "*/feature.json"
     ],
-    "weapon_proficiency_count": 1,
-    "weapon_proficiencies": [
-        "weapon"
-    ],
-    "tool_proficiency_count": 1,
-    "tool_proficiencies": [
-        "tool"
-    ],
-    "saving_throw_proficiencies_count": 1,
-    "saving_throw_proficiencies": [
-        "saving_throw"
-    ],
-    "skill_proficiencies_count": 1,
-    "skill_proficiencies": [
-        "skill"
-    ],
-    "equipment_proficiencies_count": 1,
-    "equipment_proficiencies": [
-        "equipment"
-    ],
+    "starting_equipment": [
+        ["*/item_option1.json", "*/item_option2.json"],
+        ["*/itemoptions"]
+    ]
     "spell_list": "*/spell_list",
     "spellcasting": "*/spellcasting.json"
 }
@@ -75,18 +58,8 @@ A class for the player character
 - `higher_level_hit_points` a string formula to calculate higher level hit points.
 - `subclasses` a list of relative paths to subclasses of this player class.
 - `subclass_level` the level subclasses are unlocked for this player class.
-- `armor_proficiency_count` how many of the listed armor proficiencies the player can choose
-- `armor_proficiencies` a list of strings representing armor
-- `weapon_proficiency_count` how many of the listed weapon proficiencies the player can choose
-- `weapon_proficiencies` a list of strings representing weapons
-- `tool_proficiency_count` how many of the listed tool proficiencies the player can choose
-- `tool_proficiencies` a list of strings representing tools
-- `saving_throw_proficiency_count` how many of the listed saving throw proficiencies the player can choose
-- `saving_throw_proficiencies` a list of strings representing saving throws
-- `skill_proficiency_count` how many of the listed skill proficiencies the player can choose
-- `skill_proficiencies` a list of strings representing skills
-- `equipment_proficiency_count` how many of the listed equipment proficiencies the player can choose
-- `equipment_proficiencies` a list of strings representing equipment
+- `class_proficiencies` a list of features that are intended to modify the proficiencies that the player has
+- `starting_equipment` a list of a list of equipment options for this class. Each sublist is intended as a choice.
 - `spell_list` path to the list of spells for this spellcasting. Empty string if not applicable
 - `spellcasting` path to spellcasting json. Empty string if not applicable.
 

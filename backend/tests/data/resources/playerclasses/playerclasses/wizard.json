@@ -43,8 +43,8 @@
     "tool_proficiencies": [],
     "saving_throw_proficiencies_count": 2,
     "saving_throw_proficiencies": [
-        "[INT]",
-        "[WIS]"
+        "[INT_SAVE]",
+        "[WIS_SAVE]"
     ],
     "skill_proficiencies_count": 2,
     "skill_proficiencies": [
@@ -65,6 +65,6 @@
         "Explorer's Pack",
         "Spellbook"
     ],
-    "spell_list": "*/spell_list",
+    "spell_list": "classspelllists/wizard_spell_list.json",
     "spellcasting": "*/spellcasting.json"
 }

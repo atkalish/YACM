@@ -16,14 +16,11 @@ private:
     int level;
     int currentHitDice;
     Selector<PlayerSubclass> subclass;
-    Selector<TraitModification> armorProficiencies;
-    Selector<TraitModification> weaponProficiencies;
-    Selector<TraitModification> toolProficiencies;
-    Selector<TraitModification> savingThrowProficiencies;
-    Selector<TraitModification> skillProficiencies;
-    Selector<Item> equipmentProficiencies;
+    vector<Feature> features;
 
     Spellcasting spellcasting;
+
+    vector<Selector<Item>> startingEquipment;
 
 public:
     PlayerClass() = default;
@@ -35,10 +32,6 @@ public:
     int getCurrentHitDie() const {return this->currentHitDice;}
     const Spellcasting& getSpellcasting() const {return this->spellcasting;}
     const Selector<PlayerSubclass>& getPlayerSubclass() const {return this->subclass;}
-    const Selector<TraitModification>& getArmorProficiencies() const {return this->armorProficiencies;}
-    const Selector<TraitModification>& getweaponProficiencies() const {return this->weaponProficiencies;}
-    const Selector<TraitModification>& getToolProficiencies() const {return this->toolProficiencies;}
-    const Selector<TraitModification>& getSavingThrowProficiencies() const {return this->savingThrowProficiencies;}
-    const Selector<TraitModification>& getSkillProficiencies() const {return this->skillProficiencies;}
-    const Selector<Item>& getItemProficiencies() const {return this->equipmentProficiencies;}
+    const vector<Feature>& getFeatures() const {return this->features;}
+    const vector<Selector<Item>>& getSartingEquipment() const {return this->startingEquipment;}
 };
