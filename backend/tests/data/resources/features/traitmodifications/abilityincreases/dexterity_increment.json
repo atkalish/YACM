@@ -1,0 +1,4 @@
+{
+	"target_id": "abilities/dexterity",
+	"formula": "[DEX]+1"
+}
