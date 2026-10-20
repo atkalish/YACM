@@ -1,0 +1,7 @@
+{
+	"type": "trait modification",
+	"super_list": [ "languages/" ],
+	"hooks": [],
+	"minimum_count": "1",
+	"maximum_count": "1"
+}

@@ -8,8 +8,8 @@
 	"spellcasting": "githyanki_psionics.json",
 	"exclusive_selection": false,
 
-	"base_abilities": [ "astral_knowledge.json"],
-	"base_trait_modifications": ["medium_size.json", "humanoid_creature.json", "speed_30.json", "psychic_resilience.json"],
+	"base_abilities": [],
+	"base_trait_modifications": ["size_medium.json", "creature_humanoid.json", "speed_30.json", "psychic_resilience.json"],
 	"ability_selectors": [],
-	"trait_modification_selectors": [ "astral_knowledge.json", "githyanki_ability_score_increase.json", "gith_languages.json" ]
+	"trait_modification_selectors": [ "astral_knowledge.json", "githyanki_ability_score_increase.json", "githyanki_languages.json" ]
 }
