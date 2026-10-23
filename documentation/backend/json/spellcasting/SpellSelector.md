@@ -12,6 +12,7 @@ itself where a spell selector modifies a list inside of a Spellcasting instance.
     "hooks": [ "long rest", "short rest", "dawn" ],
     "min_selection": "formula",
     "max_selection": "formula",
+    "level_obtained": 10,
     "level": 0,
 }
 ```
@@ -22,6 +23,7 @@ itself where a spell selector modifies a list inside of a Spellcasting instance.
 - `hooks`: assorted hooks when the selection should trigger
 - `min_selection`: a mathematical formula for how many spells you may select on a hook trigger
 - `max_selection`: minimum selection but actually maximum
+- `level_obtained`: what level this selector should be in effect/'obtained' by the player
 - `level`: what level of spell it should effect. Leave blank for any level, 0 for cantrips
 
 ## Related Links
