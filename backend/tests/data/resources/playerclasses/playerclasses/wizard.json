@@ -21,8 +21,8 @@
         [],
         [],
         [],
-        [],
-        []
+        ["class/wizard/spell_mastery.json"],
+        ["class/wizard/signature_spells.json"]
     ],
     "hit_die": 6,
     "first_level_hit_points": "6+[CON]",
