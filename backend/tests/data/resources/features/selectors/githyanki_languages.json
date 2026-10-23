@@ -1,6 +1,6 @@
 {
 	"type": "trait modification",
-	"super_list": [ "languages/" ],
+	"super_list": [ "genericproficiencies/languages/" ],
 	"hooks": [],
 	"minimum_count": "1",
 	"maximum_count": "1"
