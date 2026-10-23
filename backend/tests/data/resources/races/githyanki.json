@@ -1,0 +1,5 @@
+{
+	"name": "Githyanki",
+	"description": "Once members of a people who escaped servitude to mind flayers, githyanki split from their cousins, githzerai, and fled to the Astral Plane. In that timeless, silvery realm, githyanki honed their psionic powers and built a great city called Tu’narath. They have since spread throughout the multiverse, starting in outposts outside the Astral Plane, called creches, where time passes and their children can reach adulthood.\nA lanky people with skin tones of yellows, greens, and browns, githyanki complement their physical prowess with psionic might, instilled in them by mind flayers and cultivated over eons in the Astral Plane. Now all githyanki can use their psychic bond with that plane to access splinters of knowledge left behind by beings who travel, live, and die among the silver astral clouds.\nGithyanki who reside in the Astral Plane can live indefinitely.",
+	"features": [ "githyanki_feature.json" ]
+}

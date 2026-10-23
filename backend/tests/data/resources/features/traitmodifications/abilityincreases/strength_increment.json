@@ -1,0 +1,4 @@
+{
+	"target_id": "abilities/strength",
+	"formula": "[STR]+1"
+}

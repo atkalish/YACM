@@ -4,7 +4,8 @@ description
 ## Background JSON Structure
 ```json
 {
-    "name": "description",
+    "name": "background name",
+    "description": "background description",
     "equipment": [
         "*/item.json"
     ],
@@ -17,6 +18,7 @@ description
 
 ## Background Fields
 - `name` the name of the background.
+- `description`
 - `equipment` this is a list of all relative paths to equipment the player character receives for choosing this background.
 - `features` this is a list of relative paths to all features associated with this background.
 - `suggested_characteristics` this is text describing suggested characteristics that someone with this background might have.
