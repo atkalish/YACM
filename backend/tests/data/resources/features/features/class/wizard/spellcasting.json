@@ -5,7 +5,7 @@
     "tags": [],
     "optional": false,
 
-    "spellcasting": "file.json",
+    "spellcasting": "class/wizard_spellcasting.json",
     "exclusive_selection": false,
     "base_abilities": [],
     "base_trait_modifications": [],

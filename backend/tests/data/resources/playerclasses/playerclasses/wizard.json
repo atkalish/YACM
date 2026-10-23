@@ -3,9 +3,9 @@
     "description": "Wizards are supreme magic-users, defined and united as a class by the spells they cast. Drawing on the subtle weave of magic that permeates the cosmos, wizards cast spells of explosive fire, arcing lightning, subtle deception, brute-force mind control, and much more.",
     "multi_class_prereqs": "You must have an Intelligence score of 13 or higher in order to multiclass in or out of this class.",
     "feature_table": [
-        [],
-        [],
-        [],
+        ["class/wizard/pellcasting.json", "class/wizard/arcane_recovery.json"],
+        ["class/wizard/arcane_tradition.json"],
+        [""],
         [],
         [],
         [],
