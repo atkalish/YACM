@@ -22,6 +22,7 @@ private:
 	vector<string> hookIDs; //lv up, short rest,long rest, etc etc
 	SelectionCount minNumSelect; //min amount to select/replace
 	SelectionCount maxNumSelect; //max amount to select/replace
+	int levelObtained; //what level does the player obtain this
 	int level; //what level of spell does effect. -1 for any level.
 
 public:
@@ -32,6 +33,7 @@ public:
 		vector<string> _hookIDs;
 		SelectionCount _minNumSelect;
 		SelectionCount _maxNumSelect;
+		int _levelObtained;
 		int _level;
 	public:
 		Builder& text(const string& text) {this->_text = text; return *this;}
@@ -39,10 +41,23 @@ public:
 		Builder& hookIDs(const vector<string>& hookIDs) {this->_hookIDs = hookIDs; return *this;}
 		Builder& minNumSelect(const SelectionCount& minNumSelect) {this->_minNumSelect = minNumSelect; return *this;}
 		Builder& maxNumSelect(const SelectionCount& maxNumSelect) {this->_maxNumSelect = maxNumSelect; return *this;}
+		Builder& levelObtained(int level) {this->_levelObtained = level; return *this;}
 		Builder& level(int level) {this->_level = level; return *this;}
+		SpellSelector build() {return SpellSelector(this);}
+	friend class SpellSelector;
 	};
 
-
+private:
+	SpellSelector(Builder* builder) {
+		this->text = builder->_text;
+		this->replacesSpells = builder->_replacesSpells;
+		this->hookIDs = builder->_hookIDs;
+		this->minNumSelect = builder->_minNumSelect;
+		this->maxNumSelect = builder->_maxNumSelect;
+		this->levelObtained = builder->_levelObtained;
+		this->level = builder->_level;
+	}
+public:
 	bool hasHook(const string& hook);
 	void select(vector<Spell>& current_list, const vector<Spell>& total_list);
 };

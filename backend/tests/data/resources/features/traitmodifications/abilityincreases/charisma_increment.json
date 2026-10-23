@@ -1,0 +1,4 @@
+{
+	"target_id": "abilities/charisma",
+	"formula": "[CHAR]+1"
+}

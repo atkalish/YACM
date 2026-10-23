@@ -1,0 +1,7 @@
+{
+	"type": "trait modification",
+	"super_list": ["abilityincreases/", "abilityincreases/", "abilityincreases/"],
+	"hooks": [],
+	"minimum_count": "3",
+	"maximum_count": "3"
+}

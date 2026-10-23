@@ -1,0 +1,7 @@
+{
+	"type": "trait modification",
+	"super_list": ["genericproficiencies/skills/", "genericproficiencies/tools/", "genericproficiencies/weapons/martial/", "genericproficiencies/weapons/simple/"],
+	"hooks": [ "long rest" ],
+	"minimum_count": "2",
+	"maximum_count": "2"
+}
