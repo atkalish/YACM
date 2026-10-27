@@ -1,0 +1,13 @@
+{
+    "name": "Song of Victory",
+    "description": "Starting at 14th level, you can add your Intelligence modifier (minimum of +1) to the damage of your melee weapon attacks while your Bladesong is active.",
+    "prereq": "bladesong subclass",
+    "tags": ["I shove the bottle done his throat"],
+    "optional": false,
+    "spellcasting": "",
+    "exclusive_selection": false,
+    "base_abilities": [],
+    "base_trait_modifications": [],
+    "ability_selectors": [],
+    "trait_modification_selectors": []
+}
