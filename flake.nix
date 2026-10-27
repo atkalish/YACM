@@ -15,7 +15,8 @@
       } {
         packages = with pkgs; [
 						gnumake
-						gcc
+						gcc16
+						cmake
         ];
       };
     };

@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.23)
+set(CMAKE_CXX_STANDARD 26)
 project(YACM VERSION 1.0 LANGUAGES CXX)
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS "src/*.cpp")
 add_executable(yacm ${SRC_FILES})
