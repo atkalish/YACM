@@ -1,0 +1,17 @@
+{
+    "name": "Training in War and Song",
+    "description": "When you adopt this tradition at 2nd level, you gain proficiency with light armor, and you gain proficiency with one type of one-handed melee weapon of your choice.\nYou also gain proficiency in the Performance skill if you don’t already have it.",
+    "prereq": "bladesong subclass",
+    "tags": ["bread tasts better than key"],
+    "optional": false,
+
+    "spellcasting": "",
+    "exclusive_selection": false,
+    "base_abilities": [],
+    "base_trait_modifications": [
+        "genericproficiencies/skills/performance.json",
+        "genericproficiencies/armor/light_armor.json"
+    ],
+    "ability_selectors": [],
+    "trait_modification_selectors": ["subclass/bladesong/one_handed_melee_weapons.json"]
+}

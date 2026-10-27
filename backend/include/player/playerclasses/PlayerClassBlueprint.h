@@ -29,22 +29,11 @@ private:
     int subclassLevel;
 
     // proficiencies
-    vector<string> armorProficiencies;
-    vector<string> weaponProficiencies;
-    vector<string> toolProficiencies;
-    vector<string> savingThrowProficiencies;
-    vector<string> skillProficiencies;
-    vector<Item> equipmentProficiencies;
-
-    // how many you can choose from the list
-    int armorProficiencyCount;
-    int weaponProficiencyCount;
-    int toolProficiencyCount;
-    int savingThrowProficiencyCount;
-    int skillProficiencyCount;
-    int equipmentProficiencyCount;
+    Feature classProficiencies;
 
     SpellcastingBlueprint spellCastingBlueprint;
+
+    vector<vector<Item>> startingEquipment;
 
 public:
     class Builder{
@@ -60,21 +49,10 @@ public:
         vector<PlayerSubclass> _subclasses;
         int _subclassLevel;
 
-        vector<string> _armorProficiencies;
-        vector<string> _weaponProficiencies;
-        vector<string> _toolProficiencies;
-        vector<string> _savingThrowProficiencies;
-        vector<string> _skillProficiencies;
-        vector<Item> _equipmentProficiencies;
+        Feature _classProficiencies;
         SpellcastingBlueprint _spellCastingBlueprint;
 
-        int _armorProficiencyCount;
-        int _weaponProficiencyCount;
-        int _toolProficiencyCount;
-        int _savingThrowProficiencyCount;
-        int _skillProficiencyCount;
-        int _equipmentProficiencyCount;
-
+        vector<vector<Item>> _startingEquipment;
     public:
         Builder() = default;
 
@@ -85,21 +63,11 @@ public:
         Builder& hitDie(int hitDie){this->_hitDie = hitDie; return *this;}
         Builder& firstLevelHitPoints(const Formula& firstLevelHitPoints){this->_firstLevelHitPoints = firstLevelHitPoints; return *this;}
         Builder& higherlevelHitPoints(const Formula& higherlevelHitPoints){this->_higherLevelHitPoints = higherlevelHitPoints; return *this;}
-        Builder& armorProficiencies(const vector<string>& armorProficiencies){this->_armorProficiencies = armorProficiencies; return *this;}
-        Builder& weaponProficiencies(const vector<string>& weaponProficiencies){this->_weaponProficiencies = weaponProficiencies; return *this;}
-        Builder& toolProficiencies(const vector<string>& toolProficiencies){this->_toolProficiencies = toolProficiencies; return *this;}
-        Builder& savingThrowProficiencies(const vector<string>& savingThrowProficiencies){this->_savingThrowProficiencies = savingThrowProficiencies; return *this;}
-        Builder& skillProficiencies(const vector<string>& skillProficiencies){this->_skillProficiencies = skillProficiencies; return *this;}
-        Builder& equipmentProficiencies(const vector<Item>& equipmentProficiencies){this->_equipmentProficiencies = equipmentProficiencies; return *this;}
+        Builder& classProficiencies(const Feature& classProficiencies){this->_classProficiencies = classProficiencies; return *this;}
         Builder& spellcastingBlueprint(const SpellcastingBlueprint& spellcastingBlueprint){this->_spellCastingBlueprint = spellcastingBlueprint; return *this;}
         Builder& subclasses(const vector<PlayerSubclass>& subclasses){this->_subclasses = subclasses; return *this;}
         Builder& subclassLevel(int subclassLevel){this->_subclassLevel = subclassLevel; return *this;}
-        Builder& armorProficiencyCount(int armorProficiencyCount){this->_armorProficiencyCount = armorProficiencyCount; return *this;}
-        Builder& weaponProficiencyCount(int weaponProficiencyCount){this->_weaponProficiencyCount = weaponProficiencyCount; return *this;}
-        Builder& toolProficiencyCount(int toolProficiencyCount){this->_toolProficiencyCount = toolProficiencyCount; return *this;}
-        Builder& savingThrowProficiencyCount(int savingThrowProficiencyCount){this->_savingThrowProficiencyCount = savingThrowProficiencyCount; return *this;}
-        Builder& skillProficiencyCount(int skillProficiencyCount){this->_skillProficiencyCount = skillProficiencyCount; return *this;}
-        Builder& equipmentProficiencyCount(int equipmentProficiencyCount){this->_equipmentProficiencyCount = equipmentProficiencyCount; return *this;}
+        Builder& startingEquipment(const vector<vector<Item>>& startingEquipment){this->_startingEquipment = startingEquipment; return *this;}
         PlayerClassBlueprint build(){return PlayerClassBlueprint(this);}
         friend class PlayerClassBlueprint;
     };
@@ -113,21 +81,11 @@ private:
         this->hitDie = builder->_hitDie;
         this->firstLevelHitPoints = builder->_firstLevelHitPoints;
         this->higherLevelHitPoints = builder->_higherLevelHitPoints;
-        this->armorProficiencies = builder->_armorProficiencies;
-        this->weaponProficiencies = builder->_weaponProficiencies;
-        this->toolProficiencies = builder->_toolProficiencies;
-        this->savingThrowProficiencies = builder->_savingThrowProficiencies;
-        this->skillProficiencies = builder->_skillProficiencies;
-        this->equipmentProficiencies = builder->_equipmentProficiencies;
+        this->classProficiencies = builder->_classProficiencies;
         this->spellCastingBlueprint = builder->_spellCastingBlueprint;
         this->subclasses = builder->_subclasses;
         this->subclassLevel = builder->_subclassLevel;
-        this->armorProficiencyCount = builder->_armorProficiencyCount;
-        this->weaponProficiencyCount = builder->_weaponProficiencyCount;
-        this->toolProficiencyCount = builder->_toolProficiencyCount;
-        this->savingThrowProficiencyCount = builder->_savingThrowProficiencyCount;
-        this->skillProficiencyCount = builder->_skillProficiencyCount;
-        this->equipmentProficiencyCount = builder->_equipmentProficiencyCount;
+        this->startingEquipment = builder->_startingEquipment;
     }
 
 public:
@@ -141,19 +99,9 @@ public:
     int getHitDie(){return this->hitDie;}
     const Formula& getFirstLevelHitPoints(){return this->firstLevelHitPoints;}
     const Formula& getHigherLevelHitPoints(){return this->higherLevelHitPoints;}
-    const vector<string>& getArmorProficiencies(){return this->armorProficiencies;}
-    const vector<string>& getWeaponProficiencies(){return this->weaponProficiencies;}
-    const vector<string>& getToolProficiency(){return this->toolProficiencies;}
-    const vector<string>& getSavingThrowProficiencies(){return this->savingThrowProficiencies;}
-    const vector<string>& getSkillProficiencies(){return this->skillProficiencies;}
-    const vector<Item>& getEquipmentProficiencies(){return this->equipmentProficiencies;}
+    const Feature& getClassProficiencies(){return this->classProficiencies;}
     const SpellcastingBlueprint getSpellCastingBlueprint(){return this->spellCastingBlueprint;}
     const vector<PlayerSubclass>& getPlayerSubclasses(){return this->subclasses;}
+    const vector<vector<Item>>& getStartingEquipment(){return this->startingEquipment;}
     int getPlayerSubclassLevel(){return this->subclassLevel;}
-    int getArmorProficiencyCount(){return this->armorProficiencyCount;}
-    int getweaponProficiencyCount(){return this->weaponProficiencyCount;}
-    int getToolProficiencyCount(){return this->toolProficiencyCount;}
-    int getSavingThrowsProficiencyCount(){return this->savingThrowProficiencyCount;}
-    int getSkillProficiencyCount(){return this->skillProficiencyCount;}
-    int getEquipmentProficiencyCount(){return this->equipmentProficiencyCount;}
 };

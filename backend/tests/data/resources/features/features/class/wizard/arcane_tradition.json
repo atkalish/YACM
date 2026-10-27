@@ -1,0 +1,14 @@
+{
+    "name": "Arcane Tradition",
+    "description": "When you reach 2nd level, you choose an arcane tradition, shaping your practice of magic through one of the following schools. Your choice grants you features at 2nd level and again at 6th, 10th, and 14th level.",
+    "prereq": "wizard class",
+    "tags": [],
+    "optional": false,
+
+    "spellcasting": "",
+    "exclusive_selection": false,
+    "base_abilities": [],
+    "base_trait_modifications": [],
+    "ability_selectors": [],
+    "trait_modification_selectors": []
+}

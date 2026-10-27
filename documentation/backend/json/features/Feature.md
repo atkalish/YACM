@@ -13,12 +13,12 @@ a monk's unarmored movement, etc etc.
     "tags": [ "tag1", "tag2", "tag3" ],
     "optional": false,
 
-    "spellcasting": "file.json";
+    "spellcasting": "file.json",
     "exclusive_selection": false,
     "base_abilities": ["directory1/", "directory2/", "file1.json", "file2.json"],
     "base_trait_modifications": ["directory1/", "directory2/", "file1.json", "file2.json"],
     "ability_selectors": ["directory1/", "directory2/", "file1.json", "file2.json"],
-    "trait_modification_selectors": ["directory1/", "directory2/", "file1.json", "file2.json"],
+    "trait_modification_selectors": ["directory1/", "directory2/", "file1.json", "file2.json"]
 }
 ```
 
