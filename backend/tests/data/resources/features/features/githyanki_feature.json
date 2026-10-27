@@ -1,0 +1,15 @@
+{
+	"name":"githyanki",
+	"description":"",
+	"prereq": "",
+	"tags": ["race"],
+	"optional": false,
+
+	"spellcasting": "githyanki_psionics.json",
+	"exclusive_selection": false,
+
+	"base_abilities": [],
+	"base_trait_modifications": ["size_medium.json", "creature_humanoid.json", "speed_30.json", "psychic_resilience.json", "genericproficiencies/languages/common.json"],
+	"ability_selectors": [],
+	"trait_modification_selectors": [ "astral_knowledge.json", "githyanki_ability_score_increase.json", "githyanki_languages.json" ]
+}

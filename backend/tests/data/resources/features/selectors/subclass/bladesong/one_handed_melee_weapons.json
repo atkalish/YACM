@@ -1,0 +1,27 @@
+{
+    "type": "trait_modification",
+    "super_list": [
+        "genericproficiencies/weapons/simple/clubs.json",
+        "genericproficiencies/weapons/simple/daggers.json",
+        "genericproficiencies/weapons/simple/handaxes.json",
+        "genericproficiencies/weapons/simple/light_hammers.json",
+        "genericproficiencies/weapons/simple/quarterstaffs.json",
+        "genericproficiencies/weapons/simple/sickles.json",
+        
+        "genericproficiencies/weapons/martial/flails.json",
+        "genericproficiencies/weapons/martial/whips.json",
+        "genericproficiencies/weapons/martial/mauls.json",
+        "genericproficiencies/weapons/martial/mourningstars.json",
+        "genericproficiencies/weapons/martial/spears.json",
+        "genericproficiencies/weapons/martial/scimitars.json",
+        "genericproficiencies/weapons/martial/tridents.json",
+        "genericproficiencies/weapons/martial/war_picks.json",
+        "genericproficiencies/weapons/martial/warhammers.json",
+        "genericproficiencies/weapons/martial/rapiers.json",
+        "genericproficiencies/weapons/martial/battleaxes.json"
+    ],
+    "hooks": [],
+    "minimum_count": "1",
+    "maximum_count": "1"
+}
+

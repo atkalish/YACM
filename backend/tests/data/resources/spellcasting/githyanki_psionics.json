@@ -1,0 +1,12 @@
+{
+	"focus": "",
+	"spell_list": [ "mage_hand.json", "jump.json", "misty_step.json" ],
+	"spell_selectors": [],
+	"ritual": false,
+	"spell_ability_info": "Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race). You cannot cast leveled spells more than once between long rests. None of these spells require spell components when you cast them with this trait. (Editor's note: too hard. using wisdom for now. sorry. feel free to override.)",
+	"spell_save_formula": "",
+	"spell_attack_formula": "",
+	"spell_preparation": "You always have these prepared",
+	"spells_known": "",
+	"spell_slots": []
+}
