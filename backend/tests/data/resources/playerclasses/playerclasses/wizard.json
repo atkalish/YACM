@@ -20,6 +20,8 @@
         [],
         ["ability_score_improvement.json"],
         [],
+        ["class/wizard/spell_mastery.json"],
+        ["class/wizard/signature_spells.json"]
         [],
         ["ability_score_improvement.json"],
         []
