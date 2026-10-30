@@ -8,11 +8,10 @@ using namespace nlohmann;
 
 class PlayerJsonSerializer{
 private:
-    json j;
+    json data;
 
 public:
     PlayerJsonSerializer(const Player& player);
-    PlayerJsonSerializer() = delete;
 
     void exportPlayer(const string& filepath);
 };
