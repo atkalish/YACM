@@ -9,6 +9,7 @@ JsonDeserializer::JsonDeserializer(const string& jsonPath){
     }catch(...){
         throw runtime_error("Failed to parse file: "s + jsonPath);
     }
+    inFile.close();
     
     Logger* logger = Logger::getInstance();
     logger->log("Parsed JSON: "s + jsonPath);
