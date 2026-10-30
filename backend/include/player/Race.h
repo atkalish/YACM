@@ -2,9 +2,11 @@
 #include "features/Feature.h"
 #include "features/TraitModification.h"
 #include "features/Selector.h"
+#include "../serdes/JsonDeserializer.h"
 
 class Race {
 private:
+	inline static const string SRC_DIR = "data/resources/races/";
 	string name;
 	string description;
 	vector<Feature> features;
@@ -34,7 +36,8 @@ private:
 
 public:
 	Race() = default;
-	~Race();
+	Race(const string& jsonPath);
+	~Race() = default;
 
 	const string& getName() const {return this->name;}
 	const string& getDescription() const {return this->description;}

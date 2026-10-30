@@ -13,5 +13,5 @@ public:
 	const Formula& getFormula() const {return this->formula;}
 
 	TraitModification(const string& targetID, const Formula& formula) : targetID(targetID), formula(formula) {}
-	~TraitModification();
+	~TraitModification() = default;
 };

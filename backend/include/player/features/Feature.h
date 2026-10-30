@@ -84,5 +84,5 @@ public:
 	bool getOptional() const {return this->optional;}
 
 	Feature() = default;
-	~Feature();
+	~Feature() = default;
 };

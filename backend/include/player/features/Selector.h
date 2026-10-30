@@ -61,5 +61,5 @@ public:
 	void Replace();
 
 	Selector() = default;
-	~Selector();
+	~Selector() = default;
 };
