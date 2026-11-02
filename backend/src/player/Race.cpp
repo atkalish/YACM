@@ -5,8 +5,7 @@ Race::Race(const string& jsonPath){
     this->name = jd.get<string>("name");
     this->description = jd.get<string>("description");
 
-    vector<string> featurePaths = jd.get<vector<string>>("features");
-    for(string featurePath : featurePaths){
+    for(string featurePath : jd.get<vector<string>>("features")){
         if(FileUtils::getPathType(featurePath) == FileUtils::FILE){
             this->features.push_back(Feature(featurePath));
             continue;

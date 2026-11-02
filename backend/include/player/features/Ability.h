@@ -71,5 +71,6 @@ public:
     bool isHidden() const {return this->hidden;}
     const Scaler& getScaler() const {return this->scaler;}
     const ChargeType& getChargeType() const {return this->chargeType;}
-		Ability() = default;
+	Ability() = default;
+    Ability(const string& jsonPath);
 };

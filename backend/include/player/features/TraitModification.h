@@ -13,5 +13,6 @@ public:
 	const Formula& getFormula() const {return this->formula;}
 
 	TraitModification(const string& targetID, const Formula& formula) : targetID(targetID), formula(formula) {}
+	TraitModification(const string& jsonPath);
 	~TraitModification() = default;
 };

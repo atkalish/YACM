@@ -31,8 +31,6 @@ private:
     // proficiencies
     Feature classProficiencies;
 
-    SpellcastingBlueprint spellCastingBlueprint;
-
     vector<vector<Item>> startingEquipment;
 
 public:
@@ -50,7 +48,6 @@ public:
         int _subclassLevel;
 
         Feature _classProficiencies;
-        SpellcastingBlueprint _spellCastingBlueprint;
 
         vector<vector<Item>> _startingEquipment;
     public:
@@ -64,7 +61,6 @@ public:
         Builder& firstLevelHitPoints(const Formula& firstLevelHitPoints){this->_firstLevelHitPoints = firstLevelHitPoints; return *this;}
         Builder& higherlevelHitPoints(const Formula& higherlevelHitPoints){this->_higherLevelHitPoints = higherlevelHitPoints; return *this;}
         Builder& classProficiencies(const Feature& classProficiencies){this->_classProficiencies = classProficiencies; return *this;}
-        Builder& spellcastingBlueprint(const SpellcastingBlueprint& spellcastingBlueprint){this->_spellCastingBlueprint = spellcastingBlueprint; return *this;}
         Builder& subclasses(const vector<PlayerSubclass>& subclasses){this->_subclasses = subclasses; return *this;}
         Builder& subclassLevel(int subclassLevel){this->_subclassLevel = subclassLevel; return *this;}
         Builder& startingEquipment(const vector<vector<Item>>& startingEquipment){this->_startingEquipment = startingEquipment; return *this;}
@@ -82,7 +78,6 @@ private:
         this->firstLevelHitPoints = builder->_firstLevelHitPoints;
         this->higherLevelHitPoints = builder->_higherLevelHitPoints;
         this->classProficiencies = builder->_classProficiencies;
-        this->spellCastingBlueprint = builder->_spellCastingBlueprint;
         this->subclasses = builder->_subclasses;
         this->subclassLevel = builder->_subclassLevel;
         this->startingEquipment = builder->_startingEquipment;
@@ -100,7 +95,6 @@ public:
     const Formula& getFirstLevelHitPoints(){return this->firstLevelHitPoints;}
     const Formula& getHigherLevelHitPoints(){return this->higherLevelHitPoints;}
     const Feature& getClassProficiencies(){return this->classProficiencies;}
-    const SpellcastingBlueprint getSpellCastingBlueprint(){return this->spellCastingBlueprint;}
     const vector<PlayerSubclass>& getPlayerSubclasses(){return this->subclasses;}
     const vector<vector<Item>>& getStartingEquipment(){return this->startingEquipment;}
     int getPlayerSubclassLevel(){return this->subclassLevel;}

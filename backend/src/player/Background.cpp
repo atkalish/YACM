@@ -5,8 +5,7 @@ Background::Background(const string& jsonPath){
     this->name = jd.get<string>("name");
     this->description = jd.get<string>("description");
     
-    vector<string> equipmentPaths = jd.get<vector<string>>("equipment");
-    for(string equipmentPath : equipmentPaths){
+    for(string equipmentPath : jd.get<vector<string>>("equipment")){
         if(FileUtils::getPathType(equipmentPath) == FileUtils::FILE){
             this->equipment.push_back(Item(equipmentPath));
             continue;
@@ -15,8 +14,7 @@ Background::Background(const string& jsonPath){
         for(string path : paths) this->equipment.push_back(Item(path));
     }
 
-    vector<string> featurePaths = jd.get<vector<string>>("features");
-    for(string featurePath : featurePaths){
+    for(string featurePath : jd.get<vector<string>>("features")){
         if(FileUtils::getPathType(featurePath) == FileUtils::FILE){
             this->features.push_back(Feature(featurePath));
             continue;
