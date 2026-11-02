@@ -84,5 +84,6 @@ public:
 	bool getOptional() const {return this->optional;}
 
 	Feature() = default;
+	Feature(const string& jsonPath);
 	~Feature() = default;
 };

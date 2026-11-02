@@ -3,8 +3,9 @@
 #include <iostream>
 
 FileUtils::PathType FileUtils::getPathType(const string& path){
-    if(path.find(".json") != string::npos) return FileUtils::PathType::FILE;
-    return FileUtils::PathType::DIRECTORY;
+    fs::path p = path;
+    if(fs::is_directory(p)) return FileUtils::PathType::DIRECTORY;
+    return FileUtils::PathType::FILE;
 }
 
 vector<string> FileUtils::getAllFiles(const string& path){
