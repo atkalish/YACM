@@ -12,6 +12,7 @@ a monk's unarmored movement, etc etc.
     "prereq": "you need to kill god to get this ability",
     "tags": [ "tag1", "tag2", "tag3" ],
     "optional": false,
+    "hidden": false,
 
     "spellcasting": "file.json",
     "exclusive_selection": false,
@@ -28,6 +29,7 @@ a monk's unarmored movement, etc etc.
 - `prereq`: the prerequisites for the feature, just cosmetic
 - `tags`: a list of tags for searching. Do not include hooks here.
 - `optional`: whether or not a player can elect to pass up this feature
+- `hidden`: indicates whether a feature is hidden on the gui end
 - `spellcasting`: the path to the spellcasting a feature provides, simply leave blank if it is not provided
 - `exclusive_selection`: true when you may choose exclusively ability selectors OR (xor) trait modification selectors on a hook. For things such as ability score increase xor a feat
 - `base_abilities`: paths to the abilities and directories holding abilities that will be unioned to create the base abilities, what is always provided by the feature

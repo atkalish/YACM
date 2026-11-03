@@ -4,6 +4,7 @@
     "prereq": "bladesong subclass",
     "tags": ["Who's Galen Olster?"],
     "optional": false,
+		"hidden": false,
     "spellcasting": "",
     "exclusive_selection": false,
     "base_abilities": [],

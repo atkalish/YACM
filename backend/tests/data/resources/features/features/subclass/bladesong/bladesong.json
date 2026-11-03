@@ -4,6 +4,7 @@
 	"prereq": "Bladesong",
 	"tags": ["shovel grave dirt into your mouth."],
 	"optional": false,
+	"hidden": false,
 	"spellcasting": "",
 	"exclusive_selection": false,
 	"base_abilities": ["subclass/bladesong/bladesong.json"],

@@ -28,6 +28,7 @@ private:
 	vector<string> tags; //DOES NOT INCLUDE HOOKS. HOOKS ARE IN SELECTORS
 	string prereq;
 	bool optional;
+	bool hidden;
 
 public:
 	class Builder {
@@ -45,6 +46,7 @@ public:
 		vector<string> _tags; //DOES NOT INCLUDE HOOKS. HOOKS ARE IN SELECTORS
 		string _prereq;
 		bool _optional;
+		bool _hidden;
 	public:
 		Builder() = default;
 		Builder& baseAbilities(const vector<Ability>& baseAbilities) {this->_baseAbilities = baseAbilities; return *this;}
@@ -58,6 +60,7 @@ public:
 		Builder& tags(const vector<string>& tags) {this->_tags = tags; return *this;}
 		Builder& prereq(const string& prereq) {this->_prereq = prereq; return *this;}
 		Builder& optional(bool optional) {this->_optional = optional; return *this;}
+		Builder& hidden(bool hidden) {this->_hidden = hidden; return *this;}
 		
 		Feature build() {return Feature(this);}
 		friend class Feature;
@@ -75,6 +78,7 @@ private:
 		this->tags = builder->_tags;
 		this->prereq = builder->_prereq;
 		this->optional = builder->_optional;
+		this->hidden = builder->_hidden;
 	}
 public:
 	const vector<Ability>& getBaseAbilities() const {return this->baseAbilities;}
@@ -88,6 +92,7 @@ public:
 	const string& getPrereq() const {return this->prereq;}
 	const vector<Spellcasting>& getSpellCastings() const;
 	bool getOptional() const {return this->optional;}
+	bool getHidden() const {return this->hidden;}
 
 	Feature() = default;
 	Feature(const string& jsonPath);

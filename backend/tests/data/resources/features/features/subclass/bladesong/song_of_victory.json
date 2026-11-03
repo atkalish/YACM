@@ -4,6 +4,7 @@
     "prereq": "bladesong subclass",
     "tags": ["I shove the bottle done his throat"],
     "optional": false,
+		"hidden": false,
     "spellcasting": "",
     "exclusive_selection": false,
     "base_abilities": [],
