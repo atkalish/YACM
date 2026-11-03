@@ -9,6 +9,7 @@ class Ability{
 public:
     class Scaler{
     private:
+        inline static const string SRC_DIR = "data/resources/features/abilities";
         string name;
         vector<Formula> scaling;
     public:
