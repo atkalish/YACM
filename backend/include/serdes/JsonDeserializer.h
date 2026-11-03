@@ -17,4 +17,5 @@ public:
     JsonDeserializer() = default;
 
     template <typename T> T get(const string& key) const;
+		template <typename T> T get(const string& key, const string& weakKey) const; // WARNING: not implemented
 };
