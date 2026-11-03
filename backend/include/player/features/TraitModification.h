@@ -7,7 +7,7 @@ typedef string Formula;
 
 class TraitModification {
 private:
-	inline static const string SRC_DIR = "data/resources/features/traitmodifications";
+	inline static const string SRC_DIR = "data/resources/features/traitmodifications/";
 	string targetID;
 	Formula formula;
 public:
@@ -16,5 +16,6 @@ public:
 
 	TraitModification(const string& targetID, const Formula& formula) : targetID(targetID), formula(formula) {}
 	TraitModification(const string& jsonPath);
+	TraitModification() = default;
 	~TraitModification() = default;
 };

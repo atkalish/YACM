@@ -15,7 +15,7 @@ typedef variant<Formula, int, vector<int>> SelectionCount;
 template <typename T> 
 class Selector {
 private:
-	inline static const string SRC_DIR = "data/resources/features/selectors";
+	inline static const string SRC_DIR = "data/resources/features/selectors/";
 	vector<T> currentList; //the current <T>s that we have
 	vector<T> newList; //the <T>s that we can select from
 
