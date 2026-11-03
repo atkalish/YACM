@@ -4,6 +4,7 @@
     "prereq": "Faceless Background",
     "tags": [],
     "optional": false,
+		"hidden": false,
     "spellcasting": "",
     "base_abilites": [],
     "base_trait_modifications": [],

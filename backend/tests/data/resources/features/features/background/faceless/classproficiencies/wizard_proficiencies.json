@@ -4,6 +4,7 @@
     "prereq": "have the wizard class",
     "tags": [],
     "optional": false,
+		"hidden": false,
     "spellcasting": "",
     "exclusive_selection": false,
     "base_abilities": [],

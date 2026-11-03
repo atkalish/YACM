@@ -4,7 +4,7 @@
     "prereq": "",
     "tags": [],
     "optional": false,
-
+		"hidden": false,
     "spellcasting": "",
     "exclusive_selection": true,
     "base_abilities": [],

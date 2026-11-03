@@ -4,6 +4,7 @@
 	"prereq": "",
 	"tags": ["race"],
 	"optional": false,
+	"hidden": false,
 
 	"spellcasting": "githyanki_psionics.json",
 	"exclusive_selection": false,

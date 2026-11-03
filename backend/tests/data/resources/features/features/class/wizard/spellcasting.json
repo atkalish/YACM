@@ -4,7 +4,7 @@
     "prereq": "wizard class",
     "tags": [],
     "optional": false,
-
+		"hidden": false,
     "spellcasting": "class/wizard_spellcasting.json",
     "exclusive_selection": false,
     "base_abilities": [],

@@ -7,6 +7,7 @@ Feature::Feature(const string& jsonPath){
     this->prereq = jd.get<string>("prereq");
     for(string tag : jd.get<vector<string>>("tags")) this->tags.push_back(tag);
     this->optional = jd.get<bool>("optional");
+		this->hidden = jd.get<bool>("hidden");
     this->spellcastingBlueprint = new SpellcastingBlueprint(jd.get<string>("spellcasting"));
     this->exclusiveSelect = jd.get<bool>("exclusive_select");
     
