@@ -4,7 +4,6 @@
 #include <fstream>
 #include "../logger/Logger.h"
 #include <stdexcept>
-#include <concepts>
 
 using namespace std;
 using namespace nlohmann;
@@ -21,7 +20,6 @@ public:
 	T get(const Args&... key) const {
 		json tmp = data;
 		([&] {
-			std::cout << "checking key" << key << std::endl;
 			if(!tmp.contains(key)) throw runtime_error("Invalid Key: "s + key);
 			tmp = tmp[key];
 		} (), ...);
