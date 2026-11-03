@@ -1,11 +1,13 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "../../serdes/JsonDeserializer.h"
 
 using namespace std;
 
 class Spell{
 private:
+    inline static const string SRC_DIR = "data/resources/spellcasting/spells/";
     string name;
     int level;
     string source;
@@ -73,6 +75,7 @@ private:
 
 public:
     Spell() = default;
+    Spell(const string& jsonPath);
 
 	const string& getName(){return this->name;}
     int getLevel(){return this->level;}

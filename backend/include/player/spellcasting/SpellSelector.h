@@ -3,6 +3,8 @@
 #include <vector>
 #include <variant>
 #include "Spell.h"
+#include "../../serdes/JsonDeserializer.h"
+#include "../../Utils.h"
 
 using namespace std;
 
@@ -17,6 +19,7 @@ class SpellSelector {
 	*/
 
 private:
+	inline static const string SRC_DIR = "data/resources/spellcasting/spellselectors/";
 	string text; //this is kinda a feature, and as such will have associated text
 	bool replacesSpells; //whether or not to replace (alternative select)
 	vector<string> hookIDs; //lv up, short rest,long rest, etc etc
@@ -58,6 +61,8 @@ private:
 		this->level = builder->_level;
 	}
 public:
+	SpellSelector() = default;
+	SpellSelector(const string& jsonPath);
 	bool hasHook(const string& hook);
 	void select(vector<Spell>& current_list, const vector<Spell>& total_list);
 };
