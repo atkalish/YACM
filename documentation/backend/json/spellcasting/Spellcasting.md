@@ -4,7 +4,7 @@ Spellcasting is the ability to cast spells and provides spell save, spell attack
 ```json
 {
     "focus": "spellcasting focus",
-    "spell_list": [
+    "spell_lists": [
         "*/spell_list.json"
     ],
     "spell_selectors": [
@@ -42,7 +42,7 @@ Spellcasting is the ability to cast spells and provides spell save, spell attack
 ```
 ## Spell castingFields
 - `focus` spellcasting focus you can use for this spellcasting.
-- `spell_list` a list of paths to spell lists that this spellcasting has access to.
+- `spell_lists` a list of paths to spell lists that this spellcasting has access to.
 - `spell_selectors` a selector for spells within the spellcasting.
 - `ritual` whether or not this spellcasting can cast spells ritually.
 - `spell_ability_info` any information about using a spell ability to cast a spell.

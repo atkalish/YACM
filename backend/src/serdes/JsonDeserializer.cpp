@@ -27,7 +27,7 @@ template vector<string> JsonDeserializer::get<vector<string>>(const std::string&
 template vector<vector<int>> JsonDeserializer::get<vector<vector<int>>>(const std::string& key) const;
 template vector<vector<string>> JsonDeserializer::get<vector<vector<string>>>(const std::string& key) const;
 
-template <typename T> T JsonDeserializer::get(const std::string& key, const std::string& weakKey) {
+template <typename T> T JsonDeserializer::get(const std::string& key, const std::string& weakKey) const {
 	if(!this->data.contains(key)) throw runtime_error("Invalid Key: "s + key);
 	if(!this->data[key].contains(weakKey))throw runtime_error("Invalid weak key: "s + weakKey + " with key " + key);
 

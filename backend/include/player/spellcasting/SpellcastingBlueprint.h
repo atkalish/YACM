@@ -11,6 +11,8 @@ typedef string Formula;
 
 class SpellcastingBlueprint{
 private:
+    inline static const string SRC_DIR = "data/resources/spellcasting/spellcasting/";
+    inline static const string SPELL_LIST_SRC_DIR = "data/resources/spellcasting/spellcasting/";
     string focus;
     vector<Spell> spellList;
     vector<SpellSelector> spellSelectors;
