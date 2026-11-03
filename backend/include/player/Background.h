@@ -6,11 +6,14 @@
 #include "features/Selector.h"
 #include "features/Feature.h"
 #include "Item.h"
+#include "../serdes/JsonDeserializer.h"
+#include "../Utils.h"
 
 using namespace std;
 
 class Background{
 private:
+    inline static const string SRC_DIR = "data/resources/backgrounds/";
     string name;
     string description;
     vector<Item> equipment;
@@ -50,7 +53,8 @@ private:
 
 public:
     Background() = default;
-    ~Background();
+    Background(const string& jsonPath);
+    ~Background() = default;
 
     const string& getname(){return this->name;}
     const string& getDescription(){return this->description;}

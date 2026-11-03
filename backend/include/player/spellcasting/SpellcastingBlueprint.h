@@ -3,6 +3,8 @@
 #include <vector>
 #include "Spell.h"
 #include "SpellSelector.h"
+#include "../../serdes/JsonDeserializer.h"
+#include "../../Utils.h"
 
 using namespace std;
 typedef string Formula;
@@ -68,6 +70,7 @@ private:
 
 public:
     SpellcastingBlueprint() = default;
+    SpellcastingBlueprint(const string& jsonPath);
 
     const string& getFocus(){return this->focus;}
     const vector<Spell>& getSpellList(){return this->spellList;};

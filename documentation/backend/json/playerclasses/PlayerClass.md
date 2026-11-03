@@ -61,6 +61,4 @@ A class for the player character
 
 ## Related Links
 - [Feature](../features/Feature.md)
-- [Spellcasting](../spellcasting/Spellcasting.md)
-- [SpellList](../spellcasting/Spellcasting.md)
 - [PlayerSubclass](PlayerSubclass.md)

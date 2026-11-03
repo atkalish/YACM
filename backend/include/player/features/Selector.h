@@ -61,5 +61,6 @@ public:
 	void Replace();
 
 	Selector() = default;
-	~Selector();
+	Selector(const string& jsonPath);
+	~Selector() = default;
 };
