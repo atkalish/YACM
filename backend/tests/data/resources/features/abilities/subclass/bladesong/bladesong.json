@@ -3,7 +3,7 @@
     "hidden": false,
     "scaler": {},
     "charge_type": {
-        "name": "Bladesong charges"
+        "name": "Bladesong charges",
         "count": "[PROF]",
         "recharge_hooks": ["long rest"],
         "recharge_val": "[PROF]"
