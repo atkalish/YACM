@@ -65,6 +65,8 @@ public:
 	void Add();
 	void Replace();
 
+	string serialize() const;
+
 	Selector() = default;
 	Selector(const string& jsonPath);
 	~Selector() = default;

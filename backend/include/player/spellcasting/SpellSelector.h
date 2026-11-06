@@ -63,6 +63,8 @@ private:
 public:
 	SpellSelector() = default;
 	SpellSelector(const string& jsonPath);
+
+	string serialize() const;
 	bool hasHook(const string& hook);
 	void select(vector<Spell>& current_list, const vector<Spell>& total_list);
 };

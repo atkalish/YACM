@@ -1,5 +1,4 @@
 #include "../../include/serdes/JsonDeserializer.h"
-#include <stdexcept>
 
 JsonDeserializer::JsonDeserializer(const string& jsonPath){
     ifstream inFile(jsonPath);

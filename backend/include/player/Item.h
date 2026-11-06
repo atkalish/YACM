@@ -33,6 +33,8 @@ public:
 	Item(const string& jsonPath);
 	Item() = default;
 	~Item() = default;
+
+	string serialize() const;
 	const string& getName() const {return this->name;}
 	const string& getDescription() const {return this->description;}
 };

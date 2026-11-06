@@ -3,11 +3,11 @@
 Feature::Feature(const string& jsonPath){
     JsonDeserializer jd(Feature::SRC_DIR + jsonPath);
     this->name = jd.get<string>("name");
-    this->description = jd.get<string>("name");
+    this->description = jd.get<string>("description");
     this->prereq = jd.get<string>("prereq");
     for(string tag : jd.get<vector<string>>("tags")) this->tags.push_back(tag);
     this->optional = jd.get<bool>("optional");
-		this->hidden = jd.get<bool>("hidden");
+	this->hidden = jd.get<bool>("hidden");
     this->spellcastingBlueprint = new SpellcastingBlueprint(jd.get<string>("spellcasting"));
     this->exclusiveSelect = jd.get<bool>("exclusive_select");
     
@@ -48,4 +48,21 @@ Feature::Feature(const string& jsonPath){
     }
 }
 
+string Feature::serialize() const {
+    JsonSerializer js;
+    js.put("name", this->name);
+    js.put("description", this->description);
+    js.put("prereq", this->prereq);
+    for(const string& tag : this->tags) js.addToList("tags", tag);
+    js.put("optional", this->optional);
+    js.put("hidden", this->hidden);
+    js.put("spellcasting", this->spellcastingBlueprint->serialize());
+    js.put("exclusive_select", this->exclusiveSelect);
+    
+    for(const Ability& ability : this->baseAbilities) js.addToList("base_abilities", ability.serialize());
+    for(const TraitModification& traitModification : this->baseTraitMods) js.addToList("base_trait_modification", traitModification.serialize());
+    for(const Selector<Ability> abilitySelector : this->abilitySelectors) js.addToList("ability_selectors", abilitySelector.serialize());
+    for(const Selector<TraitModification> traitModificationSelector : this->traitModSelectors) js.addToList("trait_modification_selectors", traitModificationSelector.serialize());
 
+    return js.str();
+}

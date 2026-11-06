@@ -74,6 +74,8 @@ public:
     SpellcastingBlueprint() = default;
     SpellcastingBlueprint(const string& jsonPath);
 
+    string serialize() const;
+
     const string& getFocus(){return this->focus;}
     const vector<Spell>& getSpellList(){return this->spellList;};
     bool isRitual(){return this->ritual;}

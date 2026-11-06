@@ -4,8 +4,8 @@
 #include <string>
 #include "../spellcasting/Spellcasting.h"
 #include "PlayerClassBlueprint.h"
-#include "playerclasses/PlayerSubclass.h"
-#include "features/TraitModification.h"
+#include "PlayerSubclass.h"
+#include "../features/TraitModification.h"
 
 using namespace std;
 
@@ -23,6 +23,8 @@ public:
     PlayerClass() = default;
     PlayerClass(PlayerClassBlueprint blueprint);
     ~PlayerClass();
+
+    string serialize() const;
 
     const PlayerClassBlueprint& getBlueprint() const {return this->blueprint;}
     int getLevel() const {return this->level;}

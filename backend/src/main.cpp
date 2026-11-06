@@ -2,6 +2,8 @@
 #include "../include/player/Item.h"
 #include "../include/Utils.h"
 
+#include "../include/serdes/JsonSerializer.h"
+
 int main(){
 	Logger* logger = Logger::getInstance();
 	logger->config(true, true, true, true);
@@ -14,12 +16,12 @@ int main(){
 		return EXIT_FAILURE;
 	}
 
-	vector<string> files = FileUtils::getAllFiles("data/resources/items/");
+	JsonSerializer js;
+	js.addToList("names", "bob");
+	js.addToList("names", "george");
+	js.addToList("names", "fred");
 
-	
-	for(string s : files){
-		cout << s << endl;
-	}
+	cout << js.str() << endl;
 
 	return EXIT_SUCCESS;
 }

@@ -18,4 +18,6 @@ public:
 	TraitModification(const string& jsonPath);
 	TraitModification() = default;
 	~TraitModification() = default;
+
+	string serialize() const;
 };

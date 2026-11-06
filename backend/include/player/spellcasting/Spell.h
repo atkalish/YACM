@@ -77,6 +77,8 @@ public:
     Spell() = default;
     Spell(const string& jsonPath);
 
+    string serialize() const;
+
 	const string& getName(){return this->name;}
     int getLevel(){return this->level;}
 	const string& getSource(){return this->source;}

@@ -87,6 +87,8 @@ public:
     PlayerClassBlueprint() = default;
     ~PlayerClassBlueprint();
 
+    string serialize() const;
+
     const string& getName(){return this->name;}
     const string& getDescription(){return this->description;}
     const string& getMultiClassPrereqs(){return this->multiClassPrereqs;}

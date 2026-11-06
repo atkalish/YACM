@@ -14,3 +14,13 @@ Race::Race(const string& jsonPath){
         for(string path : paths) this->features.push_back(Feature(path));
     }
 }
+
+string Race::serialize() const {
+    JsonSerializer js;
+    js.put("name", this->name);
+    js.put("description", this->description);
+
+    for(const Feature& feature : this->features) js.addToList("features", feature.serialize());
+
+    return js.str();
+}

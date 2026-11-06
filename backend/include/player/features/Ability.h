@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "../../serdes/JsonDeserializer.h"
+#include "../../serdes/JsonSerializer.h"
 
 using namespace std;
 typedef string Formula;
@@ -88,4 +89,6 @@ public:
 		else return nullptr;
 	}
 	Ability() = default;
+
+	string serialize() const;
 };

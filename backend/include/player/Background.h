@@ -56,6 +56,8 @@ public:
     Background(const string& jsonPath);
     ~Background() = default;
 
+    string serialize() const;
+
     const string& getname(){return this->name;}
     const string& getDescription(){return this->description;}
     const vector<Item>& getEquipment(){return this->equipment;}

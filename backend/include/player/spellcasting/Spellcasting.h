@@ -19,6 +19,8 @@ private:
 public:
     Spellcasting(const SpellcastingBlueprint& blueprint);
 
+    string serialize() const;
+
     const vector<Spell>& getPreparedSpells() const;
     const vector<Spell>& getUnpreparedSpells() const;
     void addSpell(const Spell& spell, bool prepared);

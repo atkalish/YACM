@@ -11,6 +11,7 @@
 #include "features/Ability.h"
 #include "features/Feature.h"
 #include "spellcasting/Spellcasting.h"
+#include "../serdes/JsonSerializer.h"
 
 using namespace std;
 

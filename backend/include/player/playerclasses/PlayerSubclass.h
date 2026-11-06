@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <string>
-#include "features/Feature.h"
+#include "../features/Feature.h"
 
 using namespace std;
 
@@ -39,6 +39,8 @@ private:
 public:
     PlayerSubclass() = default;
     ~PlayerSubclass();
+
+    string serialize() const;
 
     const string& getName() const {return this->name;}
     const string& getDscription() const {return this->description;}

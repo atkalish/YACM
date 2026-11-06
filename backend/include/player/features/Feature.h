@@ -4,6 +4,7 @@
 #include "Selector.h"
 #include "../spellcasting/Spellcasting.h"
 #include "../../serdes/JsonDeserializer.h"
+#include "../../serdes/JsonSerializer.h"
 #include "../../Utils.h"
 
 //Feature is *just* a wrapper for these.
@@ -97,4 +98,6 @@ public:
 	Feature() = default;
 	Feature(const string& jsonPath);
 	~Feature() = default;
+
+	string serialize() const;
 };
