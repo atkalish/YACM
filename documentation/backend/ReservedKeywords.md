@@ -1,0 +1,46 @@
+# Reserved keywords
+Here are all the reserved keywords for formulas
+- `LEVEL`: the player's level
+- `PROF`: the player's total proficiency bonus
+- `SPEED`: the player's speed
+- `PP`: the player's current platinum pieces
+- `GP`: the player's current gold pieces
+- `EP`: the player's current electrum pieces
+- `SP`: the player's current silver pieces
+- `CP`: the player's current copper pieces
+- `STR`: the player's strength bonus
+- `DEX`: the player's dextarity bonus
+- `CON`: the player's constitution bonus
+- `INT`: the player's intelligence bonus
+- `WIS`: the player's wisdom bonus
+- `CHAR`: the player's charisma bonus
+- `STR-SCORE`: the player's strength score
+- `DEX-SCORE`: the player's dexterity score
+- `CON-SCORE`: the player's constitution score
+- `INT-SCORE`: the player's intelligence score
+- `WIS-SCORE`: the player's wisdom score
+- `CHAR-SCORE`: the player's charisma score
+- `STR-SAVE`: the player's strength save bonus
+- `DEX-SAVE`: the player's dextarity save bonus
+- `CON-SAVE`: the player's constitution save bonus
+- `INT-SAVE`: the player's intelligence save bonus
+- `WIS-SAVE`: the player's intelligence save bonus
+- `CHAR-SAVE`: the player's charisma save bonus
+- `ACROBATICS`: the player's acrobatics score bonus
+- `ANIMAL-HANDLING`: the player's animal handling score bonus
+- `ARCANA`: the player's arcana score bonus
+- `ATHLETICS`: the player's athletics score bonus
+- `DECEPTION`: the player's deception score bonus
+- `HISTORY`: the player's history score bonus
+- `INSIGHT`: the player's insight score bonus
+- `INTIMIDATION`: the player's intimidation score bonus
+- `INVESTIGATION`: the player's investigation score bonus
+- `MEDICINE`: the player's medicine score bonus
+- `NATURE`: the player's nature score bonus
+- `PERCEPTION`: the player's perception score bonus
+- `PERFORMANCE`: the player's performance score bonus
+- `PERSUASION`: the player's persuasion score bonus
+- `RELIGION`: the player's religion score bonus
+- `SLIGHT-OF-HAND`: the player's slight of hand score bonus
+- `STEALTH`: the player's stealath score bonus
+- `SURVIVAL`: the player's survival score bonus
