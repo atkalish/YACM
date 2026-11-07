@@ -1,6 +1,7 @@
 #include "../../include/serdes/JsonDeserializer.h"
 
 JsonDeserializer::JsonDeserializer(const string& jsonPath){
+    this->path = jsonPath;
     ifstream inFile(jsonPath);
     if(!inFile.is_open()) throw runtime_error("Unable to open file: "s + jsonPath);
  

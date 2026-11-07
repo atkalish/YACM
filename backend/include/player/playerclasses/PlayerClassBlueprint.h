@@ -96,12 +96,12 @@ public:
     const string& getName(){return this->name;}
     const string& getDescription(){return this->description;}
     const string& getMultiClassPrereqs(){return this->multiClassPrereqs;}
-    const vector<vector<Feature>>& getAbilityTable(){return this->featureTable;}
+    const vector<vector<Feature>>& getFeatureTable() const {return this->featureTable;}
     int getHitDie(){return this->hitDie;}
     const Formula& getFirstLevelHitPoints(){return this->firstLevelHitPoints;}
     const Formula& getHigherLevelHitPoints(){return this->higherLevelHitPoints;}
     const Feature& getClassProficiencies(){return this->classProficiencies;}
     const vector<PlayerSubclass>& getPlayerSubclasses(){return this->subclasses;}
-    const vector<vector<Item>>& getStartingEquipment(){return this->startingEquipment;}
+    const vector<vector<Item>>& getStartingEquipment() const {return this->startingEquipment;}
     int getPlayerSubclassLevel(){return this->subclassLevel;}
 };

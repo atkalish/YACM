@@ -5,10 +5,10 @@
         "genericproficiencies/skills/history.json",
         "genericproficiencies/skills/insight.json",
         "genericproficiencies/skills/investigation.json",
-        "genericproficiencies/skills/medcine.json",
+        "genericproficiencies/skills/medicine.json",
         "genericproficiencies/skills/religion.json"
     ],
     "hooks": [],
-    "minimum_count": 2,
-    "maximum_count": 2
+    "minimum_count": "2",
+    "maximum_count": "2"
 }

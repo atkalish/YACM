@@ -22,7 +22,7 @@ private:
 
 public:
     PlayerClass() = default;
-    PlayerClass(PlayerClassBlueprint blueprint);
+    PlayerClass(const PlayerClassBlueprint& blueprint);
     ~PlayerClass() = default;
 
     string serialize() const;
@@ -32,5 +32,5 @@ public:
     int getCurrentHitDie() const {return this->currentHitDice;}
     const Selector<PlayerSubclass>& getPlayerSubclass() const {return this->subclass;}
     const vector<Feature>& getFeatures() const {return this->features;}
-    const vector<Selector<Item>>& getSartingEquipment() const {return this->startingEquipment;}
+    const vector<Selector<Item>>& getStartingEquipment() const {return this->startingEquipment;}
 };

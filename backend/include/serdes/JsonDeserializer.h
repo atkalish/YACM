@@ -11,6 +11,7 @@ using namespace nlohmann;
 class JsonDeserializer{
 private:
     json data;
+	string path;
 
 public:
     JsonDeserializer(const string& jsonPath);
@@ -20,7 +21,7 @@ public:
 	T get(const Args&... key) const {
 		json tmp = data;
 		([&] {
-			if(!tmp.contains(key)) throw runtime_error("Invalid Key: "s + key);
+			if(!tmp.contains(key)) throw runtime_error("Invalid Key: "s + key + " in "s + this->path);
 			tmp = tmp[key];
 		} (), ...);
 		return tmp;

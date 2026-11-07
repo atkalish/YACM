@@ -8,7 +8,12 @@ Feature::Feature(const string& jsonPath){
     for(string tag : jd.get<vector<string>>("tags")) this->tags.push_back(tag);
     this->optional = jd.get<bool>("optional");
 	this->hidden = jd.get<bool>("hidden");
-    this->spellcastingBlueprint = new SpellcastingBlueprint(jd.get<string>("spellcasting"));
+
+    string spellcastingPath = jd.get<string>("spellcasting");
+    if(spellcastingPath != "")
+        this->spellcastingBlueprint = new SpellcastingBlueprint(jd.get<string>("spellcasting"));
+    else this->spellcastingBlueprint = nullptr;
+
     this->exclusiveSelect = jd.get<bool>("exclusive_selection");
     
     for(string abilityPath : jd.get<vector<string>>("base_abilities")){

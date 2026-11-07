@@ -5,7 +5,7 @@ a subclass for a given player class
 ```json
 {
     "name": "subclass_name",
-    "description": "subclass description"
+    "description": "subclass description",
     "feature_table": [
         [],
         [],

@@ -292,7 +292,7 @@ private:
     
 public:
     Player() = default;
-    ~Player();
+    ~Player() = default;
 
     const unordered_map<string, int>& getAbilityScores() const {return this->abilityScores;}
     const Description& getDescription() const {return this->description;}

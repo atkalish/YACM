@@ -37,8 +37,8 @@ public:
 
 	public:
 		Builder() = default;
-		Builder& currentList(const string& List) {this->_currentList = List; return *this;}
-		Builder& newList(const string& newList) {this->_newList = newList; return *this;}
+		Builder& currentList(const vector<T>& List) {this->_currentList = List; return *this;}
+		Builder& newList(const vector<T>& newList) {this->_newList = newList; return *this;}
 		Builder& hookIDs(const vector<string>& hookIDs) {this->_hookIDs = hookIDs; return *this;}
 		Builder& minCount(const Formula& minCount) {this->_minCount = minCount; return *this;}
 		Builder& maxCount(const Formula& maxCount) {this->_maxCount = maxCount; return *this;}

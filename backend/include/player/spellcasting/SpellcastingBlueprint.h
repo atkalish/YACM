@@ -27,7 +27,7 @@ private:
 
 public:
     inline static const string SRC_DIR = "data/resources/spellcasting/spellcasting/";
-    inline static const string SPELL_LIST_SRC_DIR = "data/resources/spellcasting/spellcasting/";
+    inline static const string SPELL_LIST_SRC_DIR = "data/resources/spellcasting/spelllists/";
     class Builder {
     private:
         string _focus;

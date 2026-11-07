@@ -16,16 +16,16 @@ int main(){
 			personality(Player::Personality()).
 			affiliations("").
 			backstory("").
-			race(Race("")).
-			background(Background("")).
-			playerClasses({PlayerClassBlueprint("")}).
+			race(Race("githyanki.json")).
+			background(Background("faceless.json")).
+			playerClasses({PlayerClassBlueprint("wizard.json")}).
 			build();
 	}catch(const runtime_error& e){
 		logger->error(e.what());
 		return EXIT_FAILURE;
 	}
 
-
+	logger->log(player.getBackground().getName());
 
 	return EXIT_SUCCESS;
 }
