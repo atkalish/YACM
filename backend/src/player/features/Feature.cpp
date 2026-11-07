@@ -9,42 +9,54 @@ Feature::Feature(const string& jsonPath){
     this->optional = jd.get<bool>("optional");
 	this->hidden = jd.get<bool>("hidden");
     this->spellcastingBlueprint = new SpellcastingBlueprint(jd.get<string>("spellcasting"));
-    this->exclusiveSelect = jd.get<bool>("exclusive_select");
+    this->exclusiveSelect = jd.get<bool>("exclusive_selection");
     
     for(string abilityPath : jd.get<vector<string>>("base_abilities")){
-        if(FileUtils::getPathType(abilityPath) == FileUtils::FILE){
+        if(FileUtils::getPathType(Ability::SRC_DIR + abilityPath) == FileUtils::FILE){
             this->baseAbilities.push_back(Ability(abilityPath));
             continue;
         }
-        vector<string> paths = FileUtils::getAllFiles(abilityPath);
-        for(string path : paths) this->baseAbilities.push_back(Ability(path));
+        vector<string> paths = FileUtils::getAllFiles(Ability::SRC_DIR + abilityPath);
+        for(string path : paths){
+            path.erase(0, Ability::SRC_DIR.size());
+            this->baseAbilities.push_back(Ability(path));
+        }
     }
 
     for(string traitModificationPath : jd.get<vector<string>>("base_trait_modifications")){
-        if(FileUtils::getPathType(traitModificationPath) == FileUtils::FILE){
+        if(FileUtils::getPathType(TraitModification::SRC_DIR + traitModificationPath) == FileUtils::FILE){
             this->baseTraitMods.push_back(TraitModification(traitModificationPath));
             continue;
         }
-        vector<string> paths = FileUtils::getAllFiles(traitModificationPath);
-        for(string path : paths) this->baseTraitMods.push_back(TraitModification(path));
+        vector<string> paths = FileUtils::getAllFiles(TraitModification::SRC_DIR + traitModificationPath);
+        for(string path : paths){ 
+            path.erase(0, TraitModification::SRC_DIR.size());
+            this->baseTraitMods.push_back(TraitModification(path));
+        }
     }
 
     for(string abilitySelectorPath : jd.get<vector<string>>("ability_selectors")){
-        if(FileUtils::getPathType(abilitySelectorPath) == FileUtils::FILE){
+        if(FileUtils::getPathType(Selector<Ability>::SRC_DIR + abilitySelectorPath) == FileUtils::FILE){
             this->abilitySelectors.push_back(Selector<Ability>(abilitySelectorPath));
             continue;
         }
-        vector<string> paths = FileUtils::getAllFiles(abilitySelectorPath);
-        for(string path : paths) this->abilitySelectors.push_back(Selector<Ability>(path));
+        vector<string> paths = FileUtils::getAllFiles(Selector<Ability>::SRC_DIR + abilitySelectorPath);
+        for(string path : paths){
+            path.erase(0, Selector<Ability>::SRC_DIR.size());
+            this->abilitySelectors.push_back(Selector<Ability>(path));
+        }
     }
 
     for(string traitModificationSelectorPath : jd.get<vector<string>>("trait_modification_selectors")){
-        if(FileUtils::getPathType(traitModificationSelectorPath) == FileUtils::FILE){
+        if(FileUtils::getPathType(Selector<TraitModification>::SRC_DIR + traitModificationSelectorPath) == FileUtils::FILE){
             this->traitModSelectors.push_back(Selector<TraitModification>(traitModificationSelectorPath));
             continue;
         }
-        vector<string> paths = FileUtils::getAllFiles(traitModificationSelectorPath);
-        for(string path : paths) this->traitModSelectors.push_back(Selector<TraitModification>(path));
+        vector<string> paths = FileUtils::getAllFiles(Selector<TraitModification>::SRC_DIR + traitModificationSelectorPath);
+        for(string path : paths){
+            path.erase(0, Selector<TraitModification>::SRC_DIR.size());
+            this->traitModSelectors.push_back(Selector<TraitModification>(path));
+        }
     }
 }
 
@@ -57,11 +69,18 @@ string Feature::serialize() const {
     js.put("optional", this->optional);
     js.put("hidden", this->hidden);
     js.put("spellcasting", this->spellcastingBlueprint->serialize());
-    js.put("exclusive_select", this->exclusiveSelect);
+    js.put("exclusive_selection", this->exclusiveSelect);
     
+    js.createList("base_abilities");
     for(const Ability& ability : this->baseAbilities) js.addToList("base_abilities", ability.serialize());
+
+    js.createList("base_trait_modification");
     for(const TraitModification& traitModification : this->baseTraitMods) js.addToList("base_trait_modification", traitModification.serialize());
+
+    js.createList("ability_selectors");
     for(const Selector<Ability> abilitySelector : this->abilitySelectors) js.addToList("ability_selectors", abilitySelector.serialize());
+    
+    js.createList("trait_modification_selectors");
     for(const Selector<TraitModification> traitModificationSelector : this->traitModSelectors) js.addToList("trait_modification_selectors", traitModificationSelector.serialize());
 
     return js.str();

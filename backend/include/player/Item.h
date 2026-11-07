@@ -1,15 +1,16 @@
 #pragma once
 #include "features/Feature.h"
 #include "../serdes/JsonDeserializer.h"
+#include "../serdes/JsonSerializer.h"
 
 using namespace std;
 
 class Item{
 private:
-	inline static const string SRC_DIR = "data/resources/items/";
 	string name;
 	string description;
 public:
+	inline static const string SRC_DIR = "data/resources/items/";
 	class Builder {
 	private:
 		string _name;

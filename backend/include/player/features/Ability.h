@@ -9,6 +9,7 @@ typedef string Formula;
 
 class Ability{
 public:
+	inline static const string SRC_DIR = "data/resources/features/abilities/";
     class Scaler{
     private:
         string name;
@@ -38,7 +39,6 @@ public:
 		friend class Ability;
     };
 private:
-	inline static const string SRC_DIR = "data/resources/features/abilities/";
     string text;
     bool hidden;
 		bool hasScaler;

@@ -5,3 +5,10 @@ TraitModification::TraitModification(const string& jsonPath){
     this->targetID = jd.get<string>("target_id");
     this->formula = jd.get<string>("formula");
 }
+
+string TraitModification::serialize() const {
+    JsonSerializer js;
+    js.put("target_id", this->targetID);
+    js.put("formula", this->formula);
+    return js.str();
+}

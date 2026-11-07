@@ -4,6 +4,7 @@
 #include "Spell.h"
 #include "SpellSelector.h"
 #include "../../serdes/JsonDeserializer.h"
+#include "../../serdes/JsonSerializer.h"
 #include "../../Utils.h"
 
 using namespace std;
@@ -11,8 +12,6 @@ typedef string Formula;
 
 class SpellcastingBlueprint{
 private:
-    inline static const string SRC_DIR = "data/resources/spellcasting/spellcasting/";
-    inline static const string SPELL_LIST_SRC_DIR = "data/resources/spellcasting/spellcasting/";
     string focus;
     vector<Spell> spellList;
     vector<SpellSelector> spellSelectors;
@@ -27,6 +26,8 @@ private:
     vector<vector<int>> spellSlots; // 20 levels, 10 spell level (including cantrips)
 
 public:
+    inline static const string SRC_DIR = "data/resources/spellcasting/spellcasting/";
+    inline static const string SPELL_LIST_SRC_DIR = "data/resources/spellcasting/spellcasting/";
     class Builder {
     private:
         string _focus;

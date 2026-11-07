@@ -1,5 +1,5 @@
 #include "../include/logger/Logger.h"
-#include "../include/player/Item.h"
+#include "../include/player/Player.h"
 #include "../include/Utils.h"
 
 #include "../include/serdes/JsonSerializer.h"
@@ -8,20 +8,15 @@ int main(){
 	Logger* logger = Logger::getInstance();
 	logger->config(true, true, true, true);
 
-	Item item;
+	Feature feature;
 	try{
-		item = Item("costume.json");
+		feature = Feature("githyanki_feature.json");
 	}catch(const runtime_error& e){
 		logger->error(e.what());
 		return EXIT_FAILURE;
 	}
 
-	JsonSerializer js;
-	js.addToList("names", "bob");
-	js.addToList("names", "george");
-	js.addToList("names", "fred");
-
-	cout << js.str() << endl;
+	cout << feature.serialize() << endl;
 
 	return EXIT_SUCCESS;
 }

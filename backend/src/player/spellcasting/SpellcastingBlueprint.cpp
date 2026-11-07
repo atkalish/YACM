@@ -7,22 +7,28 @@ SpellcastingBlueprint::SpellcastingBlueprint(const string& jsonPath){
     for(string spellListPath : jd.get<vector<string>>("spell_lists")){
         JsonDeserializer spellListJD(SpellcastingBlueprint::SPELL_LIST_SRC_DIR + spellListPath);
         for(string spellPath : spellListJD.get<vector<string>>("spells")){
-            if(FileUtils::getPathType(spellPath) == FileUtils::FILE){
+            if(FileUtils::getPathType(Spell::SRC_DIR + spellPath) == FileUtils::FILE){
                 this->spellList.push_back(Spell(spellPath));
                 continue;
             }
-            vector<string> paths = FileUtils::getAllFiles(spellPath);
-            for(string path : paths) this->spellList.push_back(Spell(path));
+            vector<string> paths = FileUtils::getAllFiles(Spell::SRC_DIR + spellPath);
+            for(string path : paths){
+                path.erase(0, Spell::SRC_DIR.size());
+                this->spellList.push_back(Spell(path));
+            }
         }
     }
 
     for(string spellSelectorPath : jd.get<vector<string>>("spell_selectors")){
-        if(FileUtils::getPathType(spellSelectorPath) == FileUtils::FILE){
-                this->spellSelectors.push_back(SpellSelector(spellSelectorPath));
-                continue;
-            }
-            vector<string> paths = FileUtils::getAllFiles(spellSelectorPath);
-            for(string path : paths) this->spellSelectors.push_back(SpellSelector(path));
+        if(FileUtils::getPathType(SpellSelector::SRC_DIR + spellSelectorPath) == FileUtils::FILE){
+            this->spellSelectors.push_back(SpellSelector(spellSelectorPath));
+            continue;
+        }
+        vector<string> paths = FileUtils::getAllFiles(SpellSelector::SRC_DIR + spellSelectorPath);
+        for(string path : paths){
+            path.erase(0, SpellSelector::SRC_DIR.size());
+            this->spellSelectors.push_back(SpellSelector(path));
+        }
     }
 
     this->ritual = jd.get<bool>("ritual");
@@ -32,5 +38,21 @@ SpellcastingBlueprint::SpellcastingBlueprint(const string& jsonPath){
     this->spellPreparation = jd.get<string>("spell_preparation");
     this->spellsKnown = jd.get<string>("spells_known");
 
-    for(vector<int> spellLevelSlots : jd.get<vector<vector<int>>>("spell_slost")) this->spellSlots.push_back(spellLevelSlots);
+    for(vector<int> spellLevelSlots : jd.get<vector<vector<int>>>("spell_slots")) this->spellSlots.push_back(spellLevelSlots);
+}
+
+string SpellcastingBlueprint::serialize() const {
+    JsonSerializer js;
+    js.put("focus", this->focus);
+    for(const Spell& spell : this->spellList) js.addToList("spell_lists", spell.serialize());
+    for(const SpellSelector& spellSelector : this->spellSelectors) js.addToList("spell_selectors", spellSelector.serialize());
+    js.put("ritual", this->ritual);
+    js.put("spell_ability_info", this->spellAbilityInfo);
+    js.put("spell_save_formula", this->spellSaveFormula);
+    js.put("spell_attack_formula", this->spellAttackFormula);
+    js.put("spell_preparation", this->spellPreparation);
+    js.put("spells_known", this->spellsKnown);
+    js.put("spell_slots", this->spellSlots);
+
+    return js.str();
 }
