@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 #include "../features/Feature.h"
+#include "../../serdes/JsonDeserializer.h"
+#include "../../serdes/JsonSerializer.h"
 
 using namespace std;
 
@@ -13,6 +15,7 @@ private:
     vector<vector<Feature>> featureTable;
 
 public:
+    inline static const string SRC_DIR = "data/resources/playerclasses/playersubclasses/";
     class Builder{
     private:
         string _name;
@@ -37,8 +40,9 @@ private:
     }
 
 public:
+    PlayerSubclass(const string& jsonPath);
     PlayerSubclass() = default;
-    ~PlayerSubclass();
+    ~PlayerSubclass() = default;
 
     string serialize() const;
 

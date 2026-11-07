@@ -9,6 +9,8 @@
 #include "../Item.h"
 #include "../spellcasting/SpellcastingBlueprint.h"
 #include "PlayerSubclass.h"
+#include "../../serdes/JsonDeserializer.h"
+#include "../../serdes/JsonSerializer.h"
 
 
 typedef string Formula;
@@ -34,6 +36,7 @@ private:
     vector<vector<Item>> startingEquipment;
 
 public:
+    inline static const string SRC_DIR = "data/resources/playerclasses/playerclasses/";
     class Builder{
     private:
         string _name;
@@ -84,8 +87,9 @@ private:
     }
 
 public:
+    PlayerClassBlueprint(const string& jsonPath);
     PlayerClassBlueprint() = default;
-    ~PlayerClassBlueprint();
+    ~PlayerClassBlueprint() = default;
 
     string serialize() const;
 

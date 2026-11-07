@@ -36,9 +36,7 @@ A class for the player character
         "*/subclass.json"
     ],
     "subclass_level": 3,
-    "class_proficiencies": [
-        "*/feature.json"
-    ],
+    "class_proficiencies": "*/feature.json",
     "starting_equipment": [
         ["*/item_option1.json", "*/item_option2.json"],
         ["*/itemoptions"]
@@ -56,7 +54,7 @@ A class for the player character
 - `higher_level_hit_points` a string formula to calculate higher level hit points.
 - `subclasses` a list of relative paths to subclasses of this player class.
 - `subclass_level` the level subclasses are unlocked for this player class.
-- `class_proficiencies` a list of features that are intended to modify the proficiencies that the player has
+- `class_proficiencies` a feature that is intended to modify the proficiencies that the player has
 - `starting_equipment` a list of a list of equipment options for this class. Each sublist is intended as a choice.
 
 ## Related Links

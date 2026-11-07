@@ -6,6 +6,7 @@
 #include "PlayerClassBlueprint.h"
 #include "PlayerSubclass.h"
 #include "../features/TraitModification.h"
+#include "../../serdes/JsonSerializer.h"
 
 using namespace std;
 
@@ -22,7 +23,7 @@ private:
 public:
     PlayerClass() = default;
     PlayerClass(PlayerClassBlueprint blueprint);
-    ~PlayerClass();
+    ~PlayerClass() = default;
 
     string serialize() const;
 

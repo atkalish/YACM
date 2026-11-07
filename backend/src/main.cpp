@@ -8,15 +8,24 @@ int main(){
 	Logger* logger = Logger::getInstance();
 	logger->config(true, true, true, true);
 
-	Feature feature;
+	Player player;
 	try{
-		feature = Feature("githyanki_feature.json");
+		player = Player::Builder().
+			abilityScores(unordered_map<string, int>()).
+			description(Player::Description()).
+			personality(Player::Personality()).
+			affiliations("").
+			backstory("").
+			race(Race("")).
+			background(Background("")).
+			playerClasses({PlayerClassBlueprint("")}).
+			build();
 	}catch(const runtime_error& e){
 		logger->error(e.what());
 		return EXIT_FAILURE;
 	}
 
-	cout << feature.serialize() << endl;
+
 
 	return EXIT_SUCCESS;
 }
