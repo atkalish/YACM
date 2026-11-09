@@ -16,7 +16,7 @@ private:
 
     int level;
     int currentHitDice;
-    Selector<PlayerSubclass> subclass;
+    PlayerSubclass subclass;
     vector<Feature> features;
     vector<Selector<Item>> startingEquipment;
 
@@ -30,7 +30,7 @@ public:
     const PlayerClassBlueprint& getBlueprint() const {return this->blueprint;}
     int getLevel() const {return this->level;}
     int getCurrentHitDie() const {return this->currentHitDice;}
-    const Selector<PlayerSubclass>& getPlayerSubclass() const {return this->subclass;}
+    const PlayerSubclass& getPlayerSubclass() const {return this->subclass;}
     const vector<Feature>& getFeatures() const {return this->features;}
     const vector<Selector<Item>>& getStartingEquipment() const {return this->startingEquipment;}
 };

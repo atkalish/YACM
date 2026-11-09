@@ -59,3 +59,13 @@ template<> string Selector<TraitModification>::serialize() const {
     js.put("maximum_count", this->maxCount);
     return js.str();
 }
+
+template<> string Selector<Item>::serialize() const {
+    JsonSerializer js;
+    js.put("type", "item");
+    for(const Item& item : this->newList) js.addToList("super_list", item.serialize());
+    for(const string& hook : this->hookIDs) js.addToList("hooks", hook);
+    js.put("minimum_count", this->minCount);
+    js.put("maximum_count", this->maxCount);
+    return js.str();
+}

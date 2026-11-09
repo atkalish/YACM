@@ -11,12 +11,30 @@ PlayerClass::PlayerClass(const PlayerClassBlueprint& blueprint){
     }
 
     for(const vector<Item> equipmentOptions : blueprint.getStartingEquipment()){
-        this->startingEquipment.push_back(Selector<Item>::Builder().
-                                            currentList(vector<Item>()).
-                                            newList(equipmentOptions).
-                                            hookIDs(vector<string>()).
-                                            minCount("1").
-                                            maxCount("1").
-                                            build());
+        this->startingEquipment.push_back(Selector<Item>::Builder()
+                                            .currentList(vector<Item>())
+                                            .newList(equipmentOptions)
+                                            .hookIDs(vector<string>())
+                                            .minCount("1")
+                                            .maxCount("1")
+                                            .build());
     }
+}
+
+string PlayerClass::serialize() const {
+    JsonSerializer js;
+    js.put("blueprint", this->blueprint.serialize());
+    js.put("level", this->level);
+    js.put("current_hit_dice", this->currentHitDice);
+    js.put("subclass", this->subclass.serialize());
+    
+    js.createList("features");
+    for(const Feature& feature : this->features)
+        js.addToList("features", feature.serialize());
+
+    js.createList("starting_equipment");
+    for(const Selector<Item>& selector : this->startingEquipment)
+        js.addToList("starting_equipment", selector.serialize());
+
+    return js.str();
 }

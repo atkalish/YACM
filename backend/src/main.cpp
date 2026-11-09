@@ -10,22 +10,24 @@ int main(){
 
 	Player player;
 	try{
-		player = Player::Builder().
-			abilityScores(unordered_map<string, int>()).
-			description(Player::Description()).
-			personality(Player::Personality()).
-			affiliations("").
-			backstory("").
-			race(Race("githyanki.json")).
-			background(Background("faceless.json")).
-			playerClasses({PlayerClassBlueprint("wizard.json")}).
-			build();
+		player = Player::Builder()
+			.abilityScores(unordered_map<string, int>())
+			.description(Player::Description::Builder()
+							.name("Bob")
+							.build())
+			.personality(Player::Personality())
+			.affiliations("no one")
+			.backstory("Its very sad")
+			.race(Race("githyanki.json"))
+			.background(Background("faceless.json"))
+			.playerClasses({PlayerClassBlueprint("wizard.json")})
+			.build();
 	}catch(const runtime_error& e){
 		logger->error(e.what());
 		return EXIT_FAILURE;
 	}
 
-	logger->log(player.getBackground().getName());
+	cout << player.serialize() << endl;
 
 	return EXIT_SUCCESS;
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include <variant>
+
 #include <string>
 #include <vector>
 #include "Ability.h"
@@ -7,6 +7,7 @@
 #include "../../serdes/JsonDeserializer.h"
 #include "../../serdes/JsonSerializer.h"
 #include "../../Utils.h"
+#include "../Item.h"
 
 using namespace std;
 

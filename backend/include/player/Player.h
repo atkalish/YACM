@@ -68,13 +68,13 @@ public:
 
     public:
         Description() = default;
-        const string& getName(){return this->name;}
-        const string& getAge(){return this->age;}
-        const string& getHeight(){return this->height;}
-        const string& getWeight(){return this->weight;}
-        const string& getEyes(){return this->eyes;}
-        const string& getSkin(){return this->skin;}
-        const string& getHair(){return this->hair;}
+        const string& getName() const {return this->name;}
+        const string& getAge() const {return this->age;}
+        const string& getHeight() const {return this->height;}
+        const string& getWeight() const {return this->weight;}
+        const string& getEyes() const {return this->eyes;}
+        const string& getSkin() const {return this->skin;}
+        const string& getHair() const {return this->hair;}
     
     };
 
@@ -118,11 +118,11 @@ public:
         
     public:
         Personality() = default;
-        const string& getAlignment(){return this->alignment;}
-        const string& getTraits(){return this->traits;}
-        const string& getIdeals(){return this->ideals;}
-        const string& getBonds(){return this->bonds;}
-        const string& getFlaws(){return this->flaws;}
+        const string& getAlignment() const {return this->alignment;}
+        const string& getTraits() const {return this->traits;}
+        const string& getIdeals() const {return this->ideals;}
+        const string& getBonds() const {return this->bonds;}
+        const string& getFlaws() const {return this->flaws;}
     };
 
     class HitPoints{
@@ -138,9 +138,9 @@ public:
         }
 
     public:
-        int getMaxHP(){return this->maxHP;}
-        int getCurrentHP(){return this->currentHP;}
-        int getTempHP(){return this->tempHP;}
+        int getMaxHP() const {return this->maxHP;}
+        int getCurrentHP() const {return this->currentHP;}
+        int getTempHP() const {return this->tempHP;}
 
         void setMaxHP(int maxHP){this->maxHP = maxHP;}
         void setcurrentHP(int currentHP){this->currentHP = currentHP;}
@@ -237,13 +237,13 @@ private:
     int speed;
 
     HitPoints hp;
-    DeathSaves deathsaves;
+    DeathSaves deathSaves;
     Proficiencies proficiencies;
     Money money;
 
     vector<Item> items;
     vector<Feature> features;
-    vector<Spellcasting> spellcasting;
+    vector<Spellcasting> spellcastings;
 
 public:
     class Builder{
@@ -308,12 +308,12 @@ public:
     int getInitiative() const {return this->initiative;}
     int getSpeed() const {return this->speed;}
     const HitPoints& getHP() const {return this->hp;}
-    const DeathSaves& getDeathSaves() const {return this->deathsaves;}
+    const DeathSaves& getDeathSaves() const {return this->deathSaves;}
     const Proficiencies& getProficiencies() const {return this->proficiencies;}
     const Money& getMoney() const {return this->money;}
     const vector<Item>& getItem() const {return this->items;}
     //const vector<Feature> getFeatures(){return this->features;}
-    const vector<Spellcasting>& getSpellcasting() const {return this->spellcasting;}
+    const vector<Spellcasting>& getSpellcastings() const {return this->spellcastings;}
     
     void addMoney(const Money& money){this->money += money;}
     void removeMoney(const Money& money){this->money -= money;}
@@ -322,8 +322,8 @@ public:
     void setInitiative(int initiative){this->initiative = initiative;}
     void setSpeed(int speed){this->speed = speed;}
     void setHp(const HitPoints& hp){this->hp = hp;}
-    void succeedDeathSave(){this->deathsaves.setSuccesses(this->getDeathSaves().getSuccesses()+1);}
-    void failDeathDave(){this->deathsaves.setFailures(this->getDeathSaves().getFailures()+1);}
+    void succeedDeathSave(){this->deathSaves.setSuccesses(this->getDeathSaves().getSuccesses()+1);}
+    void failDeathDave(){this->deathSaves.setFailures(this->getDeathSaves().getFailures()+1);}
     void incrementProficiencyBonus(){++this->proficiencies.proficiencyBonus;}
     void addItem(const Item& item){this->items.push_back(item);}
     //void addFeature(const Feature& feature){this->features.push_back(feature);}
@@ -332,6 +332,8 @@ public:
     void addPlayerClass(const PlayerClassBlueprint& blueprint);
     void addproficiency(const string& key, const string& proficiency);
     void addSpellcasting(const SpellcastingBlueprint& blueprint);
+
+    string serialize() const;
 
 private:
     // this will set the speed, based on race, money/items based on background, etc
