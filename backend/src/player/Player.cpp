@@ -1,6 +1,78 @@
 #include "../../include/player/Player.h"
 
-string Player::serialize() const {
+Player::Player(const string& jsonPath){
+    JsonDeserializer jd(Player::SRC_DIR + jsonPath);
+    
+    //description
+    this->description = Player::Description::Builder()
+        .name(jd.get<string>("description", "name"))
+        .age(jd.get<string>("description", "age"))
+        .height(jd.get<string>("description", "height"))
+        .weight(jd.get<string>("description", "weight"))
+        .eyes(jd.get<string>("description", "eyes"))
+        .skin(jd.get<string>("description", "skin"))
+        .hair(jd.get<string>("description", "hair"))
+        .build();
+
+    this->personality = Player::Personality::Builder()
+        .alignment(jd.get<string>("personality", "alignment"))
+        .traits(jd.get<string>("personality", "traits"))
+        .ideals(jd.get<string>("personality", "ideals"))
+        .bonds(jd.get<string>("personality", "bonds"))
+        .flaws(jd.get<string>("personality", "flaws"))
+        .build();
+
+    this->hp = HitPoints(
+        jd.get<int>("hp", "max_hp"),
+        jd.get<int>("hp", "current_hp"),
+        jd.get<int>("hp", "temp_hp")
+    );
+
+    this->deathSaves.setSuccesses(jd.get<int>("death_saves", "successes"));
+    this->deathSaves.setFailures(jd.get<int>("death_saves", "failures"));
+
+    this->proficiencies.proficiencyBonus = jd.get<int>("proficiencies", "proficiency_bonus");
+    
+    for(string savingThrow : jd.get<vector<string>>("proficiencies", "saving_throws"))
+        this->proficiencies.addSavingThrowProficiency(savingThrow);
+
+    for(string skill : jd.get<vector<string>>("proficiencies", "skills"))
+        this->proficiencies.addSkillProficiency(skill);
+
+    for(string misc : jd.get<vector<string>>("proficiencies", "misc"))
+        this->proficiencies.addMiscProficiency(misc);
+
+    this->money.setCopper(jd.get<int>("money", "copper"));
+    this->money.setSilver(jd.get<int>("money", "silver"));
+    this->money.setElectrum(jd.get<int>("money", "electrum"));
+    this->money.setGold(jd.get<int>("money", "gold"));
+    this->money.setPlatinum(jd.get<int>("money", "platinum"));
+
+    this->abilityScores["charisma"] = jd.get<int>("ability_scores", "charisma");
+    this->abilityScores["constitution"] = jd.get<int>("ability_scores", "constitution");
+    this->abilityScores["dexterity"] = jd.get<int>("ability_scores", "dexterity");
+    this->abilityScores["intelligence"] = jd.get<int>("ability_scores", "intelligence");
+    this->abilityScores["strength"] = jd.get<int>("ability_scores", "strength");
+    this->abilityScores["wisdom"] = jd.get<int>("ability_scores", "wisdom");
+
+    this->affiliations = jd.get<string>("affiliations");
+    this->backstory = jd.get<string>("backstory");
+
+
+    // vector<Feature> raceFeatures;
+    // for(string feature : jd.get<vector<string>>("race", "features")){
+
+    // }
+    // this->race = Race::Builder()
+    //     .name(jd.get<string>("race", "name"))
+    //     .description(jd.get<string>("race", "description"))
+    //     .features()
+    //     .build();
+
+}
+
+string Player::serialize() const
+{
     JsonSerializer js;
 
     JsonSerializer abilityScores_js;
@@ -80,10 +152,6 @@ string Player::serialize() const {
     js.createList("items");
     for(const Item& item : this->items)
         js.addToList("items", item.serialize());
-    
-    js.createList("features");
-    for(const Feature& feature : this->features)
-        js.addToList("features", feature.serialize());
 
     js.createList("spellcastings");
     for(const Spellcasting& spellcasting : this->spellcastings)

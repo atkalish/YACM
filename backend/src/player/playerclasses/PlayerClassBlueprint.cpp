@@ -62,3 +62,35 @@ PlayerClassBlueprint::PlayerClassBlueprint(const string& jsonPath){
         this->startingEquipment.push_back(equipmentOptions);
     }
 }
+
+string PlayerClassBlueprint::serialize() const {
+    JsonSerializer js;
+    js.put("name", this->name);
+    js.put("description", this->description);
+    js.put("multi_class_prereqs", this->multiClassPrereqs);
+    
+    js.createTable("feature_table", this->featureTable.size());
+    for(int i = 0; i < this->featureTable.size(); ++i){
+        for(const Feature& feature : this->featureTable[i]){
+            string test = feature.serialize();
+            js.addToTable("feature_table", i, feature.serialize());
+        }
+    }
+    js.put("hit_die", this->hitDie);
+    js.put("first_level_hit_points", this->firstLevelHitPoints);
+    js.put("higher_level_hit_points", this->higherLevelHitPoints);
+    
+    js.createList("subclasses");
+    for(const PlayerSubclass& playerSubclass : this->subclasses) js.addToList("subclasses", playerSubclass.serialize());
+
+    js.put("subclass_level", this->subclassLevel);
+    js.put("class_proficiencies", this->classProficiencies.serialize());
+
+    js.createTable("starting_equipment", this->startingEquipment.size());
+    for(int i = 0; i < this->startingEquipment.size(); ++i){
+        for(const Item& item : this->startingEquipment[i]){
+            js.addToTable("starting_equipment", i, item.serialize());
+        }
+    }
+    return js.str();
+}

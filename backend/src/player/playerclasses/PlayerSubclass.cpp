@@ -23,3 +23,17 @@ PlayerSubclass::PlayerSubclass(const string& jsonPath){
         this->featureTable.push_back(featurePerLevel);
     }
 }
+
+string PlayerSubclass::serialize() const {
+    JsonSerializer js;
+    js.put("name", this->name);
+    js.put("description", this->description);
+
+    js.createTable("feature_table", this->featureTable.size());
+    for(int i = 0; i < this->featureTable.size(); ++i){
+        for(const Feature& feature : this->featureTable[i]){
+            js.addToTable("feature_table", i, feature.serialize());
+        }
+    }
+    return js.str();
+}

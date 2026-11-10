@@ -11,7 +11,14 @@ int main(){
 	Player player;
 	try{
 		player = Player::Builder()
-			.abilityScores(unordered_map<string, int>())
+			.abilityScores({
+				{"strength", 0},
+				{"dexterity", 0},
+				{"constitution", 0},
+				{"intelligence", 0},
+				{"wisdom", 0},
+				{"charisma", 0}
+			})
 			.description(Player::Description::Builder()
 							.name("Bob")
 							.build())
@@ -22,7 +29,7 @@ int main(){
 			.background(Background("faceless.json"))
 			.playerClasses({PlayerClassBlueprint("wizard.json")})
 			.build();
-	}catch(const runtime_error& e){
+	}catch(const exception& e){
 		logger->error(e.what());
 		return EXIT_FAILURE;
 	}

@@ -17,7 +17,7 @@ using namespace std;
 
 class Player{
 public:
-
+    inline static const string SRC_DIR = "data/saves/";
     // in constructor
     class Description{    // make builders for these
     private:
@@ -242,7 +242,6 @@ private:
     Money money;
 
     vector<Item> items;
-    vector<Feature> features;
     vector<Spellcasting> spellcastings;
 
 public:
@@ -291,6 +290,7 @@ private:
     }
     
 public:
+    Player(const string& jsonPath);
     Player() = default;
     ~Player() = default;
 

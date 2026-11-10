@@ -70,12 +70,17 @@ string Feature::serialize() const {
     js.put("name", this->name);
     js.put("description", this->description);
     js.put("prereq", this->prereq);
+
+    js.createList("tags");
     for(const string& tag : this->tags) js.addToList("tags", tag);
     js.put("optional", this->optional);
     js.put("hidden", this->hidden);
-    js.put("spellcasting", this->spellcastingBlueprint->serialize());
+
+    if(this->spellcastingBlueprint == nullptr) js.put("spellcasting", "");
+    else js.put("spellcasting", this->spellcastingBlueprint->serialize());
+
     js.put("exclusive_selection", this->exclusiveSelect);
-    
+
     js.createList("base_abilities");
     for(const Ability& ability : this->baseAbilities) js.addToList("base_abilities", ability.serialize());
 
@@ -84,7 +89,7 @@ string Feature::serialize() const {
 
     js.createList("ability_selectors");
     for(const Selector<Ability> abilitySelector : this->abilitySelectors) js.addToList("ability_selectors", abilitySelector.serialize());
-    
+
     js.createList("trait_modification_selectors");
     for(const Selector<TraitModification> traitModificationSelector : this->traitModSelectors) js.addToList("trait_modification_selectors", traitModificationSelector.serialize());
 
