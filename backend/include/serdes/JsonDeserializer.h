@@ -24,6 +24,15 @@ public:
 			if(!tmp.contains(key)) throw runtime_error("Invalid Key: "s + key + " in "s + this->path);
 			tmp = tmp[key];
 		} (), ...);
-		return tmp;
+		if constexpr (std::is_same_v<T, JsonDeserializer>) return JsonDeserializer(tmp, this->path);
+		if constexpr (std::is_same_v<T, vector<JsonDeserializer>>){
+		 	vector<JsonDeserializer> jds;
+			for(int i = 0; i < tmp.size(); ++i) jds.push_back(JsonDeserializer(tmp[i], this->path));
+			return jds;
+		}
+		else return tmp;
 	}
+
+private:
+	JsonDeserializer(const json& j, const string& path);
 };

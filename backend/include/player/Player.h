@@ -17,7 +17,7 @@ using namespace std;
 
 class Player{
 public:
-    inline static const string SRC_DIR = "data/saves/";
+    inline static const string SRC_DIR = "data/saves/players/";
     // in constructor
     class Description{    // make builders for these
     private:

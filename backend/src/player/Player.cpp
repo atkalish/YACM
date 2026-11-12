@@ -58,17 +58,54 @@ Player::Player(const string& jsonPath){
     this->affiliations = jd.get<string>("affiliations");
     this->backstory = jd.get<string>("backstory");
 
+    vector<Feature> raceFeatures;
+    for(const JsonDeserializer& feature_jd : jd.get<vector<JsonDeserializer>>("race", "features"))
+        raceFeatures.push_back(Feature(feature_jd));
+    this->race = Race::Builder()
+        .name(jd.get<string>("race", "name"))
+        .description(jd.get<string>("race", "description"))
+        .features(raceFeatures)
+        .build();
 
-    // vector<Feature> raceFeatures;
-    // for(string feature : jd.get<vector<string>>("race", "features")){
+    
+    vector<Item> backgroundEquipment;
+    for(const JsonDeserializer& item_jd : jd.get<vector<JsonDeserializer>>("equipment", "features")){
+        backgroundEquipment.push_back(Item::Builder()
+            .name(item_jd.get<string>("name"))
+            .description(item_jd.get<string>("description"))    
+            .build()
+        );
+    }
 
-    // }
-    // this->race = Race::Builder()
-    //     .name(jd.get<string>("race", "name"))
-    //     .description(jd.get<string>("race", "description"))
-    //     .features()
-    //     .build();
+    vector<Feature> backgroundFeatures;
+    for(const JsonDeserializer& feature_jd : jd.get<vector<JsonDeserializer>>("background", "features"))
+        raceFeatures.push_back(Feature(feature_jd));
+    this->background = Background::Builder()
+        .name(jd.get<string>("background", "name"))
+        .description(jd.get<string>("background", "name"))
+        .suggestedCharacteristics(jd.get<string>("background", "suggested_characteristics"))
+        .equipment(backgroundEquipment)
+        .features(backgroundFeatures)
+        .build();
 
+    for(const JsonDeserializer& playerClass_jd : jd.get<vector<JsonDeserializer>>("classes"))
+        this->playerClasses.push_back(PlayerClass(playerClass_jd));
+
+    this->inspiration = jd.get<int>("inspiration");
+    this->armorClass = jd.get<int>("armor_class");
+    this->initiative = jd.get<int>("initiative");
+    this->speed = jd.get<int>("speed");
+
+    for(const JsonDeserializer& item_jd : jd.get<vector<JsonDeserializer>>("items")){
+        this->items.push_back(Item::Builder()
+            .name(item_jd.get<string>("name"))
+            .description(item_jd.get<string>("description"))
+            .build()
+        );
+    }
+
+    for(const JsonDeserializer& spellcasting_jd : jd.get<vector<JsonDeserializer>>("spellcastings"))
+        this->spellcastings.push_back(Spellcasting(spellcasting_jd));
 }
 
 string Player::serialize() const
@@ -109,7 +146,7 @@ string Player::serialize() const
         js.addToList("classes", playerClass.serialize());
 
     js.put("inspiration", this->inspiration);
-    js.put("armorClass", this->armorClass);
+    js.put("armor_class", this->armorClass);
     js.put("initiative", this->initiative);
     js.put("speed", this->speed);
 
@@ -120,7 +157,7 @@ string Player::serialize() const
     js.put("hp", hp_js.str());
 
     JsonSerializer deathSaves_js;
-    deathSaves_js.put("sucesses", this->deathSaves.getSuccesses());
+    deathSaves_js.put("successes", this->deathSaves.getSuccesses());
     deathSaves_js.put("failures", this->deathSaves.getFailures());
     js.put("death_saves", deathSaves_js.str());
 

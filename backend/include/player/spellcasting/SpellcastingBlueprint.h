@@ -46,9 +46,9 @@ public:
 
         Builder& focus(const string& focus){this->_focus = focus; return *this;}
         Builder& spellList(const vector<Spell> spellList){this->_spellList = spellList; return *this;}
-        Builder& spellSelector(const vector<SpellSelector> spellSelectors){this->_spellSelectors= spellSelectors; return *this;}
+        Builder& spellSelectors(const vector<SpellSelector> spellSelectors){this->_spellSelectors= spellSelectors; return *this;}
         Builder& ritual(bool ritual){this->_ritual = ritual; return *this;}
-        Builder& spellcastingAbilty(const string& spellAbiltyInfo){this->_spellAbilityInfo = spellAbiltyInfo; return *this;}
+        Builder& spellAbilityInfo(const string& spellAbiltyInfo){this->_spellAbilityInfo = spellAbiltyInfo; return *this;}
         Builder& spellAttackFormula(const Formula& spellAttackFormula){this->_spellAttackFormula = spellAttackFormula; return *this;}
         Builder& spellSaveFormula(const Formula& spellSaveFormula){this->_spellSaveFormula = spellSaveFormula; return *this;}
         Builder& spellPreparation(const string& spellPreparation){this->_spellPreparation = spellPreparation; return *this;}

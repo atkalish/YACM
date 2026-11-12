@@ -36,5 +36,9 @@ int main(){
 
 	cout << player.serialize() << endl;
 
+	ofstream outfile(Player::SRC_DIR + "test.json");
+	outfile << player.serialize();
+	Player p2("test.json");
+
 	return EXIT_SUCCESS;
 }

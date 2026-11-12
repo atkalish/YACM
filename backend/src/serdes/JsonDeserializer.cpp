@@ -15,3 +15,8 @@ JsonDeserializer::JsonDeserializer(const string& jsonPath){
     Logger* logger = Logger::getInstance();
     logger->log("Parsed JSON: "s + jsonPath);
 }
+
+JsonDeserializer::JsonDeserializer(const json& j, const string& path){
+    this->data = j;
+    this->path = path;
+}
