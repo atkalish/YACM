@@ -23,17 +23,83 @@ Formula::Formula(const string& formula_str) {
 	int element_start = 0;
 	for(int i = 0; i < formula_str.size(); ++i) {
 		if(formula_str[i] == '+' || formula_str[i] == '-' || formula_str[i] == '*' || i == formula_str.size() - 1) {
-			cout << "index: " << i << " has " << formula_str[i] << ", start: " << start << " has " << formula_str[start] << std::endl;
 			string term = formula_str.substr(start, i - start + (int)(i == formula_str.size()-1));
+			if(term[0] == '[') { term = term.substr(1, term.size() - 2); }
 			terms.push_back(term);
 			if(formula_str[i] == '+' || formula_str[i] == '*' || formula_str[i] == '-') terms.push_back({formula_str[i]});
 			start = i + 1;
 		}
 	}
 
+	this->formula.push_back(0);
+	this->formula.push_back(OP::ADD);
 	for(const string& term : terms) {
-		//PARSE TERM INTO TERMS
+		if(term == "+") {this->formula.push_back(OP::ADD);}
+		else if (term == "*") {this->formula.push_back(OP::MULT);}
+		else if (term == "-") {this->formula.push_back(OP::SUB);}
+		else if (isDigit(term)) {this->formula.push_back(atoi(term.c_str()));}
+		else {
+			if(Formula::hasKeyword(term)) { this->formula.push_back(Formula::stringToKeyword(term)); }
+			else {this->formula.push_back(term);}
+		}
 	}
+	cout << endl;
+}
+
+int Formula::evaluate(const Player& player) const {
+	if(this->formula.size() == 0) {
+		throw runtime_error("Formula has 0 elements");
+	}
+	if(holds_alternative<OP>(this->formula[2])) {
+		throw runtime_error("Formula cannot start with operator");
+	}
+	if(holds_alternative<OP>(this->formula[this->formula.size() - 1])) {
+		throw runtime_error("Formula cannot end with an operator");
+	}
+
+	//PLAN
+	/*
+	 * 1. divide into terms
+	 * 2. for each term, determine if it is addition or subtraction
+	 * 3. compute product over term
+	 * 4. add or subtract depending on associated operator
+	*/
+
+	int i = 0;
+	bool is_adding;
+	int total = 0;
+	int sum = 1;
+
+	for(const element& e : this->formula) {
+		if(holds_alternative<OP>(e)) {
+			switch(get<OP>(e)) {
+			case MULT:
+				continue;
+			case ADD:
+				if(is_adding) total += sum;
+				else total -= sum;
+				sum = 1;
+				is_adding = true;
+				break;
+			case SUB:
+				if(is_adding) total += sum;
+				else total -= sum;
+				sum = 1;
+				is_adding = false;
+				break;
+			}
+		} else {
+			sum *= Formula::getElementValue(player, e);
+		}
+	}
+
+	if(is_adding) total += sum;
+	else total -= sum;
+
+	return total;
+}
+
+
 //key assumes that operation is not included
 int Formula::getElementValue(const Player& player, const element& key) {
 		if(holds_alternative<KEYWORD>(key)) { return 0; } //temporary!!!
