@@ -77,6 +77,7 @@ private:
 public:
     Spell() = default;
     Spell(const string& jsonPath);
+    Spell(const JsonDeserializer& jd);
 
     string serialize() const;
 

@@ -17,6 +17,7 @@ public:
 
 	TraitModification(const string& targetID, const Formula& formula) : targetID(targetID), formula(formula) {}
 	TraitModification(const string& jsonPath);
+	TraitModification(const JsonDeserializer& jd);
 	TraitModification() = default;
 	~TraitModification() = default;
 

@@ -70,5 +70,6 @@ public:
 
 	Selector() = default;
 	Selector(const string& jsonPath);
+	Selector(const JsonDeserializer& jd);
 	~Selector() = default;
 };

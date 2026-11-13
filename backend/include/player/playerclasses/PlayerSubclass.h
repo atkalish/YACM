@@ -41,6 +41,7 @@ private:
 
 public:
     PlayerSubclass(const string& jsonPath);
+    PlayerSubclass(const JsonDeserializer& jd);
     PlayerSubclass() = default;
     ~PlayerSubclass() = default;
 

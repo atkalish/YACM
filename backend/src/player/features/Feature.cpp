@@ -65,6 +65,37 @@ Feature::Feature(const string& jsonPath){
     }
 }
 
+Feature::Feature(const JsonDeserializer& jd){
+    this->name = jd.get<string>("name");
+    this->description = jd.get<string>("description");
+    this->prereq = jd.get<string>("prereq");
+    for(string tag : jd.get<vector<string>>("tags")) this->tags.push_back(tag);
+    this->optional = jd.get<bool>("optional");
+	this->hidden = jd.get<bool>("hidden");
+    
+    try{
+        this->spellcastingBlueprint = new SpellcastingBlueprint(jd.get<JsonDeserializer>("spellcasting"));
+    }catch(...){
+        this->spellcastingBlueprint = nullptr;
+    }
+
+    for(const JsonDeserializer& ability_jd : jd.get<vector<JsonDeserializer>>("base_abilities")){
+        this->baseAbilities.push_back(Ability(ability_jd));
+    }
+
+    for(const JsonDeserializer& traitModification_jd : jd.get<vector<JsonDeserializer>>("base_trait_modifications")){
+        this->baseTraitMods.push_back(TraitModification(traitModification_jd));
+    }
+
+    for(const JsonDeserializer& abilitySelector_jd : jd.get<vector<JsonDeserializer>>("ability_selectors")){
+        this->abilitySelectors.push_back(Selector<Ability>(abilitySelector_jd));
+    }
+
+    for(const JsonDeserializer& traitModificationSelector_jd : jd.get<vector<JsonDeserializer>>("trait_modification_selectors")){
+        this->traitModSelectors.push_back(Selector<TraitModification>(traitModificationSelector_jd));
+    }
+}
+
 string Feature::serialize() const {
     JsonSerializer js;
     js.put("name", this->name);
@@ -76,7 +107,7 @@ string Feature::serialize() const {
     js.put("optional", this->optional);
     js.put("hidden", this->hidden);
 
-    if(this->spellcastingBlueprint == nullptr) js.put("spellcasting", "");
+    if(this->spellcastingBlueprint == nullptr) js.put("spellcasting", "{}");
     else js.put("spellcasting", this->spellcastingBlueprint->serialize());
 
     js.put("exclusive_selection", this->exclusiveSelect);
@@ -84,8 +115,8 @@ string Feature::serialize() const {
     js.createList("base_abilities");
     for(const Ability& ability : this->baseAbilities) js.addToList("base_abilities", ability.serialize());
 
-    js.createList("base_trait_modification");
-    for(const TraitModification& traitModification : this->baseTraitMods) js.addToList("base_trait_modification", traitModification.serialize());
+    js.createList("base_trait_modifications");
+    for(const TraitModification& traitModification : this->baseTraitMods) js.addToList("base_trait_modifications", traitModification.serialize());
 
     js.createList("ability_selectors");
     for(const Selector<Ability> abilitySelector : this->abilitySelectors) js.addToList("ability_selectors", abilitySelector.serialize());

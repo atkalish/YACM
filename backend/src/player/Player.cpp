@@ -69,20 +69,19 @@ Player::Player(const string& jsonPath){
 
     
     vector<Item> backgroundEquipment;
-    for(const JsonDeserializer& item_jd : jd.get<vector<JsonDeserializer>>("equipment", "features")){
+    for(const JsonDeserializer& item_jd : jd.get<vector<JsonDeserializer>>("background", "equipment")){
         backgroundEquipment.push_back(Item::Builder()
             .name(item_jd.get<string>("name"))
             .description(item_jd.get<string>("description"))    
             .build()
         );
     }
-
     vector<Feature> backgroundFeatures;
     for(const JsonDeserializer& feature_jd : jd.get<vector<JsonDeserializer>>("background", "features"))
-        raceFeatures.push_back(Feature(feature_jd));
+        backgroundFeatures.push_back(Feature(feature_jd));
     this->background = Background::Builder()
         .name(jd.get<string>("background", "name"))
-        .description(jd.get<string>("background", "name"))
+        .description(jd.get<string>("background", "description"))
         .suggestedCharacteristics(jd.get<string>("background", "suggested_characteristics"))
         .equipment(backgroundEquipment)
         .features(backgroundFeatures)
@@ -139,7 +138,7 @@ string Player::serialize() const
     js.put("backstory", this->backstory);
 
     js.put("race", this->race.serialize());
-    js.put("background", this->race.serialize());
+    js.put("background", this->background.serialize());
 
     js.createList("classes");
     for(const PlayerClass& playerClass : this->playerClasses)

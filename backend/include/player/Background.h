@@ -61,5 +61,6 @@ public:
     const string& getName() const {return this->name;}
     const string& getDescription() const {return this->description;}
     const vector<Item>& getEquipment() const {return this->equipment;}
+    const vector<Feature>& getFeatures() const {return this->features;}
     const string getSuggestedCharacteristics() const {return this->suggestedCharacteristics;}
 };

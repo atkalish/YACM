@@ -74,6 +74,7 @@ private:
 public:
     SpellcastingBlueprint() = default;
     SpellcastingBlueprint(const string& jsonPath);
+    SpellcastingBlueprint(const JsonDeserializer& jd);
 
     string serialize() const;
 

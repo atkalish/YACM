@@ -63,6 +63,40 @@ PlayerClassBlueprint::PlayerClassBlueprint(const string& jsonPath){
     }
 }
 
+PlayerClassBlueprint::PlayerClassBlueprint(const JsonDeserializer& jd){
+    this->name = jd.get<string>("name");
+    this->description = jd.get<string>("description");
+    this->multiClassPrereqs = jd.get<string>("multi_class_prereqs");
+
+    for(const vector<JsonDeserializer>& jds : jd.get<vector<vector<JsonDeserializer>>>("feature_table")){
+        vector<Feature> features;
+        for(const JsonDeserializer& feature_jd : jds) features.push_back(Feature(feature_jd));
+        this->featureTable.push_back(features);
+    }
+
+    this->hitDie = jd.get<int>("hit_die");
+    this->firstLevelHitPoints = jd.get<Formula>("first_level_hit_points");
+    this->higherLevelHitPoints = jd.get<Formula>("higher_level_hit_points");
+
+    for(const JsonDeserializer& subclasses_jd : jd.get<vector<JsonDeserializer>>("subclasses")){
+        this->subclasses.push_back(PlayerSubclass(subclasses_jd));
+    }
+
+    this->subclassLevel = jd.get<int>("subclass_level");
+    this->classProficiencies = Feature(jd.get<JsonDeserializer>("class_proficiencies"));
+
+    for(const vector<JsonDeserializer>& jds : jd.get<vector<vector<JsonDeserializer>>>("starting_equipment")){    
+        vector<Item> items;
+        for(const JsonDeserializer& item_jd : jds) 
+            items.push_back(Item::Builder()
+                .name(item_jd.get<string>("name"))
+                .description(item_jd.get<string>("description"))
+                .build()
+            );
+        this->startingEquipment.push_back(items);
+    }
+}
+
 string PlayerClassBlueprint::serialize() const {
     JsonSerializer js;
     js.put("name", this->name);

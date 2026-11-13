@@ -2,6 +2,10 @@
 
 TraitModification::TraitModification(const string& jsonPath){
     JsonDeserializer jd(TraitModification::SRC_DIR + jsonPath);
+    *this = TraitModification(jd);
+}
+
+TraitModification::TraitModification(const JsonDeserializer& jd){
     this->targetID = jd.get<string>("target_id");
     this->formula = jd.get<string>("formula");
 }

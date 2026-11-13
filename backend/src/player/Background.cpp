@@ -31,3 +31,18 @@ Background::Background(const string& jsonPath){
     
     this->suggestedCharacteristics = jd.get<string>("suggested_characteristics");
 }
+
+string Background::serialize() const {
+    JsonSerializer js;
+    js.put("name", this->name);
+    js.put("description", this->description);
+
+    js.createList("equipment");
+    for(const Item& item : this->equipment) js.addToList("equipment", item.serialize());
+
+    js.createList("features");
+    for(const Feature& feature : this->features) js.addToList("features", feature.serialize());
+
+    js.put("suggested_characteristics", this->suggestedCharacteristics);
+    return js.str();
+}

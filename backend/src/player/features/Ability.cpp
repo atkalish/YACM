@@ -2,6 +2,10 @@
 
 Ability::Ability(const string& jsonPath) {
 	JsonDeserializer jd(Ability::SRC_DIR + jsonPath);
+	*this = Ability(jd);
+}
+
+Ability::Ability(const JsonDeserializer& jd){
 	this->text = jd.get<string>("description");
 	this->hidden = jd.get<bool>("hidden");
 

@@ -78,6 +78,7 @@ protected:
 
 public:
 	Ability(const string& jsonPath);
+	Ability(const JsonDeserializer& jd);
 	const string& getText() const {return this->text;}
 	bool isHidden() const {return this->hidden;}
 	const Scaler* getScaler() const {

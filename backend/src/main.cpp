@@ -8,9 +8,9 @@ int main(){
 	Logger* logger = Logger::getInstance();
 	logger->config(true, true, true, true);
 
-	Player player;
+	Player p1;
 	try{
-		player = Player::Builder()
+		p1 = Player::Builder()
 			.abilityScores({
 				{"strength", 0},
 				{"dexterity", 0},
@@ -34,11 +34,16 @@ int main(){
 		return EXIT_FAILURE;
 	}
 
-	cout << player.serialize() << endl;
+	cout << p1.serialize().size() << endl;
 
-	ofstream outfile(Player::SRC_DIR + "test.json");
-	outfile << player.serialize();
-	Player p2("test.json");
+	ofstream outfile(Player::SRC_DIR + "test1.json");
+	outfile << p1.serialize();
+
+	Player p2("test1.json");
+	cout << p2.serialize().size() << endl;
+
+	ofstream outfile2(Player::SRC_DIR + "test2.json");
+	outfile2 << p2.serialize();
 
 	return EXIT_SUCCESS;
 }

@@ -23,6 +23,7 @@ private:
 public:
     PlayerClass() = default;
     PlayerClass(const PlayerClassBlueprint& blueprint);
+    PlayerClass(const JsonDeserializer& jd);
     ~PlayerClass() = default;
 
     string serialize() const;

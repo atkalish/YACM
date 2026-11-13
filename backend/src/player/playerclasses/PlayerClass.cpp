@@ -21,6 +21,22 @@ PlayerClass::PlayerClass(const PlayerClassBlueprint& blueprint){
     }
 }
 
+
+PlayerClass::PlayerClass(const JsonDeserializer& jd){
+    this->blueprint = PlayerClassBlueprint(jd.get<JsonDeserializer>("blueprint"));
+    this->level = jd.get<int>("level");
+    this->currentHitDice = jd.get<int>("current_hit_dice");
+    this->subclass = PlayerSubclass(jd.get<JsonDeserializer>("subclass"));
+    
+    for(const JsonDeserializer& feature_jd : jd.get<vector<JsonDeserializer>>("features")){
+        this->features.push_back(Feature(feature_jd));
+    }
+
+    for(const JsonDeserializer& selector_jd : jd.get<vector<JsonDeserializer>>("starting_equipment")){
+        this->startingEquipment.push_back(Selector<Item>(selector_jd));
+    }
+}
+
 string PlayerClass::serialize() const {
     JsonSerializer js;
     js.put("blueprint", this->blueprint.serialize());

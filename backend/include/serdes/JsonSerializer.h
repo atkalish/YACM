@@ -15,7 +15,7 @@ public:
     template<class T> void put(const std::string& key, const T& value){
         if constexpr (std::is_convertible_v<T, std::string>){
             string str_value = value;
-            if(json::accept(str_value)){
+            if(json::accept(str_value) && json::parse(str_value).is_object()){
                 this->data[key] = json::parse(str_value);
             }else{
                 this->data[key] = str_value;
@@ -34,7 +34,7 @@ public:
         }
         if constexpr (std::is_convertible_v<T, std::string>){
             string str_value = value;
-            if (json::accept(str_value)) {
+            if (json::accept(str_value) && json::parse(str_value).is_object()) {
                 list.push_back(json::parse(str_value));
             }else{
                 list.push_back(str_value);
@@ -51,7 +51,7 @@ public:
         json list = this->data[key][i];
         if constexpr (std::is_convertible_v<T, std::string>){
             string str_value = value;
-            if(json::accept(str_value)){
+            if(json::accept(str_value) && json::parse(str_value).is_object()){
                 list.push_back(json::parse(str_value));
             }else{
                 list.push_back(str_value);

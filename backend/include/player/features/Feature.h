@@ -97,6 +97,7 @@ public:
 
 	Feature() = default;
 	Feature(const string& jsonPath);
+	Feature(const JsonDeserializer& jd);
 	~Feature() = default;
 
 	string serialize() const;

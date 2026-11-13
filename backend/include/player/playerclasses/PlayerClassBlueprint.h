@@ -88,6 +88,7 @@ private:
 
 public:
     PlayerClassBlueprint(const string& jsonPath);
+    PlayerClassBlueprint(const JsonDeserializer& jd);
     PlayerClassBlueprint() = default;
     ~PlayerClassBlueprint() = default;
 
