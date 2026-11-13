@@ -62,104 +62,17 @@ private:
 		MULT
 	};
 
-	static inline const map<string, KEYWORD> STR_TO_KEYWORD{
-		{"LEVEL", LEVEL},
-		{"PROF", PROF},
-		{"SPEED", SPEED},
-		{"PP", PP},
-		{"GP", GP},
-		{"EP", EP},
-		{"SP", SP},
-		{"CP", CP},
-		{"STR", STR},
-		{"DEX", DEX},
-		{"CON", CON},
-		{"INT", INT},
-		{"WIS", WIS},
-		{"CHAR", CHAR},
-		{"STR_SCORE", STR_SCORE},
-		{"DEX_SCORE", DEX_SCORE},
-		{"CON_SCORE", CON_SCORE},
-		{"INT_SCORE", INT_SCORE},
-		{"WIS_SCORE", WIS_SCORE},
-		{"CHAR_SCORE", CHAR_SAVE},
-		{"STR_SAVE", STR_SAVE},
-		{"DEX_SAVE", DEX_SAVE},
-		{"CON_SAVE", CON_SAVE},
-		{"INT_SAVE", INT_SAVE},
-		{"WIS_SAVE", WIS_SAVE},
-		{"CHAR_SAVE", CHAR_SAVE},
-		{"ACROBATICS", ACROBATICS},
-		{"ANIMAL_HANDLING", ANIMAL_HANDLING},
-		{"ARCANA", ARCANA},
-		{"ATHLETICS", ATHLETICS},
-		{"DECEPTION", DECEPTION},
-		{"HISTORY", HISTORY},
-		{"INSIGHT", INSIGHT},
-		{"INTIMIDATION", INTIMIDATION},
-		{"INVESTIGATION", INVESTIGATION},
-		{"MEDICINE", MEDICINE},
-		{"NATURE", NATURE},
-		{"PERCEPTION", PERCEPTION},
-		{"PERFORMANCE", PERFORMANCE},
-		{"PERSUASION", PERSUASION},
-		{"RELIGION", RELIGION},
-		{"SLIGHT_OF_HAND", SLIGHT_OF_HAND},
-		{"STEALTH", STEALTH},
-		{"SURVIVAL", SURVIVAL}
-	};
 
-	static inline const map<KEYWORD, string> KEYWORD_TO_STRING{
-		{LEVEL, "LEVEL"},
-		{PROF, "PROF"},
-		{SPEED, "SPEED"},
-		{PP, "PP"},
-		{GP, "GP"},
-		{EP, "EP"},
-		{SP, "SP"},
-		{CP, "CP"},
-		{STR, "STR"},
-		{DEX, "DEX"},
-		{CON, "CON"},
-		{INT, "INT"},
-		{WIS, "WIS"},
-		{CHAR, "CHAR"},
-		{STR_SCORE, "STR_SCORE"},
-		{DEX_SCORE, "DEX_SCORE"},
-		{CON_SCORE, "CON_SCORE"},
-		{INT_SCORE, "INT_SCORE"},
-		{WIS_SCORE, "WIS_SCORE"},
-		{CHAR_SCORE, "CHAR_SAVE"},
-		{STR_SAVE, "STR_SAVE"},
-		{DEX_SAVE, "DEX_SAVE"},
-		{CON_SAVE, "CON_SAVE"},
-		{INT_SAVE, "INT_SAVE"},
-		{WIS_SAVE, "WIS_SAVE"},
-		{CHAR_SAVE, "CHAR_SAVE"},
-		{ACROBATICS, "ACROBATICS"},
-		{ANIMAL_HANDLING, "ANIMAL_HANDLING"},
-		{ARCANA, "ARCANA"},
-		{ATHLETICS, "ATHLETICS"},
-		{DECEPTION, "DECEPTION"},
-		{HISTORY, "HISTORY"},
-		{INSIGHT, "INSIGHT"},
-		{INTIMIDATION, "INTIMIDATION"},
-		{INVESTIGATION, "INVESTIGATION"},
-		{MEDICINE, "MEDICINE"},
-		{NATURE, "NATURE"},
-		{PERCEPTION, "PERCEPTION"},
-		{PERFORMANCE, "PERFORMANCE"},
-		{PERSUASION, "PERSUASION"},
-		{RELIGION, "RELIGION"},
-		{SLIGHT_OF_HAND, "SLIGHT_OF_HAND"},
-		{STEALTH, "STEALTH"},
-		{SURVIVAL, "SURVIVAL"}
-	};
+
+
 
 	typedef variant<OP, KEYWORD, int, string> element;
 	vector<element> formula;
 
 	static int getElementValue(const Player& player, const element& key);
+	static const string& keywordToString(KEYWORD k);
+	static KEYWORD stringToKeyword(const string& s);
+	static bool hasKeyword(const string& s);
 
 public:
 	Formula(const string& formula_str);
