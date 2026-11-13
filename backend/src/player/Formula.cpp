@@ -6,6 +6,13 @@
 #include <string>
 #include <variant>
 
+bool isDigit(const string& str) {
+	for(char c : str) {
+		if(!std::isdigit(static_cast<unsigned char>(c))) { return false; }
+	}
+	return true;
+}
+
 Formula::Formula(const string& formula_str) {
 	//take a string in the format term *(+ term)
 	//where a term is of the form element *(mult element)
@@ -27,6 +34,14 @@ Formula::Formula(const string& formula_str) {
 	for(const string& term : terms) {
 		//PARSE TERM INTO TERMS
 	}
+//key assumes that operation is not included
+int Formula::getElementValue(const Player& player, const element& key) {
+		if(holds_alternative<KEYWORD>(key)) { return 0; } //temporary!!!
+		else if(holds_alternative<int>(key)) { return get<int>(key); }
+		else if(holds_alternative<string>(key)) { return 0; } //temporary!!!
+		else { throw runtime_error("How did you manage to have a different type of element in a formula??"); }
+}
+
 string Formula::toString() const {
 	string s = "";
 	for(const element& e : this->formula) {
