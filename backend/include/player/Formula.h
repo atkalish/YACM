@@ -76,5 +76,6 @@ private:
 
 public:
 	Formula(const string& formula_str);
+	string toString() const;
 	int evaluate(const Player&) const;
 };

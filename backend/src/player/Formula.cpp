@@ -27,6 +27,30 @@ Formula::Formula(const string& formula_str) {
 	for(const string& term : terms) {
 		//PARSE TERM INTO TERMS
 	}
+string Formula::toString() const {
+	string s = "";
+	for(const element& e : this->formula) {
+		if(holds_alternative<string>(e)) s += "{" + get<string>(e) + "}";
+		else if(holds_alternative<int>(e)) s += to_string(get<int>(e));
+		else if(holds_alternative<KEYWORD>(e)) s += "[" + Formula::keywordToString(get<KEYWORD>(e)) + "]";
+		else if(holds_alternative<OP>(e)) {
+			switch (get<OP>(e)) {
+			case ADD: 
+				s += "+";
+				break;
+			case SUB:
+				s += "-";
+				break;
+			case MULT:
+				s += "*";
+				break;
+			}
+		}
+	}
+	return s;
+}
+
+
 const string& Formula::keywordToString(KEYWORD k) {
 	static const map<KEYWORD, string> KEYWORD_TO_STRING{
 		{LEVEL, "LEVEL"},
