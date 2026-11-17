@@ -5,90 +5,90 @@ Player::Player(const string& jsonPath){
     
     //description
     this->description = Player::Description::Builder()
-        .name(jd.get<string>("description", "name"))
-        .age(jd.get<string>("description", "age"))
-        .height(jd.get<string>("description", "height"))
-        .weight(jd.get<string>("description", "weight"))
-        .eyes(jd.get<string>("description", "eyes"))
-        .skin(jd.get<string>("description", "skin"))
-        .hair(jd.get<string>("description", "hair"))
+        .name(jd.get<string>(Player::DESCRIPTION, Player::Description::NAME))
+        .age(jd.get<string>(Player::DESCRIPTION, Player::Description::AGE))
+        .height(jd.get<string>(Player::DESCRIPTION, Player::Description::HEIGHT))
+        .weight(jd.get<string>(Player::DESCRIPTION, Player::Description::WEIGHT))
+        .eyes(jd.get<string>(Player::DESCRIPTION, Player::Description::EYES))
+        .skin(jd.get<string>(Player::DESCRIPTION, Player::Description::SKIN))
+        .hair(jd.get<string>(Player::DESCRIPTION, Player::Description::HAIR))
         .build();
 
     this->personality = Player::Personality::Builder()
-        .alignment(jd.get<string>("personality", "alignment"))
-        .traits(jd.get<string>("personality", "traits"))
-        .ideals(jd.get<string>("personality", "ideals"))
-        .bonds(jd.get<string>("personality", "bonds"))
-        .flaws(jd.get<string>("personality", "flaws"))
+        .alignment(jd.get<string>(Player::PERSONALITY, Player::Personality::ALIGNMENT))
+        .traits(jd.get<string>(Player::PERSONALITY, Player::Personality::TRAITS))
+        .ideals(jd.get<string>(Player::PERSONALITY, Player::Personality::IDEALS))
+        .bonds(jd.get<string>(Player::PERSONALITY, Player::Personality::BONDS))
+        .flaws(jd.get<string>(Player::PERSONALITY, Player::Personality::FLAWS))
         .build();
 
     this->hp = HitPoints(
-        jd.get<int>("hp", "max_hp"),
-        jd.get<int>("hp", "current_hp"),
-        jd.get<int>("hp", "temp_hp")
+        jd.get<int>(Player::HP, Player::HitPoints::MAX_HP),
+        jd.get<int>(Player::HP, Player::HitPoints::CURRENT_HP),
+        jd.get<int>(Player::HP, Player::HitPoints::TEMP_HP)
     );
 
-    this->deathSaves.setSuccesses(jd.get<int>("death_saves", "successes"));
-    this->deathSaves.setFailures(jd.get<int>("death_saves", "failures"));
+    this->deathSaves.setSuccesses(jd.get<int>(Player::DEATH_SAVES, Player::DeathSaves::SUCCESSES));
+    this->deathSaves.setFailures(jd.get<int>(Player::DEATH_SAVES, Player::DeathSaves::FAILURES));
 
-    this->proficiencies.proficiencyBonus = jd.get<int>("proficiencies", "proficiency_bonus");
+    this->proficiencies.proficiencyBonus = jd.get<int>(Player::PROFICIENCIES, Player::Proficiencies::PROFICIENCY_BONUS);
     
-    for(string savingThrow : jd.get<vector<string>>("proficiencies", "saving_throws"))
+    for(string savingThrow : jd.get<vector<string>>(Player::PROFICIENCIES, Player::Proficiencies::SAVING_THROWS))
         this->proficiencies.addSavingThrowProficiency(savingThrow);
 
-    for(string skill : jd.get<vector<string>>("proficiencies", "skills"))
+    for(string skill : jd.get<vector<string>>(Player::PROFICIENCIES, Player::SKILLS))
         this->proficiencies.addSkillProficiency(skill);
 
-    for(string misc : jd.get<vector<string>>("proficiencies", "misc"))
+    for(string misc : jd.get<vector<string>>(Player::PROFICIENCIES, Player::Proficiencies::MISC))
         this->proficiencies.addMiscProficiency(misc);
 
-    this->money.setCopper(jd.get<int>("money", "copper"));
-    this->money.setSilver(jd.get<int>("money", "silver"));
-    this->money.setElectrum(jd.get<int>("money", "electrum"));
-    this->money.setGold(jd.get<int>("money", "gold"));
-    this->money.setPlatinum(jd.get<int>("money", "platinum"));
+    this->money.setCopper(jd.get<int>(Player::MONEY, Player::Money::COPPER));
+    this->money.setSilver(jd.get<int>(Player::MONEY, Player::Money::SILVER));
+    this->money.setElectrum(jd.get<int>(Player::MONEY, Player::Money::ELECTRUM));
+    this->money.setGold(jd.get<int>(Player::MONEY, Player::Money::GOLD));
+    this->money.setPlatinum(jd.get<int>(Player::MONEY, Player::Money::PLATINUM));
 
-    this->abilityScores["charisma"] = jd.get<int>("ability_scores", "charisma");
-    this->abilityScores["constitution"] = jd.get<int>("ability_scores", "constitution");
-    this->abilityScores["dexterity"] = jd.get<int>("ability_scores", "dexterity");
-    this->abilityScores["intelligence"] = jd.get<int>("ability_scores", "intelligence");
-    this->abilityScores["strength"] = jd.get<int>("ability_scores", "strength");
-    this->abilityScores["wisdom"] = jd.get<int>("ability_scores", "wisdom");
+    this->abilityScores["charisma"] = jd.get<int>(Player::ABILITY_SCORES, "charisma");
+    this->abilityScores["constitution"] = jd.get<int>(Player::ABILITY_SCORES, "constitution");
+    this->abilityScores["dexterity"] = jd.get<int>(Player::ABILITY_SCORES, "dexterity");
+    this->abilityScores["intelligence"] = jd.get<int>(Player::ABILITY_SCORES, "intelligence");
+    this->abilityScores["strength"] = jd.get<int>(Player::ABILITY_SCORES, "strength");
+    this->abilityScores["wisdom"] = jd.get<int>(Player::ABILITY_SCORES, "wisdom");
 
-    this->skills["acrobatics"] = jd.get<string>("skills", "acrobatics");
-    this->skills["animal_handling"] = jd.get<string>("skills", "animal_handling");
-    this->skills["arcana"] = jd.get<string>("skills", "arcana");
-    this->skills["athletics"] = jd.get<string>("skills", "athletics");
-    this->skills["deception"] = jd.get<string>("skills", "deception");
-    this->skills["history"] = jd.get<string>("skills", "history");
-    this->skills["insight"] = jd.get<string>("skills", "insight");
-    this->skills["intimidation"] = jd.get<string>("skills", "intimidation");
-    this->skills["investigation"] = jd.get<string>("skills", "investigation");
-    this->skills["medicine"] = jd.get<string>("skills", "medicine");
-    this->skills["nature"] = jd.get<string>("skills", "nature");
-    this->skills["perception"] = jd.get<string>("skills", "perception");
-    this->skills["performance"] = jd.get<string>("skills", "performance");
-    this->skills["persuasion"] = jd.get<string>("skills", "persuasion");
-    this->skills["religion"] = jd.get<string>("skills", "religion");
-    this->skills["sleight_of_hand"] = jd.get<string>("skills", "sleight_of_hand");
-    this->skills["stealth"] = jd.get<string>("skills", "stealth");
-    this->skills["survival"] = jd.get<string>("skills", "survival");
+    this->skills["acrobatics"] = jd.get<string>(Player::SKILLS, "acrobatics");
+    this->skills["animal_handling"] = jd.get<string>(Player::SKILLS, "animal_handling");
+    this->skills["arcana"] = jd.get<string>(Player::SKILLS, "arcana");
+    this->skills["athletics"] = jd.get<string>(Player::SKILLS, "athletics");
+    this->skills["deception"] = jd.get<string>(Player::SKILLS, "deception");
+    this->skills["history"] = jd.get<string>(Player::SKILLS, "history");
+    this->skills["insight"] = jd.get<string>(Player::SKILLS, "insight");
+    this->skills["intimidation"] = jd.get<string>(Player::SKILLS, "intimidation");
+    this->skills["investigation"] = jd.get<string>(Player::SKILLS, "investigation");
+    this->skills["medicine"] = jd.get<string>(Player::SKILLS, "medicine");
+    this->skills["nature"] = jd.get<string>(Player::SKILLS, "nature");
+    this->skills["perception"] = jd.get<string>(Player::SKILLS, "perception");
+    this->skills["performance"] = jd.get<string>(Player::SKILLS, "performance");
+    this->skills["persuasion"] = jd.get<string>(Player::SKILLS, "persuasion");
+    this->skills["religion"] = jd.get<string>(Player::SKILLS, "religion");
+    this->skills["sleight_of_hand"] = jd.get<string>(Player::SKILLS, "sleight_of_hand");
+    this->skills["stealth"] = jd.get<string>(Player::SKILLS, "stealth");
+    this->skills["survival"] = jd.get<string>(Player::SKILLS, "survival");
 
-    this->affiliations = jd.get<string>("affiliations");
-    this->backstory = jd.get<string>("backstory");
+    this->affiliations = jd.get<string>(Player::AFFILIATIONS);
+    this->backstory = jd.get<string>(Player::BACKSTORY);
 
     vector<Feature> raceFeatures;
-    for(const JsonDeserializer& feature_jd : jd.get<vector<JsonDeserializer>>("race", "features"))
+    for(const JsonDeserializer& feature_jd : jd.get<vector<JsonDeserializer>>(Player::RACE, "features"))
         raceFeatures.push_back(Feature(feature_jd));
     this->race = Race::Builder()
-        .name(jd.get<string>("race", "name"))
-        .description(jd.get<string>("race", "description"))
+        .name(jd.get<string>(Player::RACE, "name"))
+        .description(jd.get<string>(Player::RACE, "description"))
         .features(raceFeatures)
         .build();
 
     
     vector<Item> backgroundEquipment;
-    for(const JsonDeserializer& item_jd : jd.get<vector<JsonDeserializer>>("background", "equipment")){
+    for(const JsonDeserializer& item_jd : jd.get<vector<JsonDeserializer>>(Player::BACKGROUND, "equipment")){
         backgroundEquipment.push_back(Item::Builder()
             .name(item_jd.get<string>("name"))
             .description(item_jd.get<string>("description"))    
@@ -96,25 +96,25 @@ Player::Player(const string& jsonPath){
         );
     }
     vector<Feature> backgroundFeatures;
-    for(const JsonDeserializer& feature_jd : jd.get<vector<JsonDeserializer>>("background", "features"))
+    for(const JsonDeserializer& feature_jd : jd.get<vector<JsonDeserializer>>(Player::BACKGROUND, "features"))
         backgroundFeatures.push_back(Feature(feature_jd));
     this->background = Background::Builder()
-        .name(jd.get<string>("background", "name"))
-        .description(jd.get<string>("background", "description"))
-        .suggestedCharacteristics(jd.get<string>("background", "suggested_characteristics"))
+        .name(jd.get<string>(Player::BACKGROUND, "name"))
+        .description(jd.get<string>(Player::BACKGROUND, "description"))
+        .suggestedCharacteristics(jd.get<string>(Player::BACKGROUND, "suggested_characteristics"))
         .equipment(backgroundEquipment)
         .features(backgroundFeatures)
         .build();
 
-    for(const JsonDeserializer& playerClass_jd : jd.get<vector<JsonDeserializer>>("classes"))
+    for(const JsonDeserializer& playerClass_jd : jd.get<vector<JsonDeserializer>>(Player::PLAYER_CLASSES))
         this->playerClasses.push_back(PlayerClass(playerClass_jd));
 
-    this->inspiration = jd.get<int>("inspiration");
-    this->armorClass = jd.get<int>("armor_class");
-    this->initiative = jd.get<int>("initiative");
-    this->speed = jd.get<int>("speed");
+    this->inspiration = jd.get<int>(Player::INSPIRATION);
+    this->armorClass = jd.get<int>(Player::ARMOR_CLASS);
+    this->initiative = jd.get<int>(Player::INITIATIVE);
+    this->speed = jd.get<int>(Player::SPEED);
 
-    for(const JsonDeserializer& item_jd : jd.get<vector<JsonDeserializer>>("items")){
+    for(const JsonDeserializer& item_jd : jd.get<vector<JsonDeserializer>>(Player::ITEMS)){
         this->items.push_back(Item::Builder()
             .name(item_jd.get<string>("name"))
             .description(item_jd.get<string>("description"))
@@ -122,7 +122,7 @@ Player::Player(const string& jsonPath){
         );
     }
 
-    for(const JsonDeserializer& spellcasting_jd : jd.get<vector<JsonDeserializer>>("spellcastings"))
+    for(const JsonDeserializer& spellcasting_jd : jd.get<vector<JsonDeserializer>>(Player::SPELLCASTINGS))
         this->spellcastings.push_back(Spellcasting(spellcasting_jd));
 }
 
@@ -133,89 +133,89 @@ string Player::serialize() const
     JsonSerializer abilityScores_js;
     for(const pair<string, int>& pair : this->abilityScores) 
         abilityScores_js.put(pair.first, pair.second);
-    js.put("ability_scores", abilityScores_js.str());
+    js.put(Player::ABILITY_SCORES, abilityScores_js.str());
 
     JsonSerializer skill_js;
     for(const pair<string, string>& pair : this->skills)
         skill_js.put(pair.first, pair.second);
-    js.put("skills", skill_js.str());
+    js.put(Player::SKILLS, skill_js.str());
 
     JsonSerializer description_js;
-    description_js.put("name", this->description.getName());
-    description_js.put("age", this->description.getAge());
-    description_js.put("height", this->description.getHeight());
-    description_js.put("weight", this->description.getWeight());
-    description_js.put("eyes", this->description.getEyes());
-    description_js.put("skin", this->description.getEyes());
-    description_js.put("hair", this->description.getHair());
-    js.put("description", description_js.str());
+    description_js.put(Player::Description::NAME, this->description.getName());
+    description_js.put(Player::Description::AGE, this->description.getAge());
+    description_js.put(Player::Description::HEIGHT, this->description.getHeight());
+    description_js.put(Player::Description::WEIGHT, this->description.getWeight());
+    description_js.put(Player::Description::EYES, this->description.getEyes());
+    description_js.put(Player::Description::SKIN, this->description.getEyes());
+    description_js.put(Player::Description::HAIR, this->description.getHair());
+    js.put(Player::DESCRIPTION, description_js.str());
 
     JsonSerializer personality_js;
-    personality_js.put("alignment", this->personality.getAlignment());
-    personality_js.put("traits", this->personality.getTraits());
-    personality_js.put("ideals", this->personality.getIdeals());
-    personality_js.put("bonds", this->personality.getBonds());
-    personality_js.put("flaws", this->personality.getFlaws());
-    js.put("personality", personality_js.str());
+    personality_js.put(Player::Personality::ALIGNMENT, this->personality.getAlignment());
+    personality_js.put(Player::Personality::TRAITS, this->personality.getTraits());
+    personality_js.put(Player::Personality::IDEALS, this->personality.getIdeals());
+    personality_js.put(Player::Personality::BONDS, this->personality.getBonds());
+    personality_js.put(Player::Personality::FLAWS, this->personality.getFlaws());
+    js.put(Player::PERSONALITY, personality_js.str());
 
-    js.put("affiliations", this->affiliations);
-    js.put("backstory", this->backstory);
+    js.put(Player::AFFILIATIONS, this->affiliations);
+    js.put(Player::BACKSTORY, this->backstory);
 
-    js.put("race", this->race.serialize());
-    js.put("background", this->background.serialize());
+    js.put(Player::RACE, this->race.serialize());
+    js.put(Player::BACKGROUND, this->background.serialize());
 
-    js.createList("classes");
+    js.createList(Player::PLAYER_CLASSES);
     for(const PlayerClass& playerClass : this->playerClasses)
-        js.addToList("classes", playerClass.serialize());
+        js.addToList(Player::PLAYER_CLASSES, playerClass.serialize());
 
-    js.put("inspiration", this->inspiration);
-    js.put("armor_class", this->armorClass);
-    js.put("initiative", this->initiative);
-    js.put("speed", this->speed);
+    js.put(Player::INSPIRATION, this->inspiration);
+    js.put(Player::ARMOR_CLASS, this->armorClass);
+    js.put(Player::INITIATIVE, this->initiative);
+    js.put(Player::SPEED, this->speed);
 
     JsonSerializer hp_js;
-    hp_js.put("max_hp", this->hp.getMaxHP());
-    hp_js.put("current_hp", this->hp.getCurrentHP());
-    hp_js.put("temp_hp", this->hp.getTempHP());
-    js.put("hp", hp_js.str());
+    hp_js.put(Player::HitPoints::MAX_HP, this->hp.getMaxHP());
+    hp_js.put(Player::HitPoints::CURRENT_HP, this->hp.getCurrentHP());
+    hp_js.put(Player::HitPoints::TEMP_HP, this->hp.getTempHP());
+    js.put(Player::HP, hp_js.str());
 
     JsonSerializer deathSaves_js;
-    deathSaves_js.put("successes", this->deathSaves.getSuccesses());
-    deathSaves_js.put("failures", this->deathSaves.getFailures());
-    js.put("death_saves", deathSaves_js.str());
+    deathSaves_js.put(Player::DeathSaves::SUCCESSES, this->deathSaves.getSuccesses());
+    deathSaves_js.put(Player::DeathSaves::FAILURES, this->deathSaves.getFailures());
+    js.put(Player::DEATH_SAVES, deathSaves_js.str());
 
     JsonSerializer proficiencies_js;
-    proficiencies_js.put("proficiency_bonus", this->proficiencies.getProficiencyBonus());
+    proficiencies_js.put(Player::Proficiencies::PROFICIENCY_BONUS, this->proficiencies.getProficiencyBonus());
 
-    proficiencies_js.createList("saving_throws");
+    proficiencies_js.createList(Player::Proficiencies::SAVING_THROWS);
     for(const string& prof : this->proficiencies.getSavingThrows())
-        proficiencies_js.addToList("saving_throws", prof);
+        proficiencies_js.addToList(Player::Proficiencies::SAVING_THROWS, prof);
     
-    proficiencies_js.createList("skills");
+    proficiencies_js.createList(Player::Proficiencies::SKILLS);
     for(const string& prof : this->proficiencies.getSkills())
-        proficiencies_js.addToList("skills", prof);
+        proficiencies_js.addToList(Player::Proficiencies::SKILLS, prof);
 
-    proficiencies_js.createList("misc");
+    proficiencies_js.createList(Player::Proficiencies::MISC);
     for(const string& prof : this->proficiencies.getMiscProficiencies())
-        proficiencies_js.addToList("misc", prof);
+        proficiencies_js.addToList(Player::Proficiencies::MISC, prof);
 
-    js.put("proficiencies", proficiencies_js.str());
+    js.put(Player::PROFICIENCIES, proficiencies_js.str());
     
     JsonSerializer money_js;
-    money_js.put("copper", this->money.getCopper());
-    money_js.put("silver", this->money.getSilver());
-    money_js.put("electrum", this->money.getElectrum());
-    money_js.put("gold", this->money.getGold());
-    money_js.put("platinum", this->money.getPlatinum());
-    js.put("money", money_js.str());
+    money_js.put(Player::Money::COPPER, this->money.getCopper());
+    money_js.put(Player::Money::SILVER, this->money.getSilver());
+    money_js.put(Player::Money::ELECTRUM, this->money.getElectrum());
+    money_js.put(Player::Money::GOLD, this->money.getGold());
+    money_js.put(Player::Money::PLATINUM, this->money.getPlatinum());
+    js.put(Player::MONEY, money_js.str());
 
-    js.createList("items");
+    js.createList(Player::ITEMS);
     for(const Item& item : this->items)
-        js.addToList("items", item.serialize());
+        js.addToList(Player::ITEMS, item.serialize());
 
-    js.createList("spellcastings");
+    js.createList(Player::SPELLCASTINGS);
     for(const Spellcasting& spellcasting : this->spellcastings)
-        js.addToList("spellcasting", spellcasting.serialize());
+        js.addToList(Player::SPELLCASTINGS, spellcasting.serialize());
 
     return js.str();
 }

@@ -18,8 +18,35 @@ using namespace std;
 class Player{
 public:
     inline static const string SRC_DIR = "data/saves/players/";
+    inline static const string ABILITY_SCORES = "ability_scores";
+    inline static const string SKILLS = "skills";
+    inline static const string DESCRIPTION = "description";
+    inline static const string PERSONALITY = "personality";
+    inline static const string AFFILIATIONS = "affiliations";
+    inline static const string BACKSTORY = "backstory";
+    inline static const string RACE = "race";
+    inline static const string BACKGROUND = "background";
+    inline static const string PLAYER_CLASSES = "player_classes";
+    inline static const string INSPIRATION = "inspiration";
+    inline static const string ARMOR_CLASS = "armor_class";
+    inline static const string INITIATIVE = "initiative";
+    inline static const string SPEED = "speed";
+    inline static const string HP = "hp";
+    inline static const string DEATH_SAVES = "death_saves";
+    inline static const string PROFICIENCIES = "proficiencies";
+    inline static const string MONEY = "money";
+    inline static const string SPELLCASTINGS = "spellcastings";
+    inline static const string ITEMS = "items";
     // in constructor
     class Description{    // make builders for these
+    public:
+        inline static const string NAME = "name";
+        inline static const string AGE = "age";
+        inline static const string HEIGHT = "height";
+        inline static const string WEIGHT = "weight";
+        inline static const string EYES = "eyes";
+        inline static const string SKIN = "skin";
+        inline static const string HAIR = "hair";
     private:
         string name;
         string age;
@@ -79,6 +106,12 @@ public:
     };
 
     class Personality{
+    public:
+        inline static const string ALIGNMENT = "alignment";
+        inline static const string TRAITS = "traits";
+        inline static const string IDEALS = "ideals";
+        inline static const string BONDS = "bonds";
+        inline static const string FLAWS = "flaws";
     private:
         string alignment;
         string traits;
@@ -126,6 +159,10 @@ public:
     };
 
     class HitPoints{
+    public:
+        inline static const string MAX_HP = "max_hp";
+        inline static const string CURRENT_HP = "current_hp";
+        inline static const string TEMP_HP = "temp_hp";
     private:
         int maxHP;
         int currentHP;
@@ -150,6 +187,9 @@ public:
     };
 
     class DeathSaves{
+    public:
+        inline static const string SUCCESSES = "successes";
+        inline static const string FAILURES = "failures";
     private:
         int successes = 0;
         int failures = 0;
@@ -165,6 +205,11 @@ public:
     };
 
     class Proficiencies{
+    public:
+        inline static const string PROFICIENCY_BONUS = "proficiency_bonus";
+        inline static const string SAVING_THROWS = "saving_throws";
+        inline static const string SKILLS = "skills";
+        inline static const string MISC = "misc";
     private:
         int proficiencyBonus;
         unordered_set<string> savingThrows;
@@ -185,6 +230,12 @@ public:
     };
 
     class Money{
+    public:
+        inline static const string COPPER = "copper";
+        inline static const string SILVER = "silver";
+        inline static const string ELECTRUM = "electrum";
+        inline static const string GOLD = "gold";
+        inline static const string PLATINUM = "platinum";
     private:
         int copper = 0;
         int silver = 0;
