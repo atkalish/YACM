@@ -5,8 +5,9 @@
     "tags": [],
     "optional": false,
 		"hidden": false,
+    "exclusive_selection": false,
     "spellcasting": "",
-    "base_abilites": [],
+    "base_abilities": [],
     "base_trait_modifications": [],
     "ability_selectors": [],
     "trait_modification_selectors": []

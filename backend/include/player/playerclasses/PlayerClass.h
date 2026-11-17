@@ -4,8 +4,9 @@
 #include <string>
 #include "../spellcasting/Spellcasting.h"
 #include "PlayerClassBlueprint.h"
-#include "playerclasses/PlayerSubclass.h"
-#include "features/TraitModification.h"
+#include "PlayerSubclass.h"
+#include "../features/TraitModification.h"
+#include "../../serdes/JsonSerializer.h"
 
 using namespace std;
 
@@ -15,19 +16,22 @@ private:
 
     int level;
     int currentHitDice;
-    Selector<PlayerSubclass> subclass;
+    PlayerSubclass subclass;
     vector<Feature> features;
     vector<Selector<Item>> startingEquipment;
 
 public:
     PlayerClass() = default;
-    PlayerClass(PlayerClassBlueprint blueprint);
-    ~PlayerClass();
+    PlayerClass(const PlayerClassBlueprint& blueprint);
+    PlayerClass(const JsonDeserializer& jd);
+    ~PlayerClass() = default;
+
+    string serialize() const;
 
     const PlayerClassBlueprint& getBlueprint() const {return this->blueprint;}
     int getLevel() const {return this->level;}
     int getCurrentHitDie() const {return this->currentHitDice;}
-    const Selector<PlayerSubclass>& getPlayerSubclass() const {return this->subclass;}
+    const PlayerSubclass& getPlayerSubclass() const {return this->subclass;}
     const vector<Feature>& getFeatures() const {return this->features;}
-    const vector<Selector<Item>>& getSartingEquipment() const {return this->startingEquipment;}
+    const vector<Selector<Item>>& getStartingEquipment() const {return this->startingEquipment;}
 };

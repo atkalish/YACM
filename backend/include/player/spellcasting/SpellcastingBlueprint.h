@@ -4,6 +4,7 @@
 #include "Spell.h"
 #include "SpellSelector.h"
 #include "../../serdes/JsonDeserializer.h"
+#include "../../serdes/JsonSerializer.h"
 #include "../../Utils.h"
 
 using namespace std;
@@ -11,8 +12,6 @@ typedef string Formula;
 
 class SpellcastingBlueprint{
 private:
-    inline static const string SRC_DIR = "data/resources/spellcasting/spellcasting/";
-    inline static const string SPELL_LIST_SRC_DIR = "data/resources/spellcasting/spellcasting/";
     string focus;
     vector<Spell> spellList;
     vector<SpellSelector> spellSelectors;
@@ -27,6 +26,8 @@ private:
     vector<vector<int>> spellSlots; // 20 levels, 10 spell level (including cantrips)
 
 public:
+    inline static const string SRC_DIR = "data/resources/spellcasting/spellcasting/";
+    inline static const string SPELL_LIST_SRC_DIR = "data/resources/spellcasting/spelllists/";
     class Builder {
     private:
         string _focus;
@@ -45,9 +46,9 @@ public:
 
         Builder& focus(const string& focus){this->_focus = focus; return *this;}
         Builder& spellList(const vector<Spell> spellList){this->_spellList = spellList; return *this;}
-        Builder& spellSelector(const vector<SpellSelector> spellSelectors){this->_spellSelectors= spellSelectors; return *this;}
+        Builder& spellSelectors(const vector<SpellSelector> spellSelectors){this->_spellSelectors= spellSelectors; return *this;}
         Builder& ritual(bool ritual){this->_ritual = ritual; return *this;}
-        Builder& spellcastingAbilty(const string& spellAbiltyInfo){this->_spellAbilityInfo = spellAbiltyInfo; return *this;}
+        Builder& spellAbilityInfo(const string& spellAbiltyInfo){this->_spellAbilityInfo = spellAbiltyInfo; return *this;}
         Builder& spellAttackFormula(const Formula& spellAttackFormula){this->_spellAttackFormula = spellAttackFormula; return *this;}
         Builder& spellSaveFormula(const Formula& spellSaveFormula){this->_spellSaveFormula = spellSaveFormula; return *this;}
         Builder& spellPreparation(const string& spellPreparation){this->_spellPreparation = spellPreparation; return *this;}
@@ -73,6 +74,9 @@ private:
 public:
     SpellcastingBlueprint() = default;
     SpellcastingBlueprint(const string& jsonPath);
+    SpellcastingBlueprint(const JsonDeserializer& jd);
+
+    string serialize() const;
 
     const string& getFocus(){return this->focus;}
     const vector<Spell>& getSpellList(){return this->spellList;};

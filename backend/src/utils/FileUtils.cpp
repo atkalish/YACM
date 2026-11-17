@@ -1,9 +1,8 @@
 #include "../../include/Utils.h"
 
-#include <iostream>
-
 FileUtils::PathType FileUtils::getPathType(const string& path){
     fs::path p = path;
+    if(!fs::exists(path)) throw runtime_error("path not found: "s + path);
     if(fs::is_directory(p)) return FileUtils::PathType::DIRECTORY;
     return FileUtils::PathType::FILE;
 }

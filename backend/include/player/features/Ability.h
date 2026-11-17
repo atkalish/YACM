@@ -2,12 +2,14 @@
 #include <string>
 #include <vector>
 #include "../../serdes/JsonDeserializer.h"
+#include "../../serdes/JsonSerializer.h"
 
 using namespace std;
 typedef string Formula;
 
 class Ability{
 public:
+	inline static const string SRC_DIR = "data/resources/features/abilities/";
     class Scaler{
     private:
         string name;
@@ -37,7 +39,6 @@ public:
 		friend class Ability;
     };
 private:
-	inline static const string SRC_DIR = "data/resources/features/abilities/";
     string text;
     bool hidden;
 		bool hasScaler;
@@ -77,6 +78,7 @@ protected:
 
 public:
 	Ability(const string& jsonPath);
+	Ability(const JsonDeserializer& jd);
 	const string& getText() const {return this->text;}
 	bool isHidden() const {return this->hidden;}
 	const Scaler* getScaler() const {
@@ -88,4 +90,6 @@ public:
 		else return nullptr;
 	}
 	Ability() = default;
+
+	string serialize() const;
 };

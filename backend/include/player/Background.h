@@ -56,8 +56,11 @@ public:
     Background(const string& jsonPath);
     ~Background() = default;
 
-    const string& getname(){return this->name;}
-    const string& getDescription(){return this->description;}
-    const vector<Item>& getEquipment(){return this->equipment;}
-    const string getSuggestedCharacteristics(){return this->suggestedCharacteristics;}
+    string serialize() const;
+
+    const string& getName() const {return this->name;}
+    const string& getDescription() const {return this->description;}
+    const vector<Item>& getEquipment() const {return this->equipment;}
+    const vector<Feature>& getFeatures() const {return this->features;}
+    const string getSuggestedCharacteristics() const {return this->suggestedCharacteristics;}
 };

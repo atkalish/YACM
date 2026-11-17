@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "SpellcastingBlueprint.h"
+#include "../../serdes/JsonDeserializer.h"
 
 using namespace std;
 
@@ -18,6 +19,9 @@ private:
     
 public:
     Spellcasting(const SpellcastingBlueprint& blueprint);
+    Spellcasting(const JsonDeserializer& jd);
+
+    string serialize() const;
 
     const vector<Spell>& getPreparedSpells() const;
     const vector<Spell>& getUnpreparedSpells() const;

@@ -3,6 +3,7 @@
 #include "features/TraitModification.h"
 #include "features/Selector.h"
 #include "../serdes/JsonDeserializer.h"
+#include "../serdes/JsonSerializer.h"
 #include "../Utils.h"
 
 class Race {
@@ -39,6 +40,8 @@ public:
 	Race() = default;
 	Race(const string& jsonPath);
 	~Race() = default;
+
+	string serialize() const;
 
 	const string& getName() const {return this->name;}
 	const string& getDescription() const {return this->description;}

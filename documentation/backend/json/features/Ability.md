@@ -21,7 +21,7 @@ and anything that gives spellcasting ability (from feats to subclasses to classe
         "scaling": "formula"
     },
     "charge_type": {
-        "name": "charge name"
+        "name": "charge name",
         "count": "formula",
         "recharge_hooks": ["long rest", "short rest", ...],
         "recharge_val": "formula"

@@ -4,6 +4,7 @@
 #include "Selector.h"
 #include "../spellcasting/Spellcasting.h"
 #include "../../serdes/JsonDeserializer.h"
+#include "../../serdes/JsonSerializer.h"
 #include "../../Utils.h"
 
 //Feature is *just* a wrapper for these.
@@ -13,7 +14,6 @@ class Feature {
 	//  2. <T>Selectors --> ones that do change across hooks or levels or whatever. For example: Eldritch Invocations
 
 private:
-	inline static const string SRC_DIR = "data/resources/features/features";
 	vector<Ability> baseAbilities;
 	vector<TraitModification> baseTraitMods;
 
@@ -31,6 +31,7 @@ private:
 	bool hidden;
 
 public:
+	inline static const string SRC_DIR = "data/resources/features/features/";
 	class Builder {
 	private:
 		vector<Ability> _baseAbilities;
@@ -96,5 +97,8 @@ public:
 
 	Feature() = default;
 	Feature(const string& jsonPath);
+	Feature(const JsonDeserializer& jd);
 	~Feature() = default;
+
+	string serialize() const;
 };

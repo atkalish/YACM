@@ -2,12 +2,12 @@
 #include <string>
 #include <vector>
 #include "../../serdes/JsonDeserializer.h"
+#include "../../serdes/JsonSerializer.h"
 
 using namespace std;
 
 class Spell{
 private:
-    inline static const string SRC_DIR = "data/resources/spellcasting/spells/";
     string name;
     int level;
     string source;
@@ -22,6 +22,7 @@ private:
     vector<string> tags;
 
 public:
+    inline static const string SRC_DIR = "data/resources/spellcasting/spells/";
     class Builder{
     private:
         string _name;
@@ -76,6 +77,9 @@ private:
 public:
     Spell() = default;
     Spell(const string& jsonPath);
+    Spell(const JsonDeserializer& jd);
+
+    string serialize() const;
 
 	const string& getName(){return this->name;}
     int getLevel(){return this->level;}
