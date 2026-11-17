@@ -222,6 +222,7 @@ public:
 
 private:
     unordered_map<string, int> abilityScores;
+    unordered_map<string, string> skills;
 
     Description description;
     Personality personality;
@@ -248,6 +249,7 @@ public:
     class Builder{
     private:
         unordered_map<string, int> _abilityScores;
+        unordered_map<string, string> _skills;
 
         Description _description;
         Personality _personality;
@@ -262,6 +264,7 @@ public:
     public:
         Builder() = default;
         Builder& abilityScores(const unordered_map<string, int>& abilityScores){this->_abilityScores = abilityScores; return *this;}
+        Builder& skills(const unordered_map<string, string>& skills){this->_skills = skills; return *this;}
         Builder& description(const Description& description){this->_description = description; return *this;}
         Builder& personality(const Personality& personality){this->_personality = personality; return *this;}
         Builder& affiliations(const string& affiliations){this->_affiliations = affiliations; return *this;}
@@ -277,6 +280,7 @@ public:
 private:
     Player(Player::Builder* builder){
         this->abilityScores = builder->_abilityScores;
+        this->skills = builder->_skills;
         this->description = builder->_description;
         this->personality = builder->_personality;
         this->affiliations = builder->_affiliations;
@@ -295,6 +299,7 @@ public:
     ~Player() = default;
 
     const unordered_map<string, int>& getAbilityScores() const {return this->abilityScores;}
+    const unordered_map<string, string>& getSkills() const {return this->skills;}
     const Description& getDescription() const {return this->description;}
     const Personality& getPersonality() const {return this->personality;}
     const string& getAffiliation() const {return this->affiliations;}

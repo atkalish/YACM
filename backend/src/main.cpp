@@ -19,6 +19,26 @@ int main(){
 				{"wisdom", 0},
 				{"charisma", 0}
 			})
+			.skills({
+				{"acrobatics", "dexterity"},
+				{"animal_handling", "wisdom"},
+				{"arcana", "intelligence"},
+				{"athletics", "strength"},
+				{"deception", "charisma"},
+				{"history", "intelligence"},
+				{"insight", "wisdom"},
+				{"intimidation", "charisma"},
+				{"investigation", "intelligence"},
+				{"medicine", "wisdom"},
+				{"nature", "intelligence"},
+				{"perception", "wisdom"},
+				{"performance", "charisma"},
+				{"persuasion", "charisma"},
+				{"religion", "intelligence"},
+				{"sleight_of_hand", "dexterity"},
+				{"stealth", "dexterity"},
+				{"survival", "wisdom"}				
+			})
 			.description(Player::Description::Builder()
 							.name("Bob")
 							.build())

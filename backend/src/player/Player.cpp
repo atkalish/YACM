@@ -55,6 +55,25 @@ Player::Player(const string& jsonPath){
     this->abilityScores["strength"] = jd.get<int>("ability_scores", "strength");
     this->abilityScores["wisdom"] = jd.get<int>("ability_scores", "wisdom");
 
+    this->skills["acrobatics"] = jd.get<string>("skills", "acrobatics");
+    this->skills["animal_handling"] = jd.get<string>("skills", "animal_handling");
+    this->skills["arcana"] = jd.get<string>("skills", "arcana");
+    this->skills["athletics"] = jd.get<string>("skills", "athletics");
+    this->skills["deception"] = jd.get<string>("skills", "deception");
+    this->skills["history"] = jd.get<string>("skills", "history");
+    this->skills["insight"] = jd.get<string>("skills", "insight");
+    this->skills["intimidation"] = jd.get<string>("skills", "intimidation");
+    this->skills["investigation"] = jd.get<string>("skills", "investigation");
+    this->skills["medicine"] = jd.get<string>("skills", "medicine");
+    this->skills["nature"] = jd.get<string>("skills", "nature");
+    this->skills["perception"] = jd.get<string>("skills", "perception");
+    this->skills["performance"] = jd.get<string>("skills", "performance");
+    this->skills["persuasion"] = jd.get<string>("skills", "persuasion");
+    this->skills["religion"] = jd.get<string>("skills", "religion");
+    this->skills["sleight_of_hand"] = jd.get<string>("skills", "sleight_of_hand");
+    this->skills["stealth"] = jd.get<string>("skills", "stealth");
+    this->skills["survival"] = jd.get<string>("skills", "survival");
+
     this->affiliations = jd.get<string>("affiliations");
     this->backstory = jd.get<string>("backstory");
 
@@ -115,6 +134,11 @@ string Player::serialize() const
     for(const pair<string, int>& pair : this->abilityScores) 
         abilityScores_js.put(pair.first, pair.second);
     js.put("ability_scores", abilityScores_js.str());
+
+    JsonSerializer skill_js;
+    for(const pair<string, string>& pair : this->skills)
+        skill_js.put(pair.first, pair.second);
+    js.put("skills", skill_js.str());
 
     JsonSerializer description_js;
     description_js.put("name", this->description.getName());

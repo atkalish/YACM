@@ -1,5 +1,6 @@
 backend/build
 backend/logs/
 backend/tests/logs
+backend/tests/data/saves
 .vscode
 a.out
