@@ -72,6 +72,7 @@ Feature::Feature(const JsonDeserializer& jd){
     for(string tag : jd.get<vector<string>>("tags")) this->tags.push_back(tag);
     this->optional = jd.get<bool>("optional");
 	this->hidden = jd.get<bool>("hidden");
+    this->exclusiveSelect = jd.get<bool>("exclusive_selection");
     
     try{
         this->spellcastingBlueprint = new SpellcastingBlueprint(jd.get<JsonDeserializer>("spellcasting"));
