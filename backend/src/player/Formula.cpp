@@ -1,10 +1,4 @@
 #include "../../include/player/Formula.h"
-#include <cstdlib>
-#include <iostream>
-#include <map>
-#include <stdexcept>
-#include <string>
-#include <variant>
 
 bool isDigit(const string& str) {
 	for(char c : str) {
@@ -102,9 +96,57 @@ int Formula::evaluate(const Player& player) const {
 
 //key assumes that operation is not included
 int Formula::getElementValue(const Player& player, const element& key) {
-		if(holds_alternative<KEYWORD>(key)) { return 0; } //temporary!!!
+		if(holds_alternative<KEYWORD>(key)) {
+			KEYWORD k = get<KEYWORD>(key);
+			if(k == LEVEL ) { 
+				int sum = 0;
+				for(const PlayerClass& player_class : player.getPlayerClasses()) {
+					sum += player_class.getLevel();
+				}
+				return sum;
+			}
+			if(k == SPEED) { return player.getSpeed(); }
+			if(k == PP) { return player.getMoney().getPlatinum(); }
+			if(k == GP) { return player.getMoney().getGold(); }
+			if(k == EP) { return player.getMoney().getElectrum(); }
+			if(k == SP) { return player.getMoney().getSilver(); }
+			if(k == CP) { return player.getMoney().getCopper(); }
+			if(k == STR) { return player.getAbilityScores().find("strength")->second; }
+			if(k == DEX) { return player.getAbilityScores().find("dexterity")->second; }
+			if(k == CON) { return player.getAbilityScores().find("constitution")->second; }
+			if(k == INT) { return player.getAbilityScores().find("intelligence")->second; }
+			if(k == WIS) { return player.getAbilityScores().find("wisdom")->second; }
+			if(k == CHAR) { return player.getAbilityScores().find("charisma")->second; }
+			//getting player ability scores doesn't seem to exist
+			if(k == STR_SAVE) { return player.getProficiencies().getSavingThrows().count("strength"); }
+			if(k == DEX_SAVE) { return player.getProficiencies().getSavingThrows().count("dexterity"); }
+			if(k == CON_SAVE) { return player.getProficiencies().getSavingThrows().count("constitution"); }
+			if(k == INT_SAVE) { return player.getProficiencies().getSavingThrows().count("intelligence"); }
+			if(k == WIS_SAVE) { return player.getProficiencies().getSavingThrows().count("wisdom"); }
+			if(k == CHAR_SAVE) { return player.getProficiencies().getSavingThrows().count("charisma"); }
+
+			if(k == ACROBATICS) { return player.getProficiencies().getSkills().count("acrobatics"); }
+			if(k == ANIMAL_HANDLING) { return player.getProficiencies().getSkills().count("animal_handling"); }
+			if(k == ARCANA) { return player.getProficiencies().getSkills().count("arcana"); }
+			if(k == ATHLETICS) { return player.getProficiencies().getSkills().count("athletics"); }
+			if(k == DECEPTION) { return player.getProficiencies().getSkills().count("deception"); }
+			if(k == HISTORY) { return player.getProficiencies().getSkills().count("history"); }
+			if(k == INSIGHT) { return player.getProficiencies().getSkills().count("insight"); }
+			if(k == INTIMIDATION) { return player.getProficiencies().getSkills().count("intimidation"); }
+			if(k == INVESTIGATION) { return player.getProficiencies().getSkills().count("investigation"); }
+			if(k == MEDICINE) { return player.getProficiencies().getSkills().count("medicine"); }
+			if(k == NATURE) { return player.getProficiencies().getSkills().count("nature"); }
+			if(k == PERCEPTION) { return player.getProficiencies().getSkills().count("perception"); }
+			if(k == PERFORMANCE) { return player.getProficiencies().getSkills().count("performance"); }
+			if(k == PERSUASION) { return player.getProficiencies().getSkills().count("persuasion"); }
+			if(k == RELIGION) { return player.getProficiencies().getSkills().count("religion"); }
+			if(k == SLIGHT_OF_HAND) { return player.getProficiencies().getSkills().count("slight_of_hand"); }
+			if(k == STEALTH) { return player.getProficiencies().getSkills().count("stealth"); }
+			if(k == SURVIVAL) { return player.getProficiencies().getSkills().count("survival"); }
+			throw runtime_error("Somebody forgot to create a case for the KEYWORD enum");
+		}
 		else if(holds_alternative<int>(key)) { return get<int>(key); }
-		else if(holds_alternative<string>(key)) { return 0; } //temporary!!!
+		else if(holds_alternative<string>(key)) { throw runtime_error("TODO: allow for custom traits"); }
 		else { throw runtime_error("How did you manage to have a different type of element in a formula??"); }
 }
 

@@ -3,9 +3,14 @@
 #include <vector>
 #include <string>
 #include <variant>
+#include <cstdlib>
+#include <iostream>
+#include <map>
+#include <stdexcept>
+#include <string>
+#include <variant>
 
-//#include "Player.h"
-typedef int Player; //if Gerrit pushes this [to main] you may call him stupid one (1) time -Gerrit
+#include "Player.h"
 using namespace std;
 
 class Formula {
